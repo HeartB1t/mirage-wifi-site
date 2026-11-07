@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MirageWiFi - auditing Wi-Fi offensivo, Free e Pro in early access</title>
+  <meta name="description" content="MirageWiFi: piattaforma proprietaria di penetration testing Wi-Fi. Free per la ricognizione di base, Pro (early access, in arrivo) per cracking GPU, Evil Twin, MITM, WPA3 downgrade e catene d'attacco automatizzate." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <span class="logo">MIRAGE</span>
+        <span class="ghost">what you see isn't there.</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#edizioni">Edizioni</a>
+        <a href="#moduli">Moduli Pro</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw">Early access</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker reveal d1">Wi-Fi security auditing · Kali / Linux</p>
+          <h1 class="reveal d2">Il segnale è lì.<br /><span class="em">La rete</span> <span class="strike">non lo sa.</span></h1>
+          <p class="hero-sub reveal d3">
+            MirageWiFi è una piattaforma di penetration testing Wi-Fi con interfaccia
+            operativa in tempo reale: ricognizione, cattura handshake e PMKID, cracking
+            e attacchi attivi in un'unica console. Software proprietario, due edizioni.
+          </p>
+          <div class="hero-cta reveal d3">
+            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw">Entra nella lista d'attesa</a>
+            <a class="btn btn-ghost btn-lg" href="#edizioni">Scarica gratis</a>
+          </div>
+          <p class="hero-note reveal d4">
+            <b>Early access.</b> La Pro non è ancora in vendita: lascia la mail nella lista d'attesa e ti avvisiamo all'apertura.
+          </p>
+        </div>
+
+        <!-- Pannello scanner animato (decorativo, testo reale) -->
+        <div class="scanner reveal d4" aria-hidden="true">
+          <div class="scanner-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="path">mirage://scan/wlan0 · monitor</span>
+          </div>
+          <div class="scanner-body">
+            <div class="scanline"></div>
+            <div class="scan-row">
+              <span class="essid">Residence-Lab6<span class="bssid">CA:4C:75:11:0A:F2 · ch 6</span></span>
+              <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+              <span class="enc wpa2">WPA2</span>
+            </div>
+            <div class="scan-row">
+              <span class="essid">Office-Lab02<span class="bssid">A2:1B:3F:9C:44:8E · ch 11</span></span>
+              <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+              <span class="enc wpa3">WPA3</span>
+            </div>
+            <div class="scan-row">
+              <span class="essid">Corp-Secure<span class="bssid">3E:22:71:D0:1A:05 · ch 1</span></span>
+              <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+              <span class="enc eap">EAP</span>
+            </div>
+            <div class="scan-row">
+              <span class="essid">linksys<span class="bssid">02:14:BF:77:2E:19 · ch 3</span></span>
+              <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
+              <span class="enc wep">WEP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avviso etico/legale in evidenza -->
+      <div class="wrap">
+        <div class="ethics reveal d4" role="note">
+          <span class="sign">⚠</span>
+          <div>
+            <h3>Uso lecito soltanto</h3>
+            <p>
+              Strumento di auditing e penetration testing. Va usato <b>esclusivamente su reti
+              e sistemi di tua proprietà o per i quali hai un'autorizzazione esplicita e
+              scritta a effettuare test</b>. Sei l'unico responsabile del rispetto delle leggi
+              applicabili (LICENSE, sezioni 9 e 10 - Lawful Use ed Export/Dual-Use).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDIZIONI ============ -->
+    <section id="edizioni">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Due edizioni · una sola licenza</p>
+          <h2>Parti dalla ricognizione. Sblocca l'offensiva quando ti serve.</h2>
+          <p>
+            Software proprietario: licenziato, non venduto, e a codice chiuso. La Free copre
+            il recon di base a costo zero; la Pro attiva i moduli offensivi avanzati ed è
+            in early access (prezzo e modalità in definizione).
+          </p>
+        </div>
+
+        <div class="editions">
+          <!-- FREE -->
+          <div class="plan free">
+            <p class="plan-tag">Edizione Free</p>
+            <h3>Free</h3>
+            <div class="price">
+              <span class="amount">0</span>
+              <span class="unit">EUR · per sempre</span>
+            </div>
+            <p class="price-note">Licenza proprietaria (EULA) · sorgente non pubblico</p>
+
+            <ul class="feat">
+              <li><span class="mk">›</span> <span>Scansione live di reti e client, con banda e filtri</span></li>
+              <li><span class="mk">›</span> <span>Fingerprint della cifratura <small>WPA2 / WPA3 e oltre</small></span></li>
+              <li><span class="mk">›</span> <span>Cattura handshake e PMKID <small>hcxdumptool / airodump-ng, LootStore</small></span></li>
+              <li><span class="mk">›</span> <span>Analisi offline non distruttiva <small>PSK keygen, credenziali admin note</small></span></li>
+              <li><span class="mk">›</span> <span>Cracking a dizionario di base</span></li>
+              <li><span class="mk">›</span> <span>Report di base <small>export con dati sensibili oscurati</small></span></li>
+            </ul>
+
+            <a class="btn btn-cyan" href="#faq">Scarica gratis</a>
+            <p class="plan-foot">Nessuna carta richiesta · gate di consenso legale al primo avvio</p>
+          </div>
+
+          <!-- PRO -->
+          <div class="plan pro">
+            <p class="plan-tag">Edizione Pro</p>
+            <h3>Pro</h3>
+            <div class="price">
+              <span class="amount">Presto</span>
+              <span class="unit">early access</span>
+            </div>
+            <p class="price-note"><b>Lista d'attesa aperta</b> · prezzo e modalità in definizione</p>
+
+            <ul class="feat">
+              <li><span class="mk">▲</span> <span>Cracking accelerato su GPU <small>hashcat -m 22000</small></span></li>
+              <li><span class="mk">▲</span> <span>Evil Twin + captive portal <small>hostapd · dnsmasq · portale Flask</small></span></li>
+              <li><span class="mk">▲</span> <span>MITM e post-exploit LAN <small>Network Discovery, RouterSploit, exploit custom</small></span></li>
+              <li><span class="mk">▲</span> <span>Downgrade WPA3 (SAE) e SSID Confusion</span></li>
+              <li><span class="mk">▲</span> <span>DoS mirato e WPA-Enterprise (EAP) <small>rogue AP, GTC downgrade</small></span></li>
+              <li><span class="mk">▲</span> <span>Catene d'attacco automatizzate</span></li>
+              <li><span class="mk">▲</span> <span>Report PDF professionali <small>ambito, autorizzazione, severità, remediation</small></span></li>
+              <li><span class="mk">▲</span> <span>BeEF e AI Advisor <small>Ollama locale o cloud BYOK, a singolo step</small></span></li>
+            </ul>
+
+            <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw">Entra nella lista d'attesa</a>
+            <p class="plan-foot">Tutto ciò che c'è nella Free, più i moduli offensivi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODULI PRO ============ -->
+    <section id="moduli">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Cosa sblocca la Pro</p>
+          <h2>L'arsenale offensivo, guidato da una console sola.</h2>
+          <p>
+            Ogni modulo è integrato nel flusso: dallo scan al bersaglio, dal bersaglio alla
+            cattura, dalla cattura al crack - con selezione dell'interfaccia d'attacco
+            per-pannello quando hai più schede.
+          </p>
+        </div>
+
+        <div class="modules">
+          <div class="mod cap">
+            <p class="mtag">Capture · GPU</p>
+            <h4>Cracking accelerato</h4>
+            <p>Handshake e PMKID passati direttamente ad hashcat su GPU, con code e picco di potenza selezionabile dalla console.</p>
+          </div>
+          <div class="mod trans">
+            <p class="mtag">Transmit</p>
+            <h4>Evil Twin + captive portal</h4>
+            <p>Access point clone con portale prigioniero, KARMA e portale a ESSID dinamico; validazione della PSK contro l'handshake catturato.</p>
+          </div>
+          <div class="mod trans">
+            <p class="mtag">Transmit</p>
+            <h4>WPA3 downgrade · SSID Confusion</h4>
+            <p>Downgrade SAE per catturare un 4-way handshake crackabile offline e SSID Confusion multi-BSS (CVE-2023-52424).</p>
+          </div>
+          <div class="mod trans">
+            <p class="mtag">Transmit · EAP</p>
+            <h4>WPA-Enterprise</h4>
+            <p>Rogue AP EAP via eaphammer, GTC downgrade e cattura degli hash MSCHAPv2 delle credenziali aziendali.</p>
+          </div>
+          <div class="mod post">
+            <p class="mtag">Post-exploit · LAN</p>
+            <h4>MITM + Network Discovery</h4>
+            <p>Man-in-the-middle sulla LAN una volta dentro, discovery degli host, RouterSploit, exploit custom e BeEF.</p>
+          </div>
+          <div class="mod dstr">
+            <p class="mtag">Destruct</p>
+            <h4>DoS mirato</h4>
+            <p>Deauth e disruption puntati sul singolo bersaglio per forzare la ri-associazione dei client e completare la cattura.</p>
+          </div>
+          <div class="mod post">
+            <p class="mtag">Report</p>
+            <h4>Report PDF professionali</h4>
+            <p>Executive summary, ambito e autorizzazione, rilievi con severità e remediation - pronti da consegnare al cliente.</p>
+          </div>
+          <div class="mod ai">
+            <p class="mtag">AI Advisor</p>
+            <h4>Suggerimento del prossimo passo</h4>
+            <p>Consiglio contestuale sul passo d'attacco successivo, un singolo step alla volta: Ollama in locale o cloud BYOK, mai la catena intera in automatico.</p>
+          </div>
+          <div class="mod cap">
+            <p class="mtag">Automazione</p>
+            <h4>Catene d'attacco</h4>
+            <p>Sequenze automatizzate scan → deauth → cattura → crack, orchestrate dalla stessa interfaccia con controllo dell'operatore.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Domande frequenti</p>
+          <h2>Licenza, edizioni e uso responsabile.</h2>
+        </div>
+
+        <div class="faq">
+          <details class="qa" open>
+            <summary>Che differenza c'è tra Free e Pro?</summary>
+            <p>
+              Free è la ricognizione di base gratuita; Pro sblocca i moduli offensivi
+              avanzati (early access). Con la Free scansioni reti e client, fai
+              fingerprint della cifratura, catturi handshake e PMKID e produci report di
+              base. Con la Pro attivi cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS,
+              WPA-Enterprise, catene d'attacco automatizzate, report PDF, BeEF, exploit
+              custom e AI Advisor.
+            </p>
+          </details>
+
+          <details class="qa">
+            <summary>Come ottengo la Free?</summary>
+            <p>
+              La installi e la usi senza costi né carta di credito: è pensata per il recon
+              di base. Al primo avvio un gate di consenso legale ti chiede di confermare che
+              userai lo strumento solo su reti autorizzate; gli endpoint offensivi restano
+              bloccati finché non sblocchi la Pro. La Pro è in early access: per ora
+              puoi entrare nella lista d'attesa.
+            </p>
+          </details>
+
+          <details class="qa">
+            <summary>Quanto costa la Pro? Come la ottengo?</summary>
+            <p>
+              La Pro non è ancora in vendita: è in early access. Prezzo e modalità sono
+              in definizione. Lascia la mail nella lista d'attesa e ti avvisiamo appena
+              apre; la licenza sarà verificata lato server.
+            </p>
+          </details>
+
+          <details class="qa">
+            <summary>MirageWiFi è un progetto libero?</summary>
+            <p>
+              No. È software proprietario a codice chiuso, licenziato e non venduto, retto da
+              un EULA (vedi il file LICENSE). Le due edizioni Free e Pro condividono lo stesso
+              contratto di licenza; la Pro aggiunge solo lo sblocco dei moduli avanzati.
+            </p>
+          </details>
+
+          <details class="qa">
+            <summary>Posso usarlo su qualsiasi rete?</summary>
+            <p>
+              No. Puoi usarlo soltanto su reti e sistemi di tua proprietà o per i quali hai
+              ottenuto un'autorizzazione esplicita e scritta a effettuare test. È tecnologia
+              di sicurezza a doppio uso: l'uso non autorizzato è illegale e sei tu l'unico
+              responsabile del rispetto delle leggi applicabili.
+            </p>
+          </details>
+
+          <details class="qa">
+            <summary>Su cosa gira?</summary>
+            <p>
+              È pensato per Linux orientato al pentesting, tipicamente Kali, con schede Wi-Fi
+              capaci di monitor mode e injection. Supporta il multi-adattatore, con selezione
+              dell'interfaccia d'attacco per-pannello quando usi più schede.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section>
+      <div class="wrap">
+        <div class="final">
+          <p class="kicker">Pronto a passare all'offensiva?</p>
+          <h2>La Pro sta arrivando.</h2>
+          <p>
+            Early access: lascia la mail e sei tra i primi ad avere cracking GPU, Evil Twin,
+            MITM, WPA3 downgrade, Enterprise, catene automatizzate e report PDF, tutto in una
+            console sola. Prezzo e modalità in definizione.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw">Entra nella lista d'attesa</a>
+            <a class="btn btn-ghost btn-lg" href="#edizioni">Scarica gratis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="logo">MIRAGE</span>
+          <p>Auditing Wi-Fi offensivo in una console sola. Ricognizione, cattura, cracking e attacchi attivi.</p>
+        </div>
+        <div class="foot-links">
+          <div class="foot-col">
+            <h5>Prodotto</h5>
+            <a href="#edizioni">Edizioni</a>
+            <a href="#moduli">Moduli Pro</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="foot-col">
+            <h5>Licenza</h5>
+            <a href="https://miragewifi.gumroad.com/l/hbzayw">Lista d'attesa</a>
+            <a href="#faq">Uso lecito</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="license">
+        <span><span class="lock">🔒</span> Proprietaria - © 2026 Mirage. Uso solo su reti autorizzate.</span>
+        <span>Software licenziato, non venduto · a codice chiuso.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
