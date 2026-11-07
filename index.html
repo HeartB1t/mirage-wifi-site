@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MirageWiFi - auditing Wi-Fi offensivo, Free e Pro in early access</title>
-  <meta name="description" content="MirageWiFi: piattaforma proprietaria di penetration testing Wi-Fi. Free per la ricognizione di base, Pro (29 EUR/mese, early access) per cracking GPU, Evil Twin, MITM, WPA3 downgrade e catene d'attacco, in una console sola." />
+  <title>MirageWiFi - offensive Wi-Fi auditing, Free and Pro in early access</title>
+  <meta name="description" content="MirageWiFi: proprietary Wi-Fi penetration testing platform. Free for basic reconnaissance, Pro (29 EUR/month, early access) for GPU cracking, Evil Twin, MITM, WPA3 downgrade and attack chains, in a single console." />
   <meta name="theme-color" content="#080c14" />
   <meta name="color-scheme" content="dark" />
 
-  <!-- Open Graph / preview social -->
+  <!-- Open Graph / social preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="MirageWiFi - auditing Wi-Fi offensivo, Free e Pro" />
-  <meta property="og:description" content="Ricognizione, cattura handshake e PMKID, cracking GPU e attacchi attivi in un'unica console operativa. Software proprietario, due edizioni." />
+  <meta property="og:title" content="MirageWiFi - offensive Wi-Fi auditing, Free and Pro" />
+  <meta property="og:description" content="Reconnaissance, handshake and PMKID capture, GPU cracking and active attacks in a single operational console. Proprietary software, two editions." />
   <meta property="og:url" content="https://heartb1t.github.io/mirage-wifi-site/" />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -21,12 +21,12 @@
 </head>
 <body>
 
-  <a class="skip" href="#top">Salta al contenuto</a>
+  <a class="skip" href="#top" data-i18n="nav.skip">Skip to content</a>
 
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="MirageWiFi, torna in cima">
+      <a class="brand" href="#top" aria-label="MirageWiFi, back to top">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
             <path d="M6 18 Q16 7 26 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
@@ -39,13 +39,23 @@
           <span class="ghost">what you see isn't there.</span>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Sezioni">
-        <a href="#edizioni">Edizioni</a>
-        <a href="#perche">Perché</a>
-        <a href="#moduli">Moduli Pro</a>
-        <a href="#faq">FAQ</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#edizioni" data-i18n="nav.editions">Editions</a>
+        <a href="#perche" data-i18n="nav.why">Why</a>
+        <a href="#moduli" data-i18n="nav.modules">Pro modules</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
-      <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer">Early access</a>
+      <div class="lang-switch">
+        <label for="lang-select" class="sr-only" data-i18n="nav.langlabel">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="it">IT</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+        </select>
+      </div>
+      <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
     </div>
   </header>
 
@@ -55,28 +65,28 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="kicker reveal">Wi-Fi security auditing · Kali / Linux</p>
-          <h1 class="reveal">Il segnale è lì.<br /><span class="em">La rete</span> <span class="strike">non lo sa.</span></h1>
-          <p class="hero-sub reveal">
-            MirageWiFi è una piattaforma di penetration testing Wi-Fi con interfaccia
-            operativa in tempo reale: ricognizione, cattura handshake e PMKID, cracking
-            e attacchi attivi in un'unica console. Software proprietario, due edizioni.
+          <p class="kicker reveal" data-i18n="hero.kicker">Wi-Fi security auditing · Kali / Linux</p>
+          <h1 class="reveal"><span data-i18n="hero.h1a">The signal is there.</span><br /><span class="em" data-i18n="hero.h1b">The network</span> <span class="strike" data-i18n="hero.h1c">doesn't know it.</span></h1>
+          <p class="hero-sub reveal" data-i18n="hero.sub">
+            MirageWiFi is a Wi-Fi penetration testing platform with a real-time
+            operational interface: reconnaissance, handshake and PMKID capture, cracking
+            and active attacks in a single console. Proprietary software, two editions.
           </p>
           <div class="hero-cta reveal">
-            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer">Entra nella lista d'attesa</a>
-            <a class="btn btn-ghost btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer">Scarica gratis</a>
+            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
+            <a class="btn btn-ghost btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
           </div>
-          <ul class="hero-trust reveal" aria-label="In sintesi">
-            <li><b>Free</b> a costo zero</li>
-            <li><b>Pro</b> 29 EUR/mese, early access</li>
-            <li>Una console, tutto il flusso</li>
+          <ul class="hero-trust reveal" aria-label="In short">
+            <li><b>Free</b> <span data-i18n="hero.trust1">at zero cost</span></li>
+            <li><b>Pro</b> <span data-i18n="hero.trust2">29 EUR/month, early access</span></li>
+            <li data-i18n="hero.trust3">One console, the whole flow</li>
           </ul>
           <p class="hero-note reveal">
-            <b>Early access.</b> La Pro apre su lista d'attesa: lascia la mail e ti avvisiamo appena è disponibile.
+            <b data-i18n="hero.note.b">Early access.</b> <span data-i18n="hero.note.t">Pro opens via waitlist: leave your email and we'll let you know as soon as it's available.</span>
           </p>
         </div>
 
-        <!-- Pannello scanner animato (decorativo, dati di fantasia) -->
+        <!-- Animated scanner panel (decorative, fictional data) -->
         <div class="scanner reveal" aria-hidden="true">
           <div class="scanner-bar">
             <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
@@ -108,98 +118,95 @@
         </div>
       </div>
 
-      <!-- Avviso etico/legale in evidenza -->
+      <!-- Ethical / legal notice in evidence -->
       <div class="wrap">
         <div class="ethics reveal" role="note">
           <span class="sign" aria-hidden="true">⚠</span>
           <div>
-            <h2>Uso lecito soltanto</h2>
+            <h2 data-i18n="ethics.title">Lawful use only</h2>
             <p>
-              Strumento di auditing e penetration testing. Va usato <b>esclusivamente su reti
-              e sistemi di tua proprietà o per i quali hai un'autorizzazione esplicita e
-              scritta a effettuare test</b>. Sei l'unico responsabile del rispetto delle leggi
-              applicabili (LICENSE, sezioni 9 e 10: Lawful Use ed Export/Dual-Use).
+              <span data-i18n="ethics.p1">Auditing and penetration testing tool. It must be used </span><b data-i18n="ethics.b">exclusively on networks and systems you own or for which you have explicit, written authorization to test</b><span data-i18n="ethics.p2">. You are solely responsible for complying with applicable laws (LICENSE, sections 9 and 10: Lawful Use and Export/Dual-Use).</span>
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ EDIZIONI ============ -->
+    <!-- ============ EDITIONS ============ -->
     <section id="edizioni">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker"><span class="sec-no">01</span> Due edizioni · una sola licenza</p>
-          <h2>Parti dalla ricognizione. Sblocca l'offensiva quando ti serve.</h2>
-          <p>
-            Software proprietario: licenziato, non venduto, e a codice chiuso. La Free copre
-            il recon di base a costo zero; la Pro attiva i moduli offensivi avanzati, a
-            29 EUR/mese, ed è in early access.
+          <p class="kicker"><span class="sec-no">01</span> <span data-i18n="ed.kicker">Two editions · a single license</span></p>
+          <h2 data-i18n="ed.h2">Start with reconnaissance. Unlock the offensive when you need it.</h2>
+          <p data-i18n="ed.p">
+            Proprietary software: licensed, not sold, and closed source. Free covers
+            basic recon at zero cost; Pro activates the advanced offensive modules, at
+            29 EUR/month, and is in early access.
           </p>
         </div>
 
         <div class="editions">
           <!-- FREE -->
           <div class="plan free reveal">
-            <p class="plan-tag">Edizione Free</p>
+            <p class="plan-tag" data-i18n="free.tag">Free edition</p>
             <h3>Free</h3>
             <div class="price">
               <span class="amount">0</span>
-              <span class="unit">EUR · nessuna carta</span>
+              <span class="unit" data-i18n="free.unit">EUR · no card</span>
             </div>
-            <p class="price-note">Licenza proprietaria (EULA) · sorgente non pubblico</p>
+            <p class="price-note" data-i18n="free.pricenote">Proprietary license (EULA) · source not public</p>
 
             <ul class="feat">
-              <li><span class="mk" aria-hidden="true">›</span> <span>Scansione live di reti e client, con banda e filtri</span></li>
-              <li><span class="mk" aria-hidden="true">›</span> <span>Fingerprint della cifratura <small>WPA2 / WPA3 e oltre</small></span></li>
-              <li><span class="mk" aria-hidden="true">›</span> <span>Cattura handshake e PMKID <small>hcxdumptool / airodump-ng, LootStore</small></span></li>
-              <li><span class="mk" aria-hidden="true">›</span> <span>Analisi offline non distruttiva <small>PSK keygen, credenziali admin note</small></span></li>
-              <li><span class="mk" aria-hidden="true">›</span> <span>Cracking a dizionario di base</span></li>
-              <li><span class="mk" aria-hidden="true">›</span> <span>Report di base <small>export con dati sensibili oscurati</small></span></li>
+              <li><span class="mk" aria-hidden="true">›</span> <span data-i18n="free.f1">Live scan of networks and clients, with band and filters</span></li>
+              <li><span class="mk" aria-hidden="true">›</span> <span><span data-i18n="free.f2">Encryption fingerprinting</span> <small data-i18n="free.f2s">WPA2 / WPA3 and beyond</small></span></li>
+              <li><span class="mk" aria-hidden="true">›</span> <span><span data-i18n="free.f3">Handshake and PMKID capture</span> <small data-i18n="free.f3s">hcxdumptool / airodump-ng, LootStore</small></span></li>
+              <li><span class="mk" aria-hidden="true">›</span> <span><span data-i18n="free.f4">Non-destructive offline analysis</span> <small data-i18n="free.f4s">PSK keygen, known admin credentials</small></span></li>
+              <li><span class="mk" aria-hidden="true">›</span> <span data-i18n="free.f5">Basic dictionary cracking</span></li>
+              <li><span class="mk" aria-hidden="true">›</span> <span><span data-i18n="free.f6">Basic report</span> <small data-i18n="free.f6s">export with sensitive data redacted</small></span></li>
             </ul>
 
-            <a class="btn btn-cyan" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer">Scarica gratis</a>
-            <p class="plan-foot">Nessuna carta richiesta · gate di consenso legale al primo avvio</p>
+            <a class="btn btn-cyan" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
+            <p class="plan-foot" data-i18n="free.foot">No card required · legal consent gate at first launch</p>
           </div>
 
           <!-- PRO -->
           <div class="plan pro reveal">
-            <span class="plan-badge">Early access</span>
-            <p class="plan-tag">Edizione Pro</p>
+            <span class="plan-badge" data-i18n="pro.badge">Early access</span>
+            <p class="plan-tag" data-i18n="pro.tag">Pro edition</p>
             <h3>Pro</h3>
             <div class="price">
               <span class="amount">29</span>
-              <span class="unit">EUR / mese</span>
+              <span class="unit" data-i18n="pro.unit">EUR / month</span>
             </div>
-            <p class="price-note"><b>Lista d'attesa aperta</b> · abbonamento, licenza verificata lato server</p>
+            <p class="price-note"><b data-i18n="pro.pricenote.b">Waitlist open</b><span data-i18n="pro.pricenote.t"> · subscription, server-side verified license</span></p>
 
             <ul class="feat">
-              <li><span class="mk" aria-hidden="true">▲</span> <span>Cracking accelerato su GPU <small>hashcat -m 22000</small></span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>Evil Twin + captive portal <small>hostapd · dnsmasq · portale Flask</small></span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>MITM e post-exploit LAN <small>Network Discovery, RouterSploit, exploit custom</small></span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>Downgrade WPA3 (SAE) e SSID Confusion</span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>DoS mirato e WPA-Enterprise (EAP) <small>rogue AP, GTC downgrade</small></span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>Catene d'attacco automatizzate</span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>Report PDF professionali <small>ambito, autorizzazione, severità, remediation</small></span></li>
-              <li><span class="mk" aria-hidden="true">▲</span> <span>BeEF e AI Advisor <small>Ollama locale o cloud BYOK, a singolo step</small></span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span><span data-i18n="pro.f1">GPU-accelerated cracking</span> <small data-i18n="pro.f1s">hashcat -m 22000</small></span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span><span data-i18n="pro.f2">Evil Twin + captive portal</span> <small data-i18n="pro.f2s">hostapd · dnsmasq · Flask portal</small></span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span><span data-i18n="pro.f3">MITM and LAN post-exploit</span> <small data-i18n="pro.f3s">Network Discovery, RouterSploit, custom exploits</small></span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span data-i18n="pro.f4">WPA3 (SAE) downgrade and SSID Confusion</span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span><span data-i18n="pro.f5">Targeted DoS and WPA-Enterprise (EAP)</span> <small data-i18n="pro.f5s">rogue AP, GTC downgrade</small></span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span data-i18n="pro.f6">Automated attack chains</span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span><span data-i18n="pro.f7">Professional PDF reports</span> <small data-i18n="pro.f7s">scope, authorization, severity, remediation</small></span></li>
+              <li><span class="mk" aria-hidden="true">▲</span> <span><span data-i18n="pro.f8">BeEF and AI Advisor</span> <small data-i18n="pro.f8s">local Ollama or cloud BYOK, single step</small></span></li>
             </ul>
 
-            <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer">Entra nella lista d'attesa</a>
-            <p class="plan-foot">Tutto ciò che c'è nella Free, più i moduli offensivi</p>
+            <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
+            <p class="plan-foot" data-i18n="pro.foot">Everything in Free, plus the offensive modules</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ PERCHE / CREDIBILITA ============ -->
+    <!-- ============ WHY / CREDIBILITY ============ -->
     <section id="perche" class="why">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker"><span class="sec-no">02</span> Perché MirageWiFi</p>
-          <h2>Pensato da chi fa assessment, per chi li consegna.</h2>
-          <p>
-            Non una collezione di script lanciati a mano, ma un flusso di lavoro coerente:
-            dallo scan al report, con l'operatore sempre al comando di ogni passo.
+          <p class="kicker"><span class="sec-no">02</span> <span data-i18n="why.kicker">Why MirageWiFi</span></p>
+          <h2 data-i18n="why.h2">Built by people who run assessments, for those who deliver them.</h2>
+          <p data-i18n="why.p">
+            Not a collection of hand-run scripts, but a coherent workflow:
+            from scan to report, with the operator always in command of every step.
           </p>
         </div>
 
@@ -210,8 +217,8 @@
                 <rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 20h8M12 17v3"/>
               </svg>
             </span>
-            <h3>Una console sola</h3>
-            <p>Ricognizione, cattura, cracking e attacchi attivi nello stesso posto. Niente passaggi a mano tra dieci tool diversi: il contesto non si perde mai.</p>
+            <h3 data-i18n="why.p1.h">A single console</h3>
+            <p data-i18n="why.p1.p">Reconnaissance, capture, cracking and active attacks in the same place. No manual switching between ten different tools: the context is never lost.</p>
           </article>
 
           <article class="pill reveal">
@@ -220,8 +227,8 @@
                 <path d="M3 12a9 9 0 0 1 9-9M21 12a9 9 0 0 1-9 9"/><path d="M7 12a5 5 0 0 1 5-5M17 12a5 5 0 0 1-5 5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>
               </svg>
             </span>
-            <h3>Tempo reale, multi-scheda</h3>
-            <p>Monitor mode, scan e injection in diretta sulla console, con selezione dell'interfaccia d'attacco per-pannello quando usi più adattatori. Nessuna attesa cieca.</p>
+            <h3 data-i18n="why.p2.h">Real-time, multi-adapter</h3>
+            <p data-i18n="why.p2.p">Monitor mode, scan and injection live on the console, with per-panel attack interface selection when you use multiple adapters. No blind waiting.</p>
           </article>
 
           <article class="pill reveal">
@@ -230,8 +237,8 @@
                 <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.2 12l1.9 1.9L15 10"/>
               </svg>
             </span>
-            <h3>Offline-safe per default</h3>
-            <p>L'analisi non distruttiva lavora sui dati già catturati, senza toccare l'etere. Gli endpoint offensivi restano bloccati finché non sblocchi la Pro, dietro un gate di consenso legale.</p>
+            <h3 data-i18n="why.p3.h">Offline-safe by default</h3>
+            <p data-i18n="why.p3.p">Non-destructive analysis works on already captured data, without touching the airwaves. The offensive endpoints stay locked until you unlock Pro, behind a legal consent gate.</p>
           </article>
 
           <article class="pill reveal">
@@ -240,71 +247,71 @@
                 <path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h6M9 9.5h2"/>
               </svg>
             </span>
-            <h3>Report da consegnare</h3>
-            <p>Dall'export di base della Free al PDF professionale della Pro: ambito, autorizzazione, rilievi con severità e remediation. Dati sensibili oscurati, pronto per il cliente.</p>
+            <h3 data-i18n="why.p4.h">Reports to deliver</h3>
+            <p data-i18n="why.p4.p">From Free's basic export to Pro's professional PDF: scope, authorization, findings with severity and remediation. Sensitive data redacted, ready for the client.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ MODULI PRO ============ -->
+    <!-- ============ PRO MODULES ============ -->
     <section id="moduli">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker"><span class="sec-no">03</span> Cosa sblocca la Pro</p>
-          <h2>L'arsenale offensivo, guidato da una console sola.</h2>
-          <p>
-            Ogni modulo è integrato nel flusso: dallo scan al bersaglio, dal bersaglio alla
-            cattura, dalla cattura al crack, con selezione dell'interfaccia d'attacco
-            per-pannello quando hai più schede.
+          <p class="kicker"><span class="sec-no">03</span> <span data-i18n="mod.kicker">What Pro unlocks</span></p>
+          <h2 data-i18n="mod.h2">The offensive arsenal, driven by a single console.</h2>
+          <p data-i18n="mod.p">
+            Every module is integrated into the flow: from scan to target, from target to
+            capture, from capture to crack, with per-panel attack interface selection
+            when you have multiple adapters.
           </p>
         </div>
 
         <div class="modules">
           <div class="mod cap reveal">
             <p class="mtag">Capture · GPU</p>
-            <h3>Cracking accelerato</h3>
-            <p>Handshake e PMKID passati direttamente ad hashcat su GPU, con code e picco di potenza selezionabile dalla console.</p>
+            <h3 data-i18n="m1.h">Accelerated cracking</h3>
+            <p data-i18n="m1.p">Handshakes and PMKIDs passed directly to hashcat on GPU, with queues and a selectable power peak from the console.</p>
           </div>
           <div class="mod trans reveal">
             <p class="mtag">Transmit</p>
-            <h3>Evil Twin + captive portal</h3>
-            <p>Access point clone con captive portal, KARMA e portale a ESSID dinamico; validazione della PSK contro l'handshake catturato.</p>
+            <h3 data-i18n="m2.h">Evil Twin + captive portal</h3>
+            <p data-i18n="m2.p">Clone access point with captive portal, KARMA and dynamic-ESSID portal; PSK validation against the captured handshake.</p>
           </div>
           <div class="mod trans reveal">
             <p class="mtag">Transmit</p>
-            <h3>WPA3 downgrade · SSID Confusion</h3>
-            <p>Downgrade SAE per catturare un 4-way handshake crackabile offline e SSID Confusion multi-BSS (CVE-2023-52424).</p>
+            <h3 data-i18n="m3.h">WPA3 downgrade · SSID Confusion</h3>
+            <p data-i18n="m3.p">SAE downgrade to capture an offline-crackable 4-way handshake and multi-BSS SSID Confusion (CVE-2023-52424).</p>
           </div>
           <div class="mod trans reveal">
             <p class="mtag">Transmit · EAP</p>
-            <h3>WPA-Enterprise</h3>
-            <p>Rogue AP EAP via eaphammer, GTC downgrade e cattura degli hash MSCHAPv2 delle credenziali aziendali.</p>
+            <h3 data-i18n="m4.h">WPA-Enterprise</h3>
+            <p data-i18n="m4.p">EAP rogue AP via eaphammer, GTC downgrade and capture of MSCHAPv2 hashes from corporate credentials.</p>
           </div>
           <div class="mod post reveal">
             <p class="mtag">Post-exploit · LAN</p>
-            <h3>MITM + Network Discovery</h3>
-            <p>Man-in-the-middle sulla LAN una volta dentro, discovery degli host, RouterSploit, exploit custom e BeEF.</p>
+            <h3 data-i18n="m5.h">MITM + Network Discovery</h3>
+            <p data-i18n="m5.p">Man-in-the-middle on the LAN once inside, host discovery, RouterSploit, custom exploits and BeEF.</p>
           </div>
           <div class="mod dstr reveal">
             <p class="mtag">Destruct</p>
-            <h3>DoS mirato</h3>
-            <p>Deauth e disruption puntati sul singolo bersaglio per forzare la ri-associazione dei client e completare la cattura.</p>
+            <h3 data-i18n="m6.h">Targeted DoS</h3>
+            <p data-i18n="m6.p">Deauth and disruption aimed at a single target to force clients to re-associate and complete the capture.</p>
           </div>
           <div class="mod post reveal">
             <p class="mtag">Report</p>
-            <h3>Report PDF professionali</h3>
-            <p>Executive summary, ambito e autorizzazione, rilievi con severità e remediation, pronti da consegnare al cliente.</p>
+            <h3 data-i18n="m7.h">Professional PDF reports</h3>
+            <p data-i18n="m7.p">Executive summary, scope and authorization, findings with severity and remediation, ready to deliver to the client.</p>
           </div>
           <div class="mod ai reveal">
             <p class="mtag">AI Advisor</p>
-            <h3>Suggerimento del prossimo passo</h3>
-            <p>Consiglio contestuale sul passo d'attacco successivo, un singolo step alla volta: Ollama in locale o cloud BYOK, mai la catena intera in automatico.</p>
+            <h3 data-i18n="m8.h">Next-step suggestion</h3>
+            <p data-i18n="m8.p">Contextual advice on the next attack step, a single step at a time: local Ollama or cloud BYOK, never the whole chain automatically.</p>
           </div>
           <div class="mod cap reveal">
-            <p class="mtag">Automazione</p>
-            <h3>Catene d'attacco</h3>
-            <p>Sequenze automatizzate di scan, deauth, cattura e crack, orchestrate dalla stessa interfaccia con controllo dell'operatore.</p>
+            <p class="mtag" data-i18n="m9.tag">Automation</p>
+            <h3 data-i18n="m9.h">Attack chains</h3>
+            <p data-i18n="m9.p">Automated sequences of scan, deauth, capture and crack, orchestrated from the same interface with operator control.</p>
           </div>
         </div>
       </div>
@@ -314,68 +321,69 @@
     <section id="faq">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker"><span class="sec-no">04</span> Domande frequenti</p>
-          <h2>Licenza, edizioni e uso responsabile.</h2>
+          <p class="kicker"><span class="sec-no">04</span> <span data-i18n="faq.kicker">Frequently asked questions</span></p>
+          <h2 data-i18n="faq.h2">License, editions and responsible use.</h2>
         </div>
 
         <div class="faq">
           <details class="qa" open>
-            <summary>Che differenza c'è tra Free e Pro?</summary>
-            <p>
-              Free è la ricognizione di base gratuita; Pro sblocca i moduli offensivi
-              avanzati (early access). Con la Free scansioni reti e client, fai
-              fingerprint della cifratura, catturi handshake e PMKID e produci report di
-              base. Con la Pro attivi cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS,
-              WPA-Enterprise, catene d'attacco automatizzate, report PDF, BeEF, exploit
-              custom e AI Advisor.
+            <summary data-i18n="faq.q1">What's the difference between Free and Pro?</summary>
+            <p data-i18n="faq.a1">
+              Free is the basic, free reconnaissance; Pro unlocks the advanced offensive
+              modules (early access). With Free you scan networks and clients, fingerprint
+              encryption, capture handshakes and PMKIDs and produce basic reports. With Pro
+              you activate GPU cracking, Evil Twin, MITM, WPA3 downgrade, DoS,
+              WPA-Enterprise, automated attack chains, PDF reports, BeEF, custom exploits
+              and AI Advisor.
             </p>
           </details>
 
           <details class="qa">
-            <summary>Come ottengo la Free?</summary>
-            <p>
-              La scarichi gratis, la installi e la usi senza costi né carta di credito: è pensata per il recon
-              di base. Al primo avvio un gate di consenso legale ti chiede di confermare che
-              userai lo strumento solo su reti autorizzate; gli endpoint offensivi restano
-              bloccati finché non sblocchi la Pro. La Pro è in early access: per ora
-              puoi entrare nella lista d'attesa.
+            <summary data-i18n="faq.q2">How do I get Free?</summary>
+            <p data-i18n="faq.a2">
+              You download it for free, install it and use it with no cost and no credit
+              card: it's meant for basic recon. At first launch a legal consent gate asks
+              you to confirm that you'll use the tool only on authorized networks; the
+              offensive endpoints stay locked until you unlock Pro. Pro is in early access:
+              for now you can join the waitlist.
             </p>
           </details>
 
           <details class="qa">
-            <summary>Quanto costa la Pro? Come la ottengo?</summary>
-            <p>
-              La Pro è un abbonamento a 29 EUR/mese ed è in early access: apre su lista
-              d'attesa. Lascia la mail e ti avvisiamo appena è disponibile; la licenza viene
-              verificata lato server e sblocca i moduli offensivi avanzati.
+            <summary data-i18n="faq.q3">How much is Pro? How do I get it?</summary>
+            <p data-i18n="faq.a3">
+              Pro is a subscription at 29 EUR/month and is in early access: it opens via a
+              waitlist. Leave your email and we'll let you know as soon as it's available;
+              the license is verified server-side and unlocks the advanced offensive
+              modules.
             </p>
           </details>
 
           <details class="qa">
-            <summary>MirageWiFi è un progetto libero?</summary>
-            <p>
-              No. È software proprietario a codice chiuso, licenziato e non venduto, retto da
-              un EULA (vedi il file LICENSE). Le due edizioni Free e Pro condividono lo stesso
-              contratto di licenza; la Pro aggiunge solo lo sblocco dei moduli avanzati.
+            <summary data-i18n="faq.q4">Is MirageWiFi an open source project?</summary>
+            <p data-i18n="faq.a4">
+              No. It's closed-source proprietary software, licensed and not sold, governed
+              by an EULA (see the LICENSE file). The two Free and Pro editions share the
+              same license agreement; Pro only adds the unlocking of the advanced modules.
             </p>
           </details>
 
           <details class="qa">
-            <summary>Posso usarlo su qualsiasi rete?</summary>
-            <p>
-              No. Puoi usarlo soltanto su reti e sistemi di tua proprietà o per i quali hai
-              ottenuto un'autorizzazione esplicita e scritta a effettuare test. È tecnologia
-              di sicurezza a doppio uso: l'uso non autorizzato è illegale e sei tu l'unico
-              responsabile del rispetto delle leggi applicabili.
+            <summary data-i18n="faq.q5">Can I use it on any network?</summary>
+            <p data-i18n="faq.a5">
+              No. You may use it only on networks and systems you own or for which you have
+              obtained explicit, written authorization to test. It is dual-use security
+              technology: unauthorized use is illegal and you are solely responsible for
+              complying with applicable laws.
             </p>
           </details>
 
           <details class="qa">
-            <summary>Su cosa gira?</summary>
-            <p>
-              È pensato per Linux orientato al pentesting, tipicamente Kali, con schede Wi-Fi
-              capaci di monitor mode e injection. Supporta il multi-adattatore, con selezione
-              dell'interfaccia d'attacco per-pannello quando usi più schede.
+            <summary data-i18n="faq.q6">What does it run on?</summary>
+            <p data-i18n="faq.a6">
+              It's designed for pentesting-oriented Linux, typically Kali, with Wi-Fi cards
+              capable of monitor mode and injection. It supports multi-adapter, with
+              per-panel attack interface selection when you use multiple cards.
             </p>
           </details>
         </div>
@@ -386,16 +394,16 @@
     <section>
       <div class="wrap">
         <div class="final reveal">
-          <p class="kicker">Pronto a passare all'offensiva?</p>
-          <h2>La Pro sta arrivando.</h2>
-          <p>
-            Early access a 29 EUR/mese: lascia la mail e sei tra i primi ad avere cracking
-            GPU, Evil Twin, MITM, WPA3 downgrade, Enterprise, catene automatizzate e report
-            PDF, tutto in una console sola.
+          <p class="kicker" data-i18n="final.kicker">Ready to go on the offensive?</p>
+          <h2 data-i18n="final.h2">Pro is coming.</h2>
+          <p data-i18n="final.p">
+            Early access at 29 EUR/month: leave your email and be among the first to get
+            GPU cracking, Evil Twin, MITM, WPA3 downgrade, Enterprise, automated chains and
+            PDF reports, all in a single console.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer">Entra nella lista d'attesa</a>
-            <a class="btn btn-ghost btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer">Scarica gratis</a>
+            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
+            <a class="btn btn-ghost btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
           </div>
         </div>
       </div>
@@ -409,34 +417,80 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <span class="logo">MIRAGE</span>
-          <p>Auditing Wi-Fi offensivo in una console sola. Ricognizione, cattura, cracking e attacchi attivi.</p>
+          <p data-i18n="foot.brand.p">Offensive Wi-Fi auditing in a single console. Reconnaissance, capture, cracking and active attacks.</p>
         </div>
         <div class="foot-links">
           <div class="foot-col">
-            <h4>Prodotto</h4>
-            <a href="#edizioni">Edizioni</a>
-            <a href="#perche">Perché</a>
-            <a href="#moduli">Moduli Pro</a>
-            <a href="#faq">FAQ</a>
+            <h4 data-i18n="foot.col1.h">Product</h4>
+            <a href="#edizioni" data-i18n="nav.editions">Editions</a>
+            <a href="#perche" data-i18n="nav.why">Why</a>
+            <a href="#moduli" data-i18n="nav.modules">Pro modules</a>
+            <a href="#faq" data-i18n="nav.faq">FAQ</a>
           </div>
           <div class="foot-col">
-            <h4>Licenza</h4>
-            <a href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer">Lista d'attesa</a>
-            <a href="#faq">Uso lecito</a>
+            <h4 data-i18n="foot.col2.h">License</h4>
+            <a href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="foot.waitlist">Waitlist</a>
+            <a href="#faq" data-i18n="foot.lawful">Lawful use</a>
           </div>
         </div>
       </div>
 
       <div class="license">
-        <span><span class="lock" aria-hidden="true">🔒</span> Proprietaria · © 2026 Mirage. Uso solo su reti autorizzate.</span>
-        <span>Software licenziato, non venduto · a codice chiuso.</span>
+        <span><span class="lock" aria-hidden="true">🔒</span> <span data-i18n="foot.license1">Proprietary · © 2026 Mirage. Use only on authorized networks.</span></span>
+        <span data-i18n="foot.license2">Licensed software, not sold · closed source.</span>
       </div>
     </div>
   </footer>
 
+  <!-- i18n: translation dictionary + language selector.
+       EN is the inline default and works with no JS. -->
+  <script src="i18n.js"></script>
+  <script>
+    (function () {
+      var I18N = window.I18N || {};
+      var SUPPORTED = ["en", "it", "es", "fr", "de"];
+      var DEFAULT = "en";
+
+      function pickLang(stored) {
+        if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
+        var raw = (navigator.language || navigator.userLanguage || DEFAULT);
+        var code = String(raw).slice(0, 2).toLowerCase();
+        return SUPPORTED.indexOf(code) !== -1 ? code : DEFAULT;
+      }
+
+      function apply(lang) {
+        var dict = I18N[lang] || {};
+        var nodes = document.querySelectorAll("[data-i18n]");
+        for (var i = 0; i < nodes.length; i++) {
+          var key = nodes[i].getAttribute("data-i18n");
+          if (dict[key] != null) nodes[i].textContent = dict[key];
+        }
+        document.documentElement.lang = lang;
+        if (dict["_title"]) document.title = dict["_title"];
+        var desc = document.querySelector('meta[name="description"]');
+        if (desc && dict["_description"]) desc.setAttribute("content", dict["_description"]);
+      }
+
+      var stored = null;
+      try { stored = localStorage.getItem("lang"); } catch (e) {}
+      var lang = pickLang(stored);
+      apply(lang);
+
+      var sel = document.getElementById("lang-select");
+      if (sel) {
+        sel.value = lang;
+        sel.addEventListener("change", function () {
+          var v = sel.value;
+          apply(v);
+          try { localStorage.setItem("lang", v); } catch (e) {}
+        });
+      }
+    })();
+  </script>
+
   <!-- Progressive enhancement: scroll-reveal.
-       Senza JS, senza IntersectionObserver o con reduced-motion tutto resta visibile.
-       Un failsafe garantisce che il contenuto non resti mai nascosto se il JS fallisce. -->
+       Without JS, without IntersectionObserver or with reduced-motion everything stays visible.
+       A failsafe guarantees the content is never left hidden if JS fails. -->
   <script>
     (function () {
       var root = document.documentElement;
@@ -444,7 +498,7 @@
       function revealAll() { for (var i = 0; i < reveals.length; i++) reveals[i].classList.add("in"); }
       if (!("IntersectionObserver" in window) ||
           (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
-        return; // niente .js-reveal: gli elementi restano visibili per default
+        return; // no .js-reveal: elements stay visible by default
       }
       root.classList.add("js-reveal");
       var io = new IntersectionObserver(function (entries) {
@@ -453,7 +507,7 @@
         });
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
       for (var i = 0; i < reveals.length; i++) io.observe(reveals[i]);
-      // Failsafe: se qualcosa non viene osservato in tempo, mostra comunque tutto.
+      // Failsafe: if something is not observed in time, show everything anyway.
       window.setTimeout(revealAll, 2500);
     })();
   </script>
