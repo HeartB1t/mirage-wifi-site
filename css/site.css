@@ -1666,3 +1666,227 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
    scrollare internamente, come nel contesto standalone. */
 .hero-copy,
 .hero-visual-slot { min-width: 0; }
+
+/* ============================================================
+   LAYER WOW - motion + style polish (Fable, fase WOW)
+   Rifinitura sopra la base assemblata: NON ridisegna nulla, eleva
+   la resa. Solo transform/opacity nelle animazioni, vanilla, zero
+   dipendenze. Tutto il motion e' scoperto da .js-reveal (aggiunto
+   solo quando il motion e' permesso e c'e' IntersectionObserver) o
+   neutralizzato dai blocchi prefers-reduced-motion gia' presenti.
+   Nessun em dash / en dash. Solo trattino normale.
+   ============================================================ */
+
+:root {
+  /* slow-release ease-out (decelerazione lunga), per un motion "morbido" */
+  --ease-rv: cubic-bezier(.16, 1, .3, 1);
+  --rv-dur: .85s;
+}
+
+/* ---------- reveal globale: rilascio piu' lento e lift piu' percepibile ----------
+   Riscrive solo timing/offset del reveal base (stesso meccanismo .in). */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--rv-dur) var(--ease-rv), transform var(--rv-dur) var(--ease-rv);
+  will-change: opacity, transform;
+}
+.js-reveal .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+/* una volta a destinazione il will-change non serve piu' */
+.js-reveal .reveal.in { will-change: auto; }
+
+/* ---------- HERO: entrata curata, stagger dall'alto verso il basso ---------- */
+.js-reveal .hero-copy > .reveal:nth-child(1) { transition-delay: 0s; }
+.js-reveal .hero-copy > .reveal:nth-child(2) { transition-delay: .07s; }
+.js-reveal .hero-copy > .reveal:nth-child(3) { transition-delay: .14s; }
+.js-reveal .hero-copy > .reveal:nth-child(4) { transition-delay: .21s; }
+.js-reveal .hero-copy > .reveal:nth-child(5) { transition-delay: .28s; }
+.js-reveal .hero-copy > .reveal:nth-child(6) { transition-delay: .35s; }
+
+/* lo scanner entra per ultimo, da poco piu' lontano, si posa lento */
+.js-reveal .hero-visual-slot.reveal {
+  transform: translateY(28px) scale(.986);
+  transition: opacity 1s var(--ease-rv), transform 1s var(--ease-rv);
+  transition-delay: .2s;
+}
+.js-reveal .hero-visual-slot.reveal.in { transform: none; }
+
+/* le righe della tabella scanner si popolano a cascata quando il pannello
+   e' dentro al viewport: "fai entrare meglio le colonne". Dipende da .in
+   del pannello, che la failsafe garantisce sempre. */
+.js-reveal .hero-visual-slot.reveal .scan-drow {
+  opacity: 0;
+  transform: translateY(9px);
+  transition: opacity .5s var(--ease-rv), transform .5s var(--ease-rv);
+}
+.js-reveal .hero-visual-slot.reveal.in .scan-drow { opacity: 1; transform: none; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(2)  { transition-delay: .32s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(3)  { transition-delay: .36s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(4)  { transition-delay: .40s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(5)  { transition-delay: .44s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(6)  { transition-delay: .48s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(7)  { transition-delay: .52s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(8)  { transition-delay: .56s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(9)  { transition-delay: .60s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(10) { transition-delay: .64s; }
+.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(11) { transition-delay: .68s; }
+
+/* ---------- STAGGER griglie: piu' ampio ed elegante ----------
+   Sostituisce lo stagger base (.05/.10/.15) con una cascata piu' lunga
+   e la estende a tutte le card di modules (fino a 9). */
+.js-reveal .pillars .reveal:nth-child(1),
+.js-reveal .modules .reveal:nth-child(1),
+.js-reveal .editions .reveal:nth-child(1) { transition-delay: 0s; }
+.js-reveal .pillars .reveal:nth-child(2),
+.js-reveal .modules .reveal:nth-child(2),
+.js-reveal .editions .reveal:nth-child(2) { transition-delay: .07s; }
+.js-reveal .pillars .reveal:nth-child(3),
+.js-reveal .modules .reveal:nth-child(3) { transition-delay: .14s; }
+.js-reveal .pillars .reveal:nth-child(4),
+.js-reveal .modules .reveal:nth-child(4) { transition-delay: .21s; }
+.js-reveal .modules .reveal:nth-child(5) { transition-delay: .28s; }
+.js-reveal .modules .reveal:nth-child(6) { transition-delay: .35s; }
+.js-reveal .modules .reveal:nth-child(7) { transition-delay: .42s; }
+.js-reveal .modules .reveal:nth-child(8) { transition-delay: .49s; }
+.js-reveal .modules .reveal:nth-child(9) { transition-delay: .56s; }
+
+/* ---------- Gradiente firma animato sulla parola chiave ----------
+   Spostamento lento e continuo ciano -> viola -> ciano. Loop seamless
+   con un gradiente a 3 stop e background-size 200%. Spento da
+   prefers-reduced-motion (regola globale * animation:none). */
+@keyframes wow-grad-shift {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
+.hero-grad,
+.flow-em,
+.scan-em,
+.grad {
+  background-image: linear-gradient(110deg, var(--accent), var(--purple), var(--accent));
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  animation: wow-grad-shift 9s linear infinite;
+}
+
+/* ---------- SCROLLYTELLING: step + schermi piu' fluidi ---------- */
+.flow-step {
+  transition: opacity .55s var(--ease-rv), transform .55s var(--ease-rv);
+}
+.flow-num { transition: color .55s var(--ease-rv); }
+.flow-screen {
+  transform: translateY(10px) scale(.992);
+  transition: opacity .55s var(--ease-rv), transform .55s var(--ease-rv);
+}
+.flow-screen.is-active { transform: none; }
+
+/* contenuto dello schermo attivo: si posa a cascata quando lo schermo
+   diventa attivo. Scoperto da .js-reveal; la visibilita' dei NON attivi
+   resta gestita dal pannello (opacity:0), quindi niente contenuto bloccato
+   nascosto. Spento da prefers-reduced-motion. */
+@keyframes wow-rise {
+  from { opacity: 0; transform: translateY(9px); }
+  to   { opacity: 1; transform: none; }
+}
+.js-reveal .flow-screen.is-active .flow-screen-cap,
+.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > * {
+  animation: wow-rise .5s var(--ease-rv) both;
+}
+.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(1) { animation-delay: .06s; }
+.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(2) { animation-delay: .12s; }
+.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(3) { animation-delay: .18s; }
+.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(4) { animation-delay: .24s; }
+.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(5) { animation-delay: .30s; }
+
+/* la barra meter del crack cresce quando lo schermo 3 si attiva */
+@keyframes wow-meter { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.js-reveal .flow-screen.is-active .flow-meter-fill {
+  transform-origin: left center;
+  animation: wow-meter .9s var(--ease-rv) .2s both;
+}
+
+/* ---------- PROFONDITA': pannello scanner + console workflow ----------
+   Ombra piu' ricca + filo di luce superiore a gradiente firma, coerente
+   col linguaggio visivo delle altre sezioni. Nessun colore nuovo. */
+.scan-win {
+  box-shadow: var(--shadow), 0 0 40px -22px rgba(92, 220, 255, .55);
+}
+.scan-win::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--grad-accent);
+  opacity: .85;
+  pointer-events: none;
+  z-index: 2;
+}
+.flow-console {
+  box-shadow: var(--shadow), 0 0 34px -24px rgba(182, 155, 255, .5);
+}
+
+/* ---------- Scrollbar interna dello scanner: discreta ---------- */
+.scan-view { scrollbar-color: color-mix(in srgb, var(--accent) 34%, transparent) transparent; }
+.scan-view::-webkit-scrollbar { height: 6px; }
+.scan-view::-webkit-scrollbar-track { background: transparent; }
+.scan-view::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 100px;
+}
+.scan-view::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+/* ---------- MICRO-INTERAZIONI hover ---------- */
+/* primary CTA: lift piu' deciso, glow e leggero slittamento del gradiente */
+.nav-cta {
+  background-size: 160% 100%;
+  background-position: 0% 50%;
+  transition: transform .18s var(--ease-rv), box-shadow .3s var(--ease-rv),
+              filter .3s var(--ease-rv), background-position .6s var(--ease-rv);
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  background-position: 100% 50%;
+  box-shadow: var(--glow-cyan), 0 14px 30px -18px rgba(92, 220, 255, .8);
+  filter: brightness(1.06);
+}
+.nav-cta:active { transform: translateY(0); }
+
+/* solid buttons: transizione piu' morbida e glow coerente */
+.btn { transition: transform .18s var(--ease-rv), border-color .2s var(--ease-rv), box-shadow .3s var(--ease-rv), color .2s, background .2s, filter .3s; }
+.btn-cyan:hover, .btn-pro:hover { filter: brightness(1.04); transform: translateY(-2px); }
+.hero-btn-ghost:hover { box-shadow: var(--glow-cyan); }
+
+/* card: hover un filo piu' morbido, icona della pillar che respira */
+.pill, .mod, .plan { transition: transform .26s var(--ease-rv), border-color .26s var(--ease-rv), box-shadow .26s var(--ease-rv); }
+.pill-ico { transition: transform .26s var(--ease-rv), box-shadow .26s var(--ease-rv); }
+.pill:hover .pill-ico { transform: translateY(-2px) scale(1.06); }
+
+/* link nav: colore del sottolineato gia' a gradiente, curo solo l'easing */
+.nav-links a, .nav-links a::after { transition-timing-function: var(--ease-rv); }
+
+/* bandiere: micro lift all'hover, resta tutto sui token */
+.lang-btn { transition: background .18s var(--ease-rv), color .18s var(--ease-rv), border-color .18s var(--ease-rv), transform .18s var(--ease-rv); }
+.lang-btn:hover { transform: translateY(-1px); }
+
+/* share: easing coerente (stile gia' presente, solo la curva) */
+.share-btn { transition-timing-function: var(--ease-rv); }
+
+/* ---------- RITMO VERTICALE: un filo piu' respiro tra i blocchi hero ---------- */
+.hero-title { margin-bottom: 22px; }
+.hero-value { margin-bottom: 24px; }
+
+/* ---------- REDUCED MOTION: ridondanza esplicita ----------
+   I blocchi globali gia' azzerano animation/transition e rimettono i
+   .reveal visibili. Qui mi assicuro che gli elementi animati SOLO da
+   questo layer (scan-drow, meter, contenuto schermi) restino visibili
+   anche se un domani cambiasse l'ordine delle regole. */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .scan-drow { opacity: 1 !important; transform: none !important; }
+  .flow-screen { transform: none !important; }
+  .flow-meter-fill { transform: none !important; }
+  .hero-grad, .flow-em, .scan-em, .grad { animation: none !important; background-position: 0% 50% !important; }
+}
