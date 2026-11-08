@@ -1145,6 +1145,18 @@ body { font-family: var(--body); }
 .scan-sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
 .scan-sig i { width: 3px; background: var(--border-2); border-radius: 1px; }
 .scan-sig i.on { background: var(--accent); box-shadow: 0 0 6px color-mix(in srgb, var(--accent) 60%, transparent); }
+/* colore per potenza del segnale: forte=verde, buono=ciano, medio=ambra, debole=rosso */
+.scan-sig.s4 i.on { background: var(--ok);     box-shadow: 0 0 7px color-mix(in srgb, var(--ok) 65%, transparent); }
+.scan-sig.s3 i.on { background: var(--accent); box-shadow: 0 0 7px color-mix(in srgb, var(--accent) 65%, transparent); }
+.scan-sig.s2 i.on { background: var(--warn);   box-shadow: 0 0 7px color-mix(in srgb, var(--warn) 60%, transparent); }
+.scan-sig.s1 i.on { background: var(--danger); box-shadow: 0 0 7px color-mix(in srgb, var(--danger) 60%, transparent); }
+/* la barra di punta "respira": segnale vivo */
+.scan-sig.s1 i:nth-child(1).on,
+.scan-sig.s2 i:nth-child(2).on,
+.scan-sig.s3 i:nth-child(3).on,
+.scan-sig.s4 i:nth-child(4).on { animation: sig-breathe 1.8s var(--ease) infinite; }
+@keyframes sig-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+@media (prefers-reduced-motion: reduce) { .scan-sig i { animation: none !important; } }
 .scan-sig i:nth-child(1) { height: 5px; }
 .scan-sig i:nth-child(2) { height: 8px; }
 .scan-sig i:nth-child(3) { height: 11px; }

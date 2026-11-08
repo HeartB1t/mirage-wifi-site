@@ -186,7 +186,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
                   <span class="scan-essid">Residence-Lab6</span>
                   <span class="scan-bssid">CA:4C:75:11:0A:F2</span>
                   <span class="scan-ch">6</span>
@@ -198,7 +198,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <span class="scan-sig s2" data-sig-base="2"><i class="on"></i><i class="on"></i><i></i><i></i></span>
                   <span class="scan-essid">Office-Lab02</span>
                   <span class="scan-bssid">A2:1B:3F:9C:44:8E</span>
                   <span class="scan-ch">11</span>
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <span class="scan-sig s4" data-sig-base="4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
                   <span class="scan-essid">Reteditest</span>
                   <span class="scan-bssid">D6:24:DD:24:1A:63</span>
                   <span class="scan-ch">1</span>
@@ -222,7 +222,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i></i><i></i><i></i></span>
+                  <span class="scan-sig s1" data-sig-base="1"><i class="on"></i><i></i><i></i><i></i></span>
                   <span class="scan-essid">Casa-Demo</span>
                   <span class="scan-bssid">AE:14:BF:77:2E:19</span>
                   <span class="scan-ch">3</span>
@@ -234,7 +234,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
                   <span class="scan-essid">Lab-Guest</span>
                   <span class="scan-bssid">7A:33:9C:02:5B:1D</span>
                   <span class="scan-ch">36</span>
@@ -246,7 +246,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <span class="scan-sig s2" data-sig-base="2"><i class="on"></i><i class="on"></i><i></i><i></i></span>
                   <span class="scan-essid">CoworkingDemo</span>
                   <span class="scan-bssid">6E:0D:4F:88:AC:21</span>
                   <span class="scan-ch">149</span>
@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
                   <span class="scan-essid">&lt;hidden&gt;</span>
                   <span class="scan-bssid">2E:71:A0:4C:33:9B</span>
                   <span class="scan-ch">44</span>
@@ -270,7 +270,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
                   <span class="scan-essid">MeshDemo-6E</span>
                   <span class="scan-bssid">6A:88:1C:0D:5E:42</span>
                   <span class="scan-ch">37</span>
@@ -282,7 +282,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i></i><i></i><i></i></span>
+                  <span class="scan-sig s1" data-sig-base="1"><i class="on"></i><i></i><i></i><i></i></span>
                   <span class="scan-essid">Legacy-AP</span>
                   <span class="scan-bssid">B2:55:7E:19:84:C0</span>
                   <span class="scan-ch">9</span>
@@ -294,7 +294,7 @@
                 </div>
 
                 <div class="scan-drow" role="row">
-                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <span class="scan-sig s4" data-sig-base="4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
                   <span class="scan-essid">Garden-Demo</span>
                   <span class="scan-bssid">AA:9F:60:3D:71:0E</span>
                   <span class="scan-ch">157</span>
@@ -1021,6 +1021,31 @@
                   cell.classList.add("cli-bump");
                   cell.textContent = String(next);
                   window.setTimeout(function () { cell.classList.remove("cli-bump"); }, 260);
+                }
+              }
+            }
+            // Deriva del segnale PWR (rete viva): +/-1 barra attorno al valore base, range 1..4.
+            if (Math.random() < 0.55) {
+              var srow = rows[Math.floor(Math.random() * rows.length)];
+              var sig = srow.querySelector(".scan-sig");
+              if (sig) {
+                var bars = sig.querySelectorAll("i");
+                var lvl = sig.querySelectorAll("i.on").length;
+                var sbase = parseInt(sig.getAttribute("data-sig-base"), 10);
+                if (isNaN(sbase)) sbase = lvl;
+                var nlvl = lvl + (Math.random() < 0.5 ? -1 : 1);
+                var slo = Math.max(1, sbase - 1);
+                var shi = Math.min(4, sbase + 1);
+                if (nlvl < slo) nlvl = lvl + 1;
+                if (nlvl > shi) nlvl = lvl - 1;
+                if (nlvl < 1) nlvl = 1;
+                if (nlvl > 4) nlvl = 4;
+                if (nlvl !== lvl) {
+                  for (var b = 0; b < bars.length; b++) {
+                    if (b < nlvl) bars[b].classList.add("on");
+                    else bars[b].classList.remove("on");
+                  }
+                  sig.className = "scan-sig s" + nlvl;
                 }
               }
             }
