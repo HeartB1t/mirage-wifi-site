@@ -11,5 +11,3 @@ The data shown in the scanner preview is fictional (made-up ESSIDs, locally-admi
 
 - Product and waitlist (early access): https://miragewifi.gumroad.com/l/hbzayw
 - The MirageWiFi source code lives in a separate, private repository.
-
-Published via GitHub Pages.
