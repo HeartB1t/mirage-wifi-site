@@ -595,7 +595,7 @@ footer {
   --body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --head: "Chakra Petch", "JetBrains Mono", ui-monospace, monospace;
   --ok:   var(--accent-2);
-  --scan-cols: 30px 134px 128px 30px 46px 60px 30px 28px 104px;
+  --scan-cols: 28px 116px 108px 28px 42px 56px 28px 24px 92px;
 }
 
 /* ---- Prosa in Manrope (la base usava il mono) ---- */
@@ -832,7 +832,7 @@ body { font-family: var(--body); }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: clamp(28px, 4vw, 56px);
   align-items: center;
 }
@@ -969,8 +969,8 @@ body { font-family: var(--body); }
 /* colonne scanner: FISSE, nessun fr. Allineamento identico a ogni larghezza.
    Un'unica sorgente condivisa da intestazione e righe. */
 :root {
-  --scan-cols: 30px 134px 128px 30px 46px 60px 30px 28px 104px;
-  --scan-gap: .4rem;
+  --scan-cols: 28px 116px 108px 28px 42px 56px 28px 24px 92px;
+  --scan-gap: .34rem;
   /* fallback locali se C non fornisce i token di stato */
   --ok: var(--accent-2, #52f2a8);
   --danger: #ff6b6b;
@@ -1016,10 +1016,13 @@ body { font-family: var(--body); }
   position: relative;
   max-width: 760px;
   margin-inline: auto;
-  border: 1px solid var(--border-2);
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border-2));
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--panel-2), var(--panel));
-  box-shadow: var(--shadow-sm);
+  box-shadow:
+    0 26px 64px -20px rgba(0,0,0,.85),
+    0 0 0 1px color-mix(in srgb, var(--accent) 16%, transparent),
+    0 0 48px -6px color-mix(in srgb, var(--accent) 36%, transparent);
   overflow: hidden; /* clip: la pagina non trabocca mai in orizzontale */
 }
 .scan-topbar {
@@ -1109,11 +1112,12 @@ body { font-family: var(--body); }
   letter-spacing: .04em;
   justify-self: start;
   white-space: nowrap;
+  font-weight: 600;
 }
-.scan-enc.wpa2 { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 35%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
-.scan-enc.wpa3 { color: var(--ok);     border-color: color-mix(in srgb, var(--ok) 35%, transparent);     background: color-mix(in srgb, var(--ok) 9%, transparent); }
-.scan-enc.eap  { color: var(--purple); border-color: color-mix(in srgb, var(--purple) 35%, transparent); background: color-mix(in srgb, var(--purple) 9%, transparent); }
-.scan-enc.wep  { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 35%, transparent); background: color-mix(in srgb, var(--danger) 9%, transparent); }
+.scan-enc.wpa2 { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 62%, transparent); background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.scan-enc.wpa3 { color: var(--ok);     border-color: color-mix(in srgb, var(--ok) 62%, transparent);     background: color-mix(in srgb, var(--ok) 22%, transparent); }
+.scan-enc.eap  { color: var(--purple); border-color: color-mix(in srgb, var(--purple) 62%, transparent); background: color-mix(in srgb, var(--purple) 22%, transparent); }
+.scan-enc.wep  { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 62%, transparent); background: color-mix(in srgb, var(--danger) 22%, transparent); }
 
 /* WPS */
 .scan-wps { display: inline-flex; }
@@ -1133,9 +1137,9 @@ body { font-family: var(--body); }
   color: var(--fg-faint);
   background: transparent;
 }
-.scan-tag.on.hs  { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
-.scan-tag.on.pmk { color: var(--purple); border-color: color-mix(in srgb, var(--purple) 45%, transparent); background: color-mix(in srgb, var(--purple) 12%, transparent); }
-.scan-tag.on.key { color: var(--ok);     border-color: color-mix(in srgb, var(--ok) 45%, transparent);     background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.scan-tag.on.hs  { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 65%, transparent); background: color-mix(in srgb, var(--accent) 24%, transparent); }
+.scan-tag.on.pmk { color: var(--purple); border-color: color-mix(in srgb, var(--purple) 65%, transparent); background: color-mix(in srgb, var(--purple) 24%, transparent); }
+.scan-tag.on.key { color: var(--ok);     border-color: color-mix(in srgb, var(--ok) 65%, transparent);     background: color-mix(in srgb, var(--ok) 24%, transparent); }
 
 /* barrette segnale */
 .scan-sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
