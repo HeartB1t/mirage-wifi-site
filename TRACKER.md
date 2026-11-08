@@ -28,6 +28,20 @@ Tracciamento task del sito. Formato:
   (scroll-padding-top:84px sotto header 69px). Nessuna modifica di codice
   necessaria.
 
+## Sessione 2026-11-08 - perf scroll mobile (branch perf/mobile-rendering)
+
+- [x] FATTO (impl): alleggerire il rendering per scroll fluido su smartphone di
+  fascia bassa (2026-11-08). 3 interventi: (1) niente backdrop-filter su mobile
+  (header/menu, sfondo opaco 97%, desktop conserva il blur); (2)
+  content-visibility:auto su sezioni below-fold (#edizioni/#perche/#faq/.final
+  universale; #moduli SOLO mobile perche' su desktop e' scrollytelling pinnato
+  500vh); (3) pausa animazioni scanner eroe offscreen (IntersectionObserver).
+  VERIFICATO_EMPIRICO desktop: blur header conservato, #moduli intatto
+  (content-visibility assente), ancora #edizioni a y=84 e sezione renderizzata,
+  scroll-reveal opacity ~1. Mobile VERIFICATO_MOCK (media query + IO corretti;
+  Chromium headless locale troppo instabile per riscreenshottare). FLUIDITA'
+  reale DA_COLLAUDARE_LIVE sul telefono dell'operatore. Impl Fable.
+
 ## Note
-- Push/merge su main restano gated all'operatore (branch di lavoro: feat/mobile-install).
+- Push/merge su main restano gated all'operatore. Branch attuale: perf/mobile-rendering.
 - Download Free reale: https://miragewifi.gumroad.com/l/wzquev (cta.free nel sito).

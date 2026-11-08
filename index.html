@@ -1036,6 +1036,24 @@
     })();
   </script>
 
+  <!-- Perf: pause the hero scanner animations while the hero panel is out of
+       view, so the GPU is not driving offscreen loops during scroll. Pure
+       progressive enhancement: without IntersectionObserver nothing changes
+       and the animations simply keep running (as before). Under
+       reduced-motion the animations are already off, so this is a no-op. -->
+  <script>
+    (function () {
+      var slot = document.querySelector(".hero-visual-slot");
+      if (!slot || !("IntersectionObserver" in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          slot.classList.toggle("anim-paused", !entries[i].isIntersecting);
+        }
+      }, { threshold: 0 });
+      io.observe(slot);
+    })();
+  </script>
+
   <!-- Progressive enhancement: scroll-reveal.
        Without JS, without IntersectionObserver or with reduced-motion everything stays visible.
        A failsafe guarantees the content is never left hidden if JS fails. -->

@@ -1010,6 +1010,28 @@ body { font-family: var(--body); }
 /* visual slot filled by Fable B's scanner on assembly */
 .hero-visual-slot { min-height: 0; }
 
+/* perf: below-the-fold sections skip rendering (and their offscreen animation
+   work) until scrolled near. content-visibility:auto is visually inert: the
+   `auto` keyword in contain-intrinsic-size keeps the real size after the first
+   render, so the box stops being an estimate; the px value is only the
+   pre-render height guess so the scrollbar does not jump. The hero is NOT
+   listed (above the fold, must paint immediately). #moduli is handled in the
+   mobile media query only: on desktop it is a pinned 500vh scrollytelling
+   section, where a small size estimate would fight the scroll math, so it
+   stays untouched there. */
+#edizioni { content-visibility: auto; contain-intrinsic-size: auto 1850px; }
+#perche   { content-visibility: auto; contain-intrinsic-size: auto 1300px; }
+#faq      { content-visibility: auto; contain-intrinsic-size: auto 950px; }
+.final    { content-visibility: auto; contain-intrinsic-size: auto 520px; }
+
+/* perf: pause the hero scanner animations while the hero is scrolled out of
+   view. The hero is excluded from content-visibility (above the fold), so
+   without this its infinite animations (sweep, live pulse, signal breathe)
+   keep running offscreen. A small script toggles .anim-paused on the slot. */
+.hero-visual-slot.anim-paused .scan-sweep,
+.hero-visual-slot.anim-paused .scan-live::before,
+.hero-visual-slot.anim-paused .scan-sig i { animation-play-state: paused; }
+
 /* ============ RESPONSIVE ============ */
 
 /* tablet: drop section links into a lighter row, keep selector + CTA */
@@ -1021,6 +1043,20 @@ body { font-family: var(--body); }
 }
 
 @media (max-width: 760px) {
+  /* perf: drop the sticky-header backdrop blur on mobile (re-blurred every
+     scroll frame is the biggest scroll cost on low-end devices). Opaque 97%
+     background keeps readability; the look is all but identical. Desktop
+     keeps the blur (base .nav-bar rule, outside this media query). */
+  .nav-bar {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: color-mix(in srgb, var(--bg) 97%, transparent);
+  }
+
+  /* perf: the heavy animated arsenal section is auto-height (not pinned) on
+     mobile, so content-visibility is safe here and saves the most paint. */
+  #moduli { content-visibility: auto; contain-intrinsic-size: auto 2850px; }
+
   /* --- no-JS fallback: ordered stack, everything stays visible --- */
   .nav-inner { flex-wrap: wrap; row-gap: 10px; }
   .nav-links {
@@ -1048,8 +1084,6 @@ body { font-family: var(--body); }
     padding: 16px;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
