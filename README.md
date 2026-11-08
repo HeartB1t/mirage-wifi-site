@@ -1,4 +1,4 @@
-# MirageWiFi website
+# MirageWiFi
 
 **Live site: https://heartb1t.github.io/mirage-wifi-site/**
 
