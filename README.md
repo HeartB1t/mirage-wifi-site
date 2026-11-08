@@ -1,14 +1,14 @@
-# MirageWiFi - sito
+# MirageWiFi website
 
-Landing page pubblica di MirageWiFi, piattaforma di penetration testing Wi-Fi (edizioni Free e Pro).
+Public landing page for MirageWiFi, a Wi-Fi penetration testing platform (Free and Pro editions).
 
-Sito statico (HTML e CSS, un piccolo script vanilla solo per lo scroll-reveal, con fallback: senza JS tutto resta visibile). Nessun framework, nessuna dipendenza CDN: font self-hosted (Chakra Petch e JetBrains Mono, licenza OFL in `fonts/OFL.txt`). Funziona aperto da `file://` e su GitHub Pages.
+Static site (HTML and CSS, with a small vanilla script only for the scroll-reveal, with a fallback: without JS everything stays visible). No framework, no CDN dependency: self-hosted fonts (Chakra Petch and JetBrains Mono, OFL license in `fonts/OFL.txt`). Works both opened from `file://` and on GitHub Pages.
 
-Edizioni: Free a costo zero, Pro in abbonamento a 29 EUR/mese (early access, lista d'attesa).
+Editions: Free at zero cost, Pro on subscription at 29 EUR/month (early access, waitlist).
 
-I dati mostrati nell'anteprima dello scanner sono di fantasia (ESSID inventati, MAC locally-administered): nessun dato reale.
+The data shown in the scanner preview is fictional (made-up ESSIDs, locally-administered MACs): no real data.
 
-- Prodotto e lista d'attesa (early access): https://miragewifi.gumroad.com/l/hbzayw
-- Il codice sorgente di MirageWiFi risiede in un repository privato separato.
+- Product and waitlist (early access): https://miragewifi.gumroad.com/l/hbzayw
+- The MirageWiFi source code lives in a separate, private repository.
 
-Pubblicato tramite GitHub Pages.
+Published via GitHub Pages.
