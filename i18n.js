@@ -139,15 +139,15 @@ window.I18N = {
   },
 
   it: {
-    "_title": "MirageWiFi - auditing Wi-Fi offensivo, Free e Pro in early access",
-    "_description": "MirageWiFi: piattaforma proprietaria di penetration testing Wi-Fi. Free per la ricognizione di base, Pro (29 EUR/mese, early access) per cracking GPU, Evil Twin, MITM, WPA3 downgrade e catene d'attacco, in una console sola.",
+    "_title": "MirageWiFi - auditing Wi-Fi offensivo, Free e Pro in accesso anticipato",
+    "_description": "MirageWiFi: piattaforma proprietaria di penetration testing Wi-Fi. Free per la ricognizione di base, Pro (29 EUR/mese, accesso anticipato) per cracking GPU, Evil Twin, MITM, WPA3 downgrade e catene d'attacco, in una console sola.",
 
     "nav.skip": "Salta al contenuto",
     "nav.editions": "Edizioni",
     "nav.why": "Perché",
     "nav.modules": "Moduli Pro",
     "nav.faq": "FAQ",
-    "nav.cta": "Early access",
+    "nav.cta": "Accesso anticipato",
     "nav.langlabel": "Lingua",
 
     "cta.free": "Scarica gratis",
@@ -159,9 +159,9 @@ window.I18N = {
     "hero.h1c": "non lo sa.",
     "hero.sub": "MirageWiFi è una piattaforma di penetration testing Wi-Fi con interfaccia operativa in tempo reale: ricognizione, cattura handshake e PMKID, cracking e attacchi attivi in un'unica console. Software proprietario, due edizioni.",
     "hero.trust1": "a costo zero",
-    "hero.trust2": "29 EUR/mese, early access",
+    "hero.trust2": "29 EUR/mese, accesso anticipato",
     "hero.trust3": "Una console, tutto il flusso",
-    "hero.note.b": "Early access.",
+    "hero.note.b": "Accesso anticipato.",
     "hero.note.t": "La Pro apre su lista d'attesa: lascia la mail e ti avvisiamo appena è disponibile.",
 
     "ethics.title": "Uso lecito soltanto",
@@ -171,7 +171,7 @@ window.I18N = {
 
     "ed.kicker": "Due edizioni · una sola licenza",
     "ed.h2": "Parti dalla ricognizione. Sblocca l'offensiva quando ti serve.",
-    "ed.p": "Software proprietario: licenziato, non venduto, e a codice chiuso. La Free copre il recon di base a costo zero; la Pro attiva i moduli offensivi avanzati, a 29 EUR/mese, ed è in early access.",
+    "ed.p": "Software proprietario: licenziato, non venduto, e a codice chiuso. La Free copre il recon di base a costo zero; la Pro attiva i moduli offensivi avanzati, a 29 EUR/mese, ed è in accesso anticipato.",
 
     "free.tag": "Edizione Free",
     "free.unit": "EUR · nessuna carta",
@@ -188,7 +188,7 @@ window.I18N = {
     "free.f6s": "export con dati sensibili oscurati",
     "free.foot": "Nessuna carta richiesta · gate di consenso legale al primo avvio",
 
-    "pro.badge": "Early access",
+    "pro.badge": "Accesso anticipato",
     "pro.tag": "Edizione Pro",
     "pro.unit": "EUR / mese",
     "pro.pricenote.b": "Lista d'attesa aperta",
@@ -247,11 +247,11 @@ window.I18N = {
     "faq.kicker": "Domande frequenti",
     "faq.h2": "Licenza, edizioni e uso responsabile.",
     "faq.q1": "Che differenza c'è tra Free e Pro?",
-    "faq.a1": "Free è la ricognizione di base gratuita; Pro sblocca i moduli offensivi avanzati (early access). Con la Free scansioni reti e client, fai fingerprint della cifratura, catturi handshake e PMKID e produci report di base. Con la Pro attivi cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS, WPA-Enterprise, catene d'attacco automatizzate, report PDF, BeEF, exploit custom e AI Advisor.",
+    "faq.a1": "Free è la ricognizione di base gratuita; Pro sblocca i moduli offensivi avanzati (accesso anticipato). Con la Free scansioni reti e client, fai fingerprint della cifratura, catturi handshake e PMKID e produci report di base. Con la Pro attivi cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS, WPA-Enterprise, catene d'attacco automatizzate, report PDF, BeEF, exploit custom e AI Advisor.",
     "faq.q2": "Come ottengo la Free?",
-    "faq.a2": "La scarichi gratis, la installi e la usi senza costi né carta di credito: è pensata per il recon di base. Al primo avvio un gate di consenso legale ti chiede di confermare che userai lo strumento solo su reti autorizzate; gli endpoint offensivi restano bloccati finché non sblocchi la Pro. La Pro è in early access: per ora puoi entrare nella lista d'attesa.",
+    "faq.a2": "La scarichi gratis, la installi e la usi senza costi né carta di credito: è pensata per il recon di base. Al primo avvio un gate di consenso legale ti chiede di confermare che userai lo strumento solo su reti autorizzate; gli endpoint offensivi restano bloccati finché non sblocchi la Pro. La Pro è in accesso anticipato: per ora puoi entrare nella lista d'attesa.",
     "faq.q3": "Quanto costa la Pro? Come la ottengo?",
-    "faq.a3": "La Pro è un abbonamento a 29 EUR/mese ed è in early access: apre su lista d'attesa. Lascia la mail e ti avvisiamo appena è disponibile; la licenza viene verificata lato server e sblocca i moduli offensivi avanzati.",
+    "faq.a3": "La Pro è un abbonamento a 29 EUR/mese ed è in accesso anticipato: apre su lista d'attesa. Lascia la mail e ti avvisiamo appena è disponibile; la licenza viene verificata lato server e sblocca i moduli offensivi avanzati.",
     "faq.q4": "MirageWiFi è un progetto libero?",
     "faq.a4": "No. È software proprietario a codice chiuso, licenziato e non venduto, retto da un EULA (vedi il file LICENSE). Le due edizioni Free e Pro condividono lo stesso contratto di licenza; la Pro aggiunge solo lo sblocco dei moduli avanzati.",
     "faq.q5": "Posso usarlo su qualsiasi rete?",
@@ -261,7 +261,7 @@ window.I18N = {
 
     "final.kicker": "Pronto a passare all'offensiva?",
     "final.h2": "La Pro sta arrivando.",
-    "final.p": "Early access a 29 EUR/mese: lascia la mail e sei tra i primi ad avere cracking GPU, Evil Twin, MITM, WPA3 downgrade, Enterprise, catene automatizzate e report PDF, tutto in una console sola.",
+    "final.p": "Accesso anticipato a 29 EUR/mese: lascia la mail e sei tra i primi ad avere cracking GPU, Evil Twin, MITM, WPA3 downgrade, Enterprise, catene automatizzate e report PDF, tutto in una console sola.",
 
     "foot.brand.p": "Auditing Wi-Fi offensivo in una console sola. Ricognizione, cattura, cracking e attacchi attivi.",
     "foot.col1.h": "Prodotto",
@@ -273,15 +273,15 @@ window.I18N = {
   },
 
   es: {
-    "_title": "MirageWiFi - auditoría Wi-Fi ofensiva, Free y Pro en early access",
-    "_description": "MirageWiFi: plataforma propietaria de pentesting Wi-Fi. Free para el reconocimiento básico, Pro (29 EUR/mes, early access) para cracking por GPU, Evil Twin, MITM, downgrade WPA3 y cadenas de ataque, en una sola consola.",
+    "_title": "MirageWiFi - auditoría Wi-Fi ofensiva, Free y Pro en acceso anticipado",
+    "_description": "MirageWiFi: plataforma propietaria de pentesting Wi-Fi. Free para el reconocimiento básico, Pro (29 EUR/mes, acceso anticipado) para cracking por GPU, Evil Twin, MITM, downgrade WPA3 y cadenas de ataque, en una sola consola.",
 
     "nav.skip": "Saltar al contenido",
     "nav.editions": "Ediciones",
     "nav.why": "Por qué",
     "nav.modules": "Módulos Pro",
     "nav.faq": "FAQ",
-    "nav.cta": "Early access",
+    "nav.cta": "Acceso anticipado",
     "nav.langlabel": "Idioma",
 
     "cta.free": "Descargar gratis",
@@ -293,9 +293,9 @@ window.I18N = {
     "hero.h1c": "no lo sabe.",
     "hero.sub": "MirageWiFi es una plataforma de pentesting Wi-Fi con interfaz operativa en tiempo real: reconocimiento, captura de handshake y PMKID, cracking y ataques activos en una sola consola. Software propietario, dos ediciones.",
     "hero.trust1": "a coste cero",
-    "hero.trust2": "29 EUR/mes, early access",
+    "hero.trust2": "29 EUR/mes, acceso anticipado",
     "hero.trust3": "Una consola, todo el flujo",
-    "hero.note.b": "Early access.",
+    "hero.note.b": "Acceso anticipado.",
     "hero.note.t": "La Pro abre por lista de espera: deja tu correo y te avisamos en cuanto esté disponible.",
 
     "ethics.title": "Solo uso lícito",
@@ -305,7 +305,7 @@ window.I18N = {
 
     "ed.kicker": "Dos ediciones · una sola licencia",
     "ed.h2": "Empieza por el reconocimiento. Desbloquea la ofensiva cuando la necesites.",
-    "ed.p": "Software propietario: licenciado, no vendido, y de código cerrado. La Free cubre el recon básico a coste cero; la Pro activa los módulos ofensivos avanzados, a 29 EUR/mes, y está en early access.",
+    "ed.p": "Software propietario: licenciado, no vendido, y de código cerrado. La Free cubre el recon básico a coste cero; la Pro activa los módulos ofensivos avanzados, a 29 EUR/mes, y está en acceso anticipado.",
 
     "free.tag": "Edición Free",
     "free.unit": "EUR · sin tarjeta",
@@ -322,7 +322,7 @@ window.I18N = {
     "free.f6s": "exportación con datos sensibles ocultados",
     "free.foot": "Sin tarjeta · gate de consentimiento legal al primer inicio",
 
-    "pro.badge": "Early access",
+    "pro.badge": "Acceso anticipado",
     "pro.tag": "Edición Pro",
     "pro.unit": "EUR / mes",
     "pro.pricenote.b": "Lista de espera abierta",
@@ -381,11 +381,11 @@ window.I18N = {
     "faq.kicker": "Preguntas frecuentes",
     "faq.h2": "Licencia, ediciones y uso responsable.",
     "faq.q1": "¿Qué diferencia hay entre Free y Pro?",
-    "faq.a1": "Free es el reconocimiento básico gratuito; Pro desbloquea los módulos ofensivos avanzados (early access). Con la Free escaneas redes y clientes, haces fingerprint del cifrado, capturas handshakes y PMKIDs y produces informes básicos. Con la Pro activas cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS, WPA-Enterprise, cadenas de ataque automatizadas, informes PDF, BeEF, exploits personalizados y AI Advisor.",
+    "faq.a1": "Free es el reconocimiento básico gratuito; Pro desbloquea los módulos ofensivos avanzados (acceso anticipado). Con la Free escaneas redes y clientes, haces fingerprint del cifrado, capturas handshakes y PMKIDs y produces informes básicos. Con la Pro activas cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS, WPA-Enterprise, cadenas de ataque automatizadas, informes PDF, BeEF, exploits personalizados y AI Advisor.",
     "faq.q2": "¿Cómo obtengo la Free?",
-    "faq.a2": "La descargas gratis, la instalas y la usas sin coste ni tarjeta de crédito: está pensada para el recon básico. Al primer inicio un gate de consentimiento legal te pide confirmar que usarás la herramienta solo en redes autorizadas; los endpoints ofensivos permanecen bloqueados hasta que desbloquees la Pro. La Pro está en early access: por ahora puedes unirte a la lista de espera.",
+    "faq.a2": "La descargas gratis, la instalas y la usas sin coste ni tarjeta de crédito: está pensada para el recon básico. Al primer inicio un gate de consentimiento legal te pide confirmar que usarás la herramienta solo en redes autorizadas; los endpoints ofensivos permanecen bloqueados hasta que desbloquees la Pro. La Pro está en acceso anticipado: por ahora puedes unirte a la lista de espera.",
     "faq.q3": "¿Cuánto cuesta la Pro? ¿Cómo la obtengo?",
-    "faq.a3": "La Pro es una suscripción de 29 EUR/mes y está en early access: abre por lista de espera. Deja tu correo y te avisamos en cuanto esté disponible; la licencia se verifica en el servidor y desbloquea los módulos ofensivos avanzados.",
+    "faq.a3": "La Pro es una suscripción de 29 EUR/mes y está en acceso anticipado: abre por lista de espera. Deja tu correo y te avisamos en cuanto esté disponible; la licencia se verifica en el servidor y desbloquea los módulos ofensivos avanzados.",
     "faq.q4": "¿MirageWiFi es un proyecto libre?",
     "faq.a4": "No. Es software propietario de código cerrado, licenciado y no vendido, regido por un EULA (ver el archivo LICENSE). Las dos ediciones Free y Pro comparten el mismo contrato de licencia; la Pro solo añade el desbloqueo de los módulos avanzados.",
     "faq.q5": "¿Puedo usarlo en cualquier red?",
@@ -395,7 +395,7 @@ window.I18N = {
 
     "final.kicker": "¿Listo para pasar a la ofensiva?",
     "final.h2": "La Pro está llegando.",
-    "final.p": "Early access a 29 EUR/mes: deja tu correo y sé de los primeros en tener cracking GPU, Evil Twin, MITM, downgrade WPA3, Enterprise, cadenas automatizadas e informes PDF, todo en una sola consola.",
+    "final.p": "Acceso anticipado a 29 EUR/mes: deja tu correo y sé de los primeros en tener cracking GPU, Evil Twin, MITM, downgrade WPA3, Enterprise, cadenas automatizadas e informes PDF, todo en una sola consola.",
 
     "foot.brand.p": "Auditoría Wi-Fi ofensiva en una sola consola. Reconocimiento, captura, cracking y ataques activos.",
     "foot.col1.h": "Producto",
@@ -407,15 +407,15 @@ window.I18N = {
   },
 
   fr: {
-    "_title": "MirageWiFi - audit Wi-Fi offensif, Free et Pro en early access",
-    "_description": "MirageWiFi : plateforme propriétaire de test d'intrusion Wi-Fi. Free pour la reconnaissance de base, Pro (29 EUR/mois, early access) pour le cracking GPU, Evil Twin, MITM, downgrade WPA3 et chaînes d'attaque, dans une seule console.",
+    "_title": "MirageWiFi - audit Wi-Fi offensif, Free et Pro en accès anticipé",
+    "_description": "MirageWiFi : plateforme propriétaire de test d'intrusion Wi-Fi. Free pour la reconnaissance de base, Pro (29 EUR/mois, accès anticipé) pour le cracking GPU, Evil Twin, MITM, downgrade WPA3 et chaînes d'attaque, dans une seule console.",
 
     "nav.skip": "Aller au contenu",
     "nav.editions": "Éditions",
     "nav.why": "Pourquoi",
     "nav.modules": "Modules Pro",
     "nav.faq": "FAQ",
-    "nav.cta": "Early access",
+    "nav.cta": "Accès anticipé",
     "nav.langlabel": "Langue",
 
     "cta.free": "Télécharger gratuitement",
@@ -427,9 +427,9 @@ window.I18N = {
     "hero.h1c": "ne le sait pas.",
     "hero.sub": "MirageWiFi est une plateforme de test d'intrusion Wi-Fi avec une interface opérationnelle en temps réel : reconnaissance, capture de handshake et PMKID, cracking et attaques actives dans une seule console. Logiciel propriétaire, deux éditions.",
     "hero.trust1": "à coût zéro",
-    "hero.trust2": "29 EUR/mois, early access",
+    "hero.trust2": "29 EUR/mois, accès anticipé",
     "hero.trust3": "Une seule console, tout le flux",
-    "hero.note.b": "Early access.",
+    "hero.note.b": "Accès anticipé.",
     "hero.note.t": "La Pro ouvre sur liste d'attente : laissez votre e-mail et nous vous préviendrons dès qu'elle sera disponible.",
 
     "ethics.title": "Usage licite uniquement",
@@ -439,7 +439,7 @@ window.I18N = {
 
     "ed.kicker": "Deux éditions · une seule licence",
     "ed.h2": "Commencez par la reconnaissance. Débloquez l'offensive quand vous en avez besoin.",
-    "ed.p": "Logiciel propriétaire : sous licence, non vendu, et à code source fermé. La Free couvre le recon de base à coût zéro ; la Pro active les modules offensifs avancés, à 29 EUR/mois, et est en early access.",
+    "ed.p": "Logiciel propriétaire : sous licence, non vendu, et à code source fermé. La Free couvre le recon de base à coût zéro ; la Pro active les modules offensifs avancés, à 29 EUR/mois, et est en accès anticipé.",
 
     "free.tag": "Édition Free",
     "free.unit": "EUR · sans carte",
@@ -456,7 +456,7 @@ window.I18N = {
     "free.f6s": "export avec données sensibles masquées",
     "free.foot": "Aucune carte requise · gate de consentement légal au premier lancement",
 
-    "pro.badge": "Early access",
+    "pro.badge": "Accès anticipé",
     "pro.tag": "Édition Pro",
     "pro.unit": "EUR / mois",
     "pro.pricenote.b": "Liste d'attente ouverte",
@@ -515,11 +515,11 @@ window.I18N = {
     "faq.kicker": "Questions fréquentes",
     "faq.h2": "Licence, éditions et usage responsable.",
     "faq.q1": "Quelle est la différence entre Free et Pro ?",
-    "faq.a1": "Free est la reconnaissance de base gratuite ; Pro débloque les modules offensifs avancés (early access). Avec Free vous scannez réseaux et clients, faites l'empreinte du chiffrement, capturez handshakes et PMKID et produisez des rapports de base. Avec Pro vous activez le cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS, WPA-Enterprise, chaînes d'attaque automatisées, rapports PDF, BeEF, exploits personnalisés et AI Advisor.",
+    "faq.a1": "Free est la reconnaissance de base gratuite ; Pro débloque les modules offensifs avancés (accès anticipé). Avec Free vous scannez réseaux et clients, faites l'empreinte du chiffrement, capturez handshakes et PMKID et produisez des rapports de base. Avec Pro vous activez le cracking GPU, Evil Twin, MITM, downgrade WPA3, DoS, WPA-Enterprise, chaînes d'attaque automatisées, rapports PDF, BeEF, exploits personnalisés et AI Advisor.",
     "faq.q2": "Comment obtenir la Free ?",
-    "faq.a2": "Vous la téléchargez gratuitement, l'installez et l'utilisez sans frais ni carte de crédit : elle est pensée pour le recon de base. Au premier lancement, un gate de consentement légal vous demande de confirmer que vous utiliserez l'outil uniquement sur des réseaux autorisés ; les endpoints offensifs restent verrouillés jusqu'à ce que vous débloquiez la Pro. La Pro est en early access : pour l'instant vous pouvez rejoindre la liste d'attente.",
+    "faq.a2": "Vous la téléchargez gratuitement, l'installez et l'utilisez sans frais ni carte de crédit : elle est pensée pour le recon de base. Au premier lancement, un gate de consentement légal vous demande de confirmer que vous utiliserez l'outil uniquement sur des réseaux autorisés ; les endpoints offensifs restent verrouillés jusqu'à ce que vous débloquiez la Pro. La Pro est en accès anticipé : pour l'instant vous pouvez rejoindre la liste d'attente.",
     "faq.q3": "Combien coûte la Pro ? Comment l'obtenir ?",
-    "faq.a3": "La Pro est un abonnement à 29 EUR/mois et est en early access : elle ouvre sur liste d'attente. Laissez votre e-mail et nous vous préviendrons dès qu'elle sera disponible ; la licence est vérifiée côté serveur et débloque les modules offensifs avancés.",
+    "faq.a3": "La Pro est un abonnement à 29 EUR/mois et est en accès anticipé : elle ouvre sur liste d'attente. Laissez votre e-mail et nous vous préviendrons dès qu'elle sera disponible ; la licence est vérifiée côté serveur et débloque les modules offensifs avancés.",
     "faq.q4": "MirageWiFi est-il un projet libre ?",
     "faq.a4": "Non. C'est un logiciel propriétaire à code source fermé, sous licence et non vendu, régi par un EULA (voir le fichier LICENSE). Les deux éditions Free et Pro partagent le même contrat de licence ; la Pro ajoute seulement le déblocage des modules avancés.",
     "faq.q5": "Puis-je l'utiliser sur n'importe quel réseau ?",
@@ -529,7 +529,7 @@ window.I18N = {
 
     "final.kicker": "Prêt à passer à l'offensive ?",
     "final.h2": "La Pro arrive.",
-    "final.p": "Early access à 29 EUR/mois : laissez votre e-mail et soyez parmi les premiers à avoir le cracking GPU, Evil Twin, MITM, downgrade WPA3, Enterprise, chaînes automatisées et rapports PDF, le tout dans une seule console.",
+    "final.p": "Accès anticipé à 29 EUR/mois : laissez votre e-mail et soyez parmi les premiers à avoir le cracking GPU, Evil Twin, MITM, downgrade WPA3, Enterprise, chaînes automatisées et rapports PDF, le tout dans une seule console.",
 
     "foot.brand.p": "Audit Wi-Fi offensif dans une seule console. Reconnaissance, capture, cracking et attaques actives.",
     "foot.col1.h": "Produit",
