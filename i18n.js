@@ -15,6 +15,7 @@ window.I18N = {
     "nav.faq": "FAQ",
     "nav.cta": "Early access",
     "nav.langlabel": "Language",
+    "nav.menu": "Menu",
 
     "cta.free": "Download free",
     "cta.pro": "Join the Pro waitlist",
@@ -191,6 +192,7 @@ window.I18N = {
     "nav.faq": "FAQ",
     "nav.cta": "Accesso anticipato",
     "nav.langlabel": "Lingua",
+    "nav.menu": "Menu",
 
     "cta.free": "Scarica gratis",
     "cta.pro": "Entra nella lista d'attesa",
@@ -368,6 +370,7 @@ window.I18N = {
     "nav.faq": "FAQ",
     "nav.cta": "Acceso anticipado",
     "nav.langlabel": "Idioma",
+    "nav.menu": "Menú",
 
     "cta.free": "Descargar gratis",
     "cta.pro": "Únete a la lista de espera Pro",
@@ -545,6 +548,7 @@ window.I18N = {
     "nav.faq": "FAQ",
     "nav.cta": "Accès anticipé",
     "nav.langlabel": "Langue",
+    "nav.menu": "Menu",
 
     "cta.free": "Télécharger gratuitement",
     "cta.pro": "Rejoindre la liste d'attente Pro",
@@ -722,6 +726,7 @@ window.I18N = {
     "nav.faq": "FAQ",
     "nav.cta": "Early Access",
     "nav.langlabel": "Sprache",
+    "nav.menu": "Menü",
 
     "cta.free": "Kostenlos herunterladen",
     "cta.pro": "Der Pro-Warteliste beitreten",

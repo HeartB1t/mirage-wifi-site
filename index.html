@@ -28,6 +28,8 @@
 </head>
 <body>
 
+  <script>document.documentElement.classList.add('js');</script>
+
   <a class="nav-skip" href="#top" data-i18n="nav.skip">Skip to content</a>
 
   <!-- ============ NAV ============ -->
@@ -47,6 +49,14 @@
           <span class="nav-ghost" data-i18n="nav.tagline">what you see isn't there.</span>
         </span>
       </a>
+
+      <button type="button" class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" data-i18n-aria="nav.menu" aria-label="Menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
 
       <nav class="nav-links" data-i18n-aria="nav.seclabel" aria-label="Sections">
         <a href="#edizioni" data-i18n="nav.editions">Editions</a>
@@ -114,6 +124,8 @@
       </div>
 
       <a class="nav-cta" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
+
+      </div>
     </div>
   </header>
 
@@ -911,6 +923,44 @@
           syncLangButtons(v);
         });
       }
+    })();
+  </script>
+
+  <!-- Mobile nav: hamburger toggle. Progressive enhancement: the .js gate
+       keeps the no-JS fallback (everything visible). Closes on link click,
+       Escape and outside click. Keyboard reachable, aria-expanded synced. -->
+  <script>
+    (function () {
+      var toggle = document.querySelector(".nav-toggle");
+      var menu = document.getElementById("nav-menu");
+      if (!toggle || !menu) return;
+
+      function setOpen(open) {
+        menu.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      toggle.addEventListener("click", function () {
+        setOpen(!menu.classList.contains("open"));
+      });
+
+      var links = menu.querySelectorAll(".nav-links a");
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () { setOpen(false); });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.classList.contains("open")) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!menu.classList.contains("open")) return;
+        if (menu.contains(e.target) || toggle.contains(e.target)) return;
+        setOpen(false);
+      });
     })();
   </script>
 

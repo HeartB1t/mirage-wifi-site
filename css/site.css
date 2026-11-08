@@ -672,7 +672,37 @@ body { font-family: var(--body); }
   min-height: 68px;
   padding-top: 10px;
   padding-bottom: 10px;
+  position: relative;
 }
+
+/* mobile menu wrapper: display:contents on desktop so its children stay
+   direct flex-items of .nav-inner (desktop layout unchanged) */
+.nav-menu { display: contents; }
+
+/* hamburger toggle: hidden on desktop, shown on mobile only with JS */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  padding: 11px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--fg-dim);
+  transition: background .15s var(--ease);
+}
+.nav-toggle:hover .nav-toggle-bar { background: var(--fg); }
 
 /* brand */
 .nav-brand {
@@ -934,6 +964,7 @@ body { font-family: var(--body); }
 }
 
 @media (max-width: 760px) {
+  /* --- no-JS fallback: ordered stack, everything stays visible --- */
   .nav-inner { flex-wrap: wrap; row-gap: 10px; }
   .nav-links {
     order: 3;
@@ -944,6 +975,54 @@ body { font-family: var(--body); }
     -webkit-overflow-scrolling: touch;
   }
   .lang-switch { margin-left: auto; }
+
+  /* --- JS enhanced: collapse nav/lang/CTA behind a hamburger --- */
+  .js .nav-toggle { display: inline-flex; }
+  .js .nav-inner { flex-wrap: nowrap; row-gap: 0; }
+  .js .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height .28s var(--ease), opacity .2s var(--ease), visibility .2s;
+  }
+  .js .nav-menu.open {
+    max-height: 80vh;
+    overflow: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  .js .nav-menu .nav-links {
+    order: 0;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+    gap: 4px;
+    overflow: visible;
+  }
+  .js .nav-menu .lang-switch { margin-left: 0; align-self: flex-start; }
+  .js .nav-menu .nav-cta { width: 100%; }
+}
+
+/* phone: scale down the hero title so the long IT headline fits */
+@media (max-width: 560px) {
+  .hero-title {
+    font-size: clamp(24px, 7.2vw, 34px);
+    line-height: 1.08;
+  }
 }
 
 /* phone: shrink the selector to flags only, keep it tappable */
