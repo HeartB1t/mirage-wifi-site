@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Install MirageWiFi - quickstart</title>
+  <meta name="description" content="Install MirageWiFi in a few minutes: download, unpack, launch. Requirements, four quickstart steps and the first-run consent gate." />
+  <meta name="theme-color" content="#080c14" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/site.css" />
+
+  <style>
+    .ins-wrap { width: min(100% - 2rem, 760px); margin-inline: auto; padding: 56px 0 72px; }
+    .ins-kicker {
+      font-family: var(--mono);
+      font-size: .82rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+    .ins-title {
+      font-family: var(--head);
+      font-weight: 700;
+      font-size: clamp(28px, 6vw, 46px);
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      margin: 0 0 14px;
+    }
+    .ins-lead {
+      font-family: var(--body);
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--fg-dim);
+      margin: 0 0 40px;
+    }
+    .ins-sec-title {
+      font-family: var(--mono);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-top: 1px solid var(--border);
+      padding-top: 1.4rem;
+      margin: 0 0 1.1rem;
+    }
+    .ins-req {
+      list-style: none;
+      margin: 0 0 40px;
+      padding: 0;
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .ins-req li {
+      background: var(--panel);
+      padding: .85rem 1.1rem;
+      font-family: var(--body);
+      font-size: .96rem;
+      line-height: 1.5;
+      color: var(--fg-dim);
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+    }
+    .ins-req li::before {
+      content: "+";
+      color: var(--accent);
+      font-family: var(--mono);
+      font-weight: 700;
+      flex: 0 0 auto;
+      line-height: 1.5;
+    }
+    .ins-steps {
+      list-style: none;
+      counter-reset: step;
+      margin: 0 0 40px;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .ins-steps > li {
+      counter-increment: step;
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 1.1rem 1.2rem 1.1rem 3.4rem;
+    }
+    .ins-steps > li::before {
+      content: counter(step);
+      position: absolute;
+      left: 1.1rem;
+      top: 1.05rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--panel-2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .ins-step-t {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--fg);
+      margin: .1rem 0 .4rem;
+    }
+    .ins-step-d {
+      font-family: var(--body);
+      font-size: .95rem;
+      line-height: 1.6;
+      color: var(--fg-dim);
+      margin: 0;
+    }
+    .ins-step-d a { color: var(--accent); }
+    .ins-cmd {
+      display: block;
+      margin: .8rem 0 0;
+      padding: .7rem .9rem;
+      border: 1px solid var(--border-2);
+      border-radius: calc(var(--radius) - 2px);
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--mono);
+      font-size: .88rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .ins-cmd .tok { color: var(--accent); }
+    .ins-note {
+      font-family: var(--mono);
+      font-size: .82rem;
+      line-height: 1.65;
+      color: var(--fg-faint);
+      border-left: 2px solid var(--accent);
+      padding: .3rem 0 .3rem 1rem;
+      margin: 0 0 1.8rem;
+    }
+    .ins-readme {
+      font-family: var(--body);
+      font-size: .94rem;
+      line-height: 1.65;
+      color: var(--fg-dim);
+      margin: 0 0 2.6rem;
+    }
+    .ins-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--mono);
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-dim);
+      text-decoration: none;
+    }
+    .ins-back:hover { color: var(--accent); }
+    .ins-back .arr { transition: transform .25s var(--ease); }
+    .ins-back:hover .arr { transform: translateX(-3px); }
+    .ins-foot {
+      border-top: 1px solid var(--border);
+      margin-top: 2.6rem;
+      padding-top: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 1.4rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ins-foot .logo { font-family: var(--head); letter-spacing: .14em; color: var(--fg-dim); }
+    .ins-foot .lic { font-family: var(--mono); font-size: .74rem; color: var(--fg-faint); }
+    @media (prefers-reduced-motion: reduce) {
+      .ins-back .arr { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <a class="nav-skip" href="#top" data-i18n="nav.skip">Skip to content</a>
+
+  <!-- ============ NAV (shared with the home) ============ -->
+  <header class="nav-bar">
+    <div class="wrap nav-inner">
+
+      <a class="nav-brand" href="index.html" data-i18n-aria="nav.brandhome" aria-label="MirageWiFi, back to top">
+        <span class="nav-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
+            <path d="M6 18 Q16 7 26 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+            <path d="M10 21.5 Q16 15.5 22 21.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" opacity=".55"/>
+            <circle cx="16" cy="25" r="2" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-brand-text">
+          <span class="nav-logo">MIRAGE</span>
+          <span class="nav-ghost" data-i18n="nav.tagline">what you see isn't there.</span>
+        </span>
+      </a>
+
+      <button type="button" class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" data-i18n-aria="nav.menu" aria-label="Menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+
+      <nav class="nav-links" data-i18n-aria="nav.seclabel" aria-label="Sections">
+        <a href="index.html#edizioni" data-i18n="nav.editions">Editions</a>
+        <a href="index.html#perche" data-i18n="nav.why">Why</a>
+        <a href="index.html#moduli" data-i18n="nav.modules">Pro modules</a>
+        <a href="install.html" data-i18n="nav.install">Install</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+
+      <div class="lang-switch" role="group" data-i18n-aria="nav.langlabel" aria-label="Language">
+
+        <button type="button" class="lang-btn" data-lang="it" data-i18n-aria="lang.it" aria-label="Italiano" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="8" height="16" fill="#008C45"/>
+            <rect x="8" width="8" height="16" fill="#F4F5F0"/>
+            <rect x="16" width="8" height="16" fill="#CD212A"/>
+          </svg>
+          <span class="lang-code">IT</span>
+        </button>
+
+        <button type="button" class="lang-btn is-active" data-lang="en" data-i18n-aria="lang.en" aria-label="English" aria-pressed="true">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <clipPath id="flag-en-clip"><rect width="24" height="16" rx="0"/></clipPath>
+            <g clip-path="url(#flag-en-clip)">
+              <rect width="24" height="16" fill="#012169"/>
+              <path d="M0 0 L24 16 M24 0 L0 16" stroke="#FFFFFF" stroke-width="3.2"/>
+              <path d="M0 0 L24 16 M24 0 L0 16" stroke="#C8102E" stroke-width="1.6"/>
+              <rect x="9.6" width="4.8" height="16" fill="#FFFFFF"/>
+              <rect y="5.6" width="24" height="4.8" fill="#FFFFFF"/>
+              <rect x="10.8" width="2.4" height="16" fill="#C8102E"/>
+              <rect y="6.8" width="24" height="2.4" fill="#C8102E"/>
+            </g>
+          </svg>
+          <span class="lang-code">EN</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="es" data-i18n-aria="lang.es" aria-label="Español" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="24" height="16" fill="#AA151B"/>
+            <rect y="4" width="24" height="8" fill="#F1BF00"/>
+          </svg>
+          <span class="lang-code">ES</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="fr" data-i18n-aria="lang.fr" aria-label="Français" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="8" height="16" fill="#0055A4"/>
+            <rect x="8" width="8" height="16" fill="#F4F5F0"/>
+            <rect x="16" width="8" height="16" fill="#EF4135"/>
+          </svg>
+          <span class="lang-code">FR</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="de" data-i18n-aria="lang.de" aria-label="Deutsch" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="24" height="5.34" fill="#000000"/>
+            <rect y="5.34" width="24" height="5.33" fill="#DD0000"/>
+            <rect y="10.67" width="24" height="5.33" fill="#FFCE00"/>
+          </svg>
+          <span class="lang-code">DE</span>
+        </button>
+
+      </div>
+
+      <a class="nav-cta" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
+
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="ins-wrap">
+
+    <p class="ins-kicker" data-i18n="install.kicker">// Installation</p>
+    <h1 class="ins-title" data-i18n="install.title">Install MirageWiFi</h1>
+    <p class="ins-lead" data-i18n="install.lead">Download, unpack, launch: you are up and running in a few minutes.</p>
+
+    <h2 class="ins-sec-title" data-i18n="install.req.title">Requirements</h2>
+    <ul class="ins-req">
+      <li data-i18n="install.req.1">Kali Linux or another Debian-based distribution.</li>
+      <li data-i18n="install.req.2">Root privileges (the auditing features need them).</li>
+      <li data-i18n="install.req.3">At least one Wi-Fi adapter that supports monitor mode.</li>
+      <li data-i18n="install.req.4">A web browser.</li>
+      <li data-i18n="install.req.5">python3 with the python3-venv package.</li>
+      <li data-i18n="install.req.6">An Internet connection on first launch (it downloads the dependencies).</li>
+    </ul>
+
+    <h2 class="ins-sec-title" data-i18n="install.steps.title">Quickstart in four steps</h2>
+    <ol class="ins-steps">
+      <li>
+        <p class="ins-step-t" data-i18n="install.step1.t">Download the package</p>
+        <p class="ins-step-d">
+          <span data-i18n="install.step1.d">Get the Free edition package from the download page.</span>
+          <a href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="install.step1.link">Download MirageWiFi Free</a>
+        </p>
+      </li>
+      <li>
+        <p class="ins-step-t" data-i18n="install.step2.t">Unpack the tarball</p>
+        <p class="ins-step-d" data-i18n="install.step2.d">Extract the archive you downloaded into a folder of your choice.</p>
+      </li>
+      <li>
+        <p class="ins-step-t" data-i18n="install.step3.t">Launch MirageWiFi</p>
+        <p class="ins-step-d" data-i18n="install.step3.d">From the extracted folder, start it with root privileges.</p>
+        <code class="ins-cmd"><span class="tok">sudo</span> ./start.sh</code>
+      </li>
+      <li>
+        <p class="ins-step-t" data-i18n="install.step4.t">Open the console in your browser</p>
+        <p class="ins-step-d" data-i18n="install.step4.d">Open the URL with the access token printed on startup.</p>
+        <code class="ins-cmd">http://127.0.0.1:8731/#token=...</code>
+      </li>
+    </ol>
+
+    <p class="ins-note" data-i18n="install.consent">On first launch you accept the EULA and confirm you are authorized to test the target networks: the consent gate must be cleared before any auditing feature runs.</p>
+
+    <p class="ins-readme" data-i18n="install.readme">For a systemd service install, the .deb package and the system dependencies, see the README included in the package.</p>
+
+    <a class="ins-back" href="index.html" data-i18n="install.back"><span class="arr" aria-hidden="true">&larr;</span> Back to the home</a>
+
+    <footer class="ins-foot">
+      <span class="logo">MIRAGE</span>
+      <span class="lic" data-i18n="install.footlicense">Proprietary (c) 2026 Mirage. Use only on authorized networks.</span>
+    </footer>
+
+  </main>
+
+  <!-- i18n: translation dictionary + language selector. EN is the inline default. -->
+  <script src="i18n.js"></script>
+  <script>
+    (function () {
+      var I18N = window.I18N || {};
+      var SUPPORTED = ["en", "it", "es", "fr", "de"];
+      var DEFAULT = "en";
+
+      function pickLang(stored) {
+        if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
+        var raw = (navigator.language || navigator.userLanguage || DEFAULT);
+        var code = String(raw).slice(0, 2).toLowerCase();
+        return SUPPORTED.indexOf(code) !== -1 ? code : DEFAULT;
+      }
+
+      function apply(lang) {
+        var dict = I18N[lang] || {};
+        var nodes = document.querySelectorAll("[data-i18n]");
+        for (var i = 0; i < nodes.length; i++) {
+          var key = nodes[i].getAttribute("data-i18n");
+          if (dict[key] != null) nodes[i].textContent = dict[key];
+        }
+        var arias = document.querySelectorAll("[data-i18n-aria]");
+        for (var a = 0; a < arias.length; a++) {
+          var ak = arias[a].getAttribute("data-i18n-aria");
+          if (dict[ak] != null) arias[a].setAttribute("aria-label", dict[ak]);
+        }
+        document.documentElement.lang = lang;
+        if (dict["install._title"]) document.title = dict["install._title"];
+        var desc = document.querySelector('meta[name="description"]');
+        if (desc && dict["install._description"]) desc.setAttribute("content", dict["install._description"]);
+      }
+
+      var stored = null;
+      try { stored = localStorage.getItem("lang"); } catch (e) {}
+      var lang = pickLang(stored);
+      apply(lang);
+
+      var langBtns = document.querySelectorAll(".lang-btn");
+      function syncLangButtons(active) {
+        for (var i = 0; i < langBtns.length; i++) {
+          var isOn = langBtns[i].getAttribute("data-lang") === active;
+          langBtns[i].setAttribute("aria-pressed", isOn ? "true" : "false");
+          langBtns[i].classList.toggle("is-active", isOn);
+        }
+      }
+      syncLangButtons(lang);
+      for (var b = 0; b < langBtns.length; b++) {
+        langBtns[b].addEventListener("click", function () {
+          var v = this.getAttribute("data-lang");
+          apply(v);
+          try { localStorage.setItem("lang", v); } catch (e) {}
+          syncLangButtons(v);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Mobile nav: hamburger toggle (identical to the home). -->
+  <script>
+    (function () {
+      var toggle = document.querySelector(".nav-toggle");
+      var menu = document.getElementById("nav-menu");
+      if (!toggle || !menu) return;
+
+      function setOpen(open) {
+        menu.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      toggle.addEventListener("click", function () {
+        setOpen(!menu.classList.contains("open"));
+      });
+
+      var links = menu.querySelectorAll(".nav-links a");
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () { setOpen(false); });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.classList.contains("open")) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!menu.classList.contains("open")) return;
+        if (menu.contains(e.target) || toggle.contains(e.target)) return;
+        setOpen(false);
+      });
+    })();
+  </script>
+
+</body>
+</html>
