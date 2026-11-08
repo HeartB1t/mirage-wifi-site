@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080c14">
+<meta name="color-scheme" content="dark">
+<title>Next-step suggestion - MirageWiFi</title>
+<meta name="description" content="Contextual advice on the next attack step, a single step at a time: local Ollama or cloud BYOK, never the whole chain automatically.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  :root{ --pa:#b69bff; --pa-rgb:182,155,255; }
+  .mod-wrap{width:min(100% - 2rem,760px);margin-inline:auto;padding:88px 0 64px;}
+  .mod-back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);
+    font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-dim);
+    margin-bottom:2.4rem;}
+  .mod-back:hover{color:var(--pa);text-decoration:none;}
+  .mod-back .arr{transition:transform .25s var(--ease);}
+  .mod-back:hover .arr{transform:translateX(-3px);}
+  .mod-head{border-top:1px solid var(--border);padding-top:1.4rem;}
+  .mod-kicker{display:flex;align-items:center;gap:.9rem;font-family:var(--mono);
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-faint);
+    margin:0 0 1rem;}
+  .mod-no{color:var(--pa);}
+  .mod-tag{display:inline-block;padding:.2rem .6rem;border:1px solid rgba(var(--pa-rgb),.4);
+    border-radius:999px;background:rgba(var(--pa-rgb),.07);color:var(--pa);}
+  .mod-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,2.9rem);
+    line-height:1.06;color:#fff;margin:0 0 1.1rem;}
+  .mod-title::after{content:"";display:block;width:64px;height:3px;margin-top:1.1rem;
+    border-radius:2px;background:linear-gradient(90deg,var(--pa),transparent);}
+  .mod-desc{font-family:var(--body);font-size:1.12rem;line-height:1.6;color:var(--fg);margin:0 0 2.2rem;}
+  .mod-lead{font-family:var(--body);font-size:1rem;line-height:1.7;color:var(--fg-dim);margin:0 0 2.4rem;}
+  .mod-grid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);
+    border-radius:var(--radius);overflow:hidden;margin:0 0 2.4rem;}
+  .mod-cell{background:var(--panel);padding:1.1rem 1.2rem;}
+  .mod-cell h2{font-family:var(--mono);font-size:.72rem;font-weight:400;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--pa);margin:0 0 .5rem;}
+  .mod-cell p{font-family:var(--body);font-size:.95rem;line-height:1.6;color:var(--fg-dim);margin:0;}
+  .mod-spec{font-family:var(--mono);font-size:.82rem;color:var(--fg-faint);
+    border-top:1px solid var(--border);padding-top:1.1rem;margin:0 0 2.4rem;}
+  .mod-spec .k{color:var(--fg-dim);}
+  .mod-spec .v{color:var(--pa);}
+  .mod-note{font-family:var(--mono);font-size:.76rem;line-height:1.65;color:var(--fg-faint);
+    border-left:2px solid rgba(var(--pa-rgb),.5);padding:.3rem 0 .3rem 1rem;margin:0 0 2.6rem;}
+  .mod-foot{border-top:1px solid var(--border);padding-top:1.6rem;display:flex;flex-wrap:wrap;
+    gap:.6rem 1.4rem;align-items:center;justify-content:space-between;}
+  .mod-foot .logo{font-family:var(--display);letter-spacing:.14em;color:var(--fg-dim);}
+  .mod-foot .lic{font-family:var(--mono);font-size:.74rem;color:var(--fg-faint);}
+  @media (min-width:620px){ .mod-grid{grid-template-columns:repeat(3,1fr);} }
+  @media (prefers-reduced-motion:reduce){ .mod-back .arr{transition:none;} }
+</style>
+</head>
+<body>
+<main class="mod-wrap">
+  <a class="mod-back" href="../index.html#moduli" data-i18n="mod.common.back"><span class="arr" aria-hidden="true">&larr;</span> Back to the arsenal</a>
+
+  <header class="mod-head">
+    <p class="mod-kicker"><span class="mod-no">09</span> <span class="mod-tag" data-i18n="mod.ai-advisor.cat">AI Advisor</span></p>
+    <h1 class="mod-title" data-i18n="mod.ai-advisor.title">Next-step suggestion</h1>
+    <p class="mod-desc" data-i18n="mod.ai-advisor.desc">Contextual advice on the next attack step, a single step at a time: local Ollama or cloud BYOK, never the whole chain automatically.</p>
+  </header>
+
+  <p class="mod-lead" data-i18n="mod.ai-advisor.lead">The AI Advisor reads the current state of an assessment and suggests a sensible next step, one at a time. It runs on a local Ollama model or on your own cloud key, and it never takes the operator out of the loop by running a whole sequence on its own.</p>
+
+  <div class="mod-grid">
+    <section class="mod-cell">
+      <h2 data-i18n="mod.common.when">When to use</h2>
+      <p data-i18n="mod.ai-advisor.when">When you want a second opinion on where to go next, while keeping every decision in the operator's hands.</p>
+    </section>
+    <section class="mod-cell">
+      <h2 data-i18n="mod.common.output">Output</h2>
+      <p data-i18n="mod.ai-advisor.output">A single suggested next step with a short rationale, never an automatic chain.</p>
+    </section>
+    <section class="mod-cell">
+      <h2 data-i18n="mod.common.value">Value for the auditor</h2>
+      <p data-i18n="mod.ai-advisor.value">Guidance for less experienced operators without surrendering control or sending data anywhere you did not choose.</p>
+    </section>
+  </div>
+
+  <p class="mod-spec"><span class="k" data-i18n="mod.ai-advisor.speck">AI</span> <span class="v" data-i18n="mod.ai-advisor.mono">Ollama · cloud BYOK</span></p>
+
+  <p class="mod-note" data-i18n="mod.common.authorized">Use only on networks and systems you own or are explicitly authorized to test.</p>
+
+  <footer class="mod-foot">
+    <span class="logo">MIRAGE</span>
+    <span class="lic" data-i18n="mod.common.footlicense">Proprietary · © 2026 Mirage. Use only on authorized networks.</span>
+  </footer>
+</main>
+</body>
+</html>
