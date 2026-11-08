@@ -153,7 +153,7 @@ window.I18N = {
     "cta.free": "Scarica gratis",
     "cta.pro": "Entra nella lista d'attesa",
 
-    "hero.kicker": "Wi-Fi security auditing · Kali / Linux",
+    "hero.kicker": "Audit di sicurezza Wi-Fi · Kali / Linux",
     "hero.h1a": "Il segnale è lì.",
     "hero.h1b": "La rete",
     "hero.h1c": "non lo sa.",
@@ -287,7 +287,7 @@ window.I18N = {
     "cta.free": "Descargar gratis",
     "cta.pro": "Únete a la lista de espera Pro",
 
-    "hero.kicker": "Wi-Fi security auditing · Kali / Linux",
+    "hero.kicker": "Auditoría de seguridad Wi-Fi · Kali / Linux",
     "hero.h1a": "La señal está ahí.",
     "hero.h1b": "La red",
     "hero.h1c": "no lo sabe.",
@@ -421,7 +421,7 @@ window.I18N = {
     "cta.free": "Télécharger gratuitement",
     "cta.pro": "Rejoindre la liste d'attente Pro",
 
-    "hero.kicker": "Wi-Fi security auditing · Kali / Linux",
+    "hero.kicker": "Audit de sécurité Wi-Fi · Kali / Linux",
     "hero.h1a": "Le signal est là.",
     "hero.h1b": "Le réseau",
     "hero.h1c": "ne le sait pas.",
@@ -555,7 +555,7 @@ window.I18N = {
     "cta.free": "Kostenlos herunterladen",
     "cta.pro": "Der Pro-Warteliste beitreten",
 
-    "hero.kicker": "Wi-Fi security auditing · Kali / Linux",
+    "hero.kicker": "Wi-Fi-Sicherheitsaudit · Kali / Linux",
     "hero.h1a": "Das Signal ist da.",
     "hero.h1b": "Das Netzwerk",
     "hero.h1c": "weiß es nicht.",
