@@ -135,7 +135,17 @@ window.I18N = {
     "foot.waitlist": "Waitlist",
     "foot.lawful": "Lawful use",
     "foot.license1": "Proprietary · © 2026 Mirage. Use only on authorized networks.",
-    "foot.license2": "Licensed software, not sold · closed source."
+    "foot.license2": "Licensed software, not sold · closed source.",
+
+    "share.h": "Share",
+    "share.native": "Share (more)",
+    "share.fb": "Share on Facebook",
+    "share.x": "Share on X",
+    "share.wa": "Share on WhatsApp",
+    "share.tg": "Share on Telegram",
+    "share.rd": "Share on Reddit",
+    "share.text": "MirageWiFi - Wi-Fi security auditing, Free and Pro.",
+    "share.copied": "Link copied"
   },
 
   it: {
@@ -269,7 +279,17 @@ window.I18N = {
     "foot.waitlist": "Lista d'attesa",
     "foot.lawful": "Uso lecito",
     "foot.license1": "Proprietaria · © 2026 Mirage. Uso solo su reti autorizzate.",
-    "foot.license2": "Software licenziato, non venduto · a codice chiuso."
+    "foot.license2": "Software licenziato, non venduto · a codice chiuso.",
+
+    "share.h": "Condividi",
+    "share.native": "Condividi (altro)",
+    "share.fb": "Condividi su Facebook",
+    "share.x": "Condividi su X",
+    "share.wa": "Condividi su WhatsApp",
+    "share.tg": "Condividi su Telegram",
+    "share.rd": "Condividi su Reddit",
+    "share.text": "MirageWiFi - audit di sicurezza Wi-Fi, Free e Pro.",
+    "share.copied": "Link copiato"
   },
 
   es: {
@@ -403,7 +423,17 @@ window.I18N = {
     "foot.waitlist": "Lista de espera",
     "foot.lawful": "Uso lícito",
     "foot.license1": "Propietaria · © 2026 Mirage. Uso solo en redes autorizadas.",
-    "foot.license2": "Software licenciado, no vendido · de código cerrado."
+    "foot.license2": "Software licenciado, no vendido · de código cerrado.",
+
+    "share.h": "Compartir",
+    "share.native": "Compartir (más)",
+    "share.fb": "Compartir en Facebook",
+    "share.x": "Compartir en X",
+    "share.wa": "Compartir en WhatsApp",
+    "share.tg": "Compartir en Telegram",
+    "share.rd": "Compartir en Reddit",
+    "share.text": "MirageWiFi - auditoría de seguridad Wi-Fi, Free y Pro.",
+    "share.copied": "Enlace copiado"
   },
 
   fr: {
@@ -537,7 +567,17 @@ window.I18N = {
     "foot.waitlist": "Liste d'attente",
     "foot.lawful": "Usage licite",
     "foot.license1": "Propriétaire · © 2026 Mirage. Usage uniquement sur réseaux autorisés.",
-    "foot.license2": "Logiciel sous licence, non vendu · à code source fermé."
+    "foot.license2": "Logiciel sous licence, non vendu · à code source fermé.",
+
+    "share.h": "Partager",
+    "share.native": "Partager (plus)",
+    "share.fb": "Partager sur Facebook",
+    "share.x": "Partager sur X",
+    "share.wa": "Partager sur WhatsApp",
+    "share.tg": "Partager sur Telegram",
+    "share.rd": "Partager sur Reddit",
+    "share.text": "MirageWiFi - audit de sécurité Wi-Fi, Free et Pro.",
+    "share.copied": "Lien copié"
   },
 
   de: {
@@ -671,6 +711,16 @@ window.I18N = {
     "foot.waitlist": "Warteliste",
     "foot.lawful": "Rechtmäßige Nutzung",
     "foot.license1": "Proprietär · © 2026 Mirage. Nutzung nur in autorisierten Netzwerken.",
-    "foot.license2": "Lizenzierte Software, nicht verkauft · geschlossener Quellcode."
+    "foot.license2": "Lizenzierte Software, nicht verkauft · geschlossener Quellcode.",
+
+    "share.h": "Teilen",
+    "share.native": "Teilen (mehr)",
+    "share.fb": "Auf Facebook teilen",
+    "share.x": "Auf X teilen",
+    "share.wa": "Auf WhatsApp teilen",
+    "share.tg": "Auf Telegram teilen",
+    "share.rd": "Auf Reddit teilen",
+    "share.text": "MirageWiFi - Wi-Fi-Sicherheitsaudit, Free und Pro.",
+    "share.copied": "Link kopiert"
   }
 };
