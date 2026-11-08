@@ -82,7 +82,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 84px; overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
 body {
   margin: 0;
@@ -196,62 +196,6 @@ h1, h2, h3, h4 {
   opacity: .8;
 }
 
-/* ===== NAV ===== */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(6,9,15,.74);
-  border-bottom: 1px solid var(--border);
-}
-.nav-inner {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  height: 68px;
-}
-.brand { display: inline-flex; align-items: center; gap: .7rem; margin-right: auto; }
-.brand:hover { text-decoration: none; }
-.brand-mark {
-  display: inline-flex;
-  color: var(--accent);
-  filter: drop-shadow(0 0 10px rgba(92,220,255,.45));
-}
-.brand-text { display: inline-flex; align-items: baseline; gap: .7rem; }
-.brand .logo {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: .16em;
-  color: #fff;
-  text-shadow: 0 0 18px rgba(92,220,255,.4);
-}
-.brand .ghost {
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: var(--fg-faint);
-  letter-spacing: .02em;
-}
-.nav-links { display: flex; gap: 1.6rem; }
-.nav-links a {
-  position: relative;
-  color: var(--fg-dim);
-  font-size: .82rem;
-  letter-spacing: .04em;
-  padding: .2rem 0;
-  transition: color .16s var(--ease);
-}
-.nav-links a::after {
-  content: "";
-  position: absolute; left: 0; right: 100%; bottom: -2px; height: 1px;
-  background: var(--accent);
-  transition: right .22s var(--ease);
-}
-.nav-links a:hover { color: var(--fg); text-decoration: none; }
-.nav-links a:hover::after { right: 0; }
-
 /* ===== BUTTONS ===== */
 .btn {
   position: relative;
@@ -293,162 +237,6 @@ h1, h2, h3, h4 {
 }
 .btn-pro:hover { box-shadow: var(--glow-warn), inset 0 1px 0 rgba(255,255,255,.4); color: #1c1403; }
 .btn-lg { padding: .98rem 1.6rem; font-size: .95rem; }
-
-/* ===== LANGUAGE SWITCH ===== */
-.lang-switch { display: inline-flex; align-items: center; }
-.lang-select {
-  font-family: var(--mono);
-  font-size: .8rem;
-  font-weight: 500;
-  letter-spacing: .08em;
-  color: var(--fg-dim);
-  background: var(--panel-2);
-  border: 1px solid var(--border-2);
-  border-radius: var(--radius);
-  padding: .5rem .55rem;
-  cursor: pointer;
-  transition: color .16s var(--ease), border-color .16s, box-shadow .16s;
-}
-.lang-select:hover { color: var(--fg); border-color: var(--accent); }
-.lang-select option { background: var(--panel-2); color: var(--fg); }
-
-/* ===== HERO ===== */
-.hero { padding: clamp(3.5rem, 8vw, 7rem) 0 3rem; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: clamp(2rem, 5vw, 4.2rem);
-  align-items: center;
-}
-.hero h1 {
-  font-size: clamp(2.6rem, 6.2vw, 4.6rem);
-  margin: 1.1rem 0 .2rem;
-  color: #fff;
-  letter-spacing: -.01em;
-}
-.hero h1 .em { color: var(--accent); text-shadow: 0 0 34px rgba(92,220,255,.5); }
-.hero .strike {
-  color: var(--fg-faint);
-  text-decoration: line-through;
-  text-decoration-color: rgba(255,107,107,.65);
-}
-.hero-sub {
-  font-size: clamp(1rem, 1.6vw, 1.18rem);
-  color: var(--fg-dim);
-  max-width: 48ch;
-  margin: 1.4rem 0 2rem;
-  line-height: 1.7;
-}
-.hero-cta { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
-.hero-trust {
-  list-style: none;
-  padding: 0;
-  margin: 1.9rem 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .55rem 1.5rem;
-  font-size: .78rem;
-  color: var(--fg-dim);
-  letter-spacing: .02em;
-}
-.hero-trust li { display: inline-flex; align-items: center; gap: .5rem; }
-.hero-trust li::before {
-  content: "";
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 8px rgba(82,242,168,.7);
-}
-.hero-trust b { color: var(--fg); font-weight: 600; }
-.hero-note {
-  margin-top: 1.1rem;
-  font-size: .76rem;
-  color: var(--fg-faint);
-  letter-spacing: .02em;
-}
-.hero-note b { color: var(--accent-2); font-weight: 600; }
-
-/* Pannello visuale: finestra "terminale" con scanner di rete animato */
-.scanner {
-  position: relative;
-  border: 1px solid var(--border-2);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, var(--panel-2), var(--panel));
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.scanner::after {
-  content: "";
-  position: absolute; inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-  pointer-events: none;
-}
-.scanner-bar {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .62rem .9rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-0);
-  font-size: .7rem;
-  color: var(--fg-faint);
-  letter-spacing: .05em;
-}
-.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-2); }
-.dot.r { background: var(--danger); }
-.dot.y { background: var(--warn); }
-.dot.g { background: var(--accent-2); }
-.scanner-bar .path { margin-left: auto; }
-.scanner-body { padding: 1rem 1.1rem 1.2rem; }
-
-/* riga di scansione: BSSID / segnale / cifratura */
-.scan-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: .8rem;
-  align-items: center;
-  padding: .55rem .2rem;
-  border-bottom: 1px dashed var(--border);
-  font-size: .8rem;
-}
-.scan-row:last-child { border-bottom: 0; }
-.scan-row .essid { color: var(--fg); }
-.scan-row .bssid { display: block; color: var(--fg-faint); font-size: .68rem; letter-spacing: .04em; }
-.enc {
-  font-size: .64rem;
-  padding: .14rem .55rem;
-  border-radius: 100px;
-  border: 1px solid var(--border-2);
-  letter-spacing: .04em;
-}
-.enc.wpa2 { color: var(--accent); border-color: rgba(92,220,255,.3); background: rgba(92,220,255,.07); }
-.enc.wpa3 { color: var(--accent-2); border-color: rgba(82,242,168,.3); background: rgba(82,242,168,.08); }
-.enc.eap  { color: var(--purple); border-color: rgba(182,155,255,.3); background: rgba(182,155,255,.08); }
-.enc.wep  { color: var(--danger); border-color: rgba(255,107,107,.3); background: rgba(255,107,107,.08); }
-
-/* barrette di segnale */
-.sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 15px; }
-.sig i { width: 3px; background: var(--border-2); border-radius: 1px; }
-.sig i.on { background: var(--accent); box-shadow: 0 0 6px rgba(92,220,255,.6); }
-.sig i:nth-child(1) { height: 5px; }
-.sig i:nth-child(2) { height: 8px; }
-.sig i:nth-child(3) { height: 11px; }
-.sig i:nth-child(4) { height: 15px; }
-
-/* linea di scansione che scorre sul pannello */
-.scanline {
-  position: absolute;
-  left: 0; right: 0; top: 44px; height: 92px;
-  background: linear-gradient(180deg, transparent, rgba(92,220,255,.1), transparent);
-  animation: sweep 4.2s var(--ease) infinite;
-  pointer-events: none;
-}
-@keyframes sweep {
-  0%   { transform: translateY(-10px); opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { opacity: 1; }
-  100% { transform: translateY(232px); opacity: 0; }
-}
 
 /* ===== ETHICS BANNER ===== */
 .ethics {
@@ -576,40 +364,6 @@ section + section { border-top: 1px solid rgba(23,32,47,.6); }
 .pill:nth-child(4) .pill-ico { color: var(--purple); background: rgba(182,155,255,.08); border-color: rgba(182,155,255,.22); }
 .pill h3 { font-size: 1.08rem; color: #fff; margin-bottom: .5rem; }
 .pill p { margin: 0; font-size: .83rem; color: var(--fg-dim); line-height: 1.6; }
-
-/* ===== MODULES GRID ===== */
-.modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.mod {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--panel);
-  padding: 1.3rem 1.25rem;
-  transition: transform .18s var(--ease), border-color .18s, box-shadow .18s;
-}
-.mod:hover { transform: translateY(-3px); border-color: var(--border-2); box-shadow: var(--shadow-sm); }
-.mod .mtag {
-  font-family: var(--mono);
-  font-size: .64rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--cat, var(--fg-faint));
-  margin: 0;
-}
-.mod h3 { font-size: 1.08rem; color: #fff; margin: .5rem 0 .4rem; }
-.mod p { margin: 0; font-size: .82rem; color: var(--fg-dim); line-height: 1.55; }
-.mod.cap { --cat: var(--accent); }
-.mod.trans { --cat: var(--warn); }
-.mod.post { --cat: var(--accent-2); }
-.mod.ai { --cat: var(--purple); }
-.mod.dstr { --cat: var(--danger); }
-.mod::before {
-  content: "";
-  display: block; width: 26px; height: 2px;
-  background: var(--cat, var(--border-2));
-  margin-bottom: .9rem;
-  border-radius: 2px;
-  box-shadow: 0 0 10px -1px var(--cat, transparent);
-}
 
 /* ===== FAQ ===== */
 .faq { display: grid; gap: .7rem; max-width: 880px; }
@@ -778,12 +532,9 @@ footer {
 .js-reveal .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .js-reveal .reveal.in { opacity: 1; transform: none; }
 /* stagger leggero dentro le griglie */
-.js-reveal .pillars .reveal:nth-child(2),
-.js-reveal .modules .reveal:nth-child(2) { transition-delay: .05s; }
-.js-reveal .pillars .reveal:nth-child(3),
-.js-reveal .modules .reveal:nth-child(3) { transition-delay: .1s; }
-.js-reveal .pillars .reveal:nth-child(4),
-.js-reveal .modules .reveal:nth-child(4) { transition-delay: .15s; }
+.js-reveal .pillars .reveal:nth-child(2) { transition-delay: .05s; }
+.js-reveal .pillars .reveal:nth-child(3) { transition-delay: .1s; }
+.js-reveal .pillars .reveal:nth-child(4) { transition-delay: .15s; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
@@ -796,13 +547,9 @@ footer {
 }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .scanner { order: -1; }
   .editions { grid-template-columns: 1fr; }
-  .modules { grid-template-columns: 1fr 1fr; }
-  .nav-links { display: none; }
 }
 @media (max-width: 560px) {
-  .modules { grid-template-columns: 1fr; }
   .pillars { grid-template-columns: 1fr; }
   .hero-cta .btn { flex: 1 1 auto; }
   .brand .ghost { display: none; }
@@ -813,4 +560,1272 @@ footer {
   .nav-inner { gap: .7rem; }
   .nav .btn-pro { padding: .6rem .85rem; font-size: .78rem; }
   .brand .logo { font-size: 1.2rem; letter-spacing: .12em; }
+}
+
+/* ============================================================
+   REDESIGN DRAFT - integrazione foundation (Fable C), solo delta
+   Sopra la base esistente: Manrope, token nuovi, body in Manrope,
+   utility .grad / .pulse, motion .reveal. Le regole di base gia
+   presenti (:root / reset / .btn / .wrap / .kicker / body) NON sono
+   riscritte: qui solo le novita, per non gonfiare il file.
+   Nessun em/en dash. Solo trattino normale.
+   ============================================================ */
+
+/* ---- Manrope self-hosted (body), variable woff2 ---- */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/manrope-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ---- Token nuovi (la base definisce gia il resto) ---- */
+:root {
+  --grad-accent: linear-gradient(120deg, var(--accent) 0%, var(--purple) 100%);
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --head: "Chakra Petch", "JetBrains Mono", ui-monospace, monospace;
+  --ok:   var(--accent-2);
+  --scan-cols: 28px 116px 108px 28px 42px 56px 28px 24px 92px;
+}
+
+/* ---- Prosa in Manrope (la base usava il mono) ---- */
+body { font-family: var(--body); }
+
+/* ---- Utility testo gradiente: UNA parola chiave per blocco ---- */
+.grad {
+  color: var(--accent);
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .grad { -webkit-text-fill-color: currentColor; background: none; }
+}
+@media (forced-colors: active) {
+  .grad { -webkit-text-fill-color: currentColor; background: none; color: LinkText; }
+}
+
+/* ---- Motion: .reveal (progressive enhancement) + .pulse ----
+   La base definisce gia .js-reveal .reveal e lo stagger di
+   pillars/modules; qui aggiungo solo il will-change, lo stagger
+   per le editions e l'utility .pulse. */
+.reveal { will-change: opacity, transform; }
+.js-reveal .editions .reveal:nth-child(2) { transition-delay: .05s; }
+.pulse { animation: pulse 1.6s var(--ease) infinite; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .35; transform: scale(.7); }
+}
+
+/* ============ LAYER A: nav + selettore bandiere + hero ============ */
+/* ============================================================
+   Fable A - nav + flag language selector + hero
+   Colors: var(--...) only. Token VALUES come from C-foundation.css.
+   Class prefixes owned by A: nav-, lang-, hero-
+   Shared helper .wrap and .reveal are defined by C.
+   ============================================================ */
+
+/* ---- skip link (a11y) ---- */
+.nav-skip {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  font-family: var(--body);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top .18s var(--ease);
+}
+.nav-skip:focus-visible { top: 12px; }
+
+/* ============ NAV ============ */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 68px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* brand */
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--fg);
+  flex: 0 0 auto;
+}
+.nav-brand-mark { color: var(--accent); display: inline-flex; }
+.nav-brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+.nav-logo {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: .14em;
+  color: var(--fg);
+}
+.nav-ghost {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .02em;
+  color: var(--fg-faint);
+}
+
+/* section links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: auto;
+}
+.nav-links a {
+  font-family: var(--body);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--fg-dim);
+  text-decoration: none;
+  padding: 6px 2px;
+  position: relative;
+  transition: color .16s var(--ease);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s var(--ease);
+}
+.nav-links a:hover { color: var(--fg); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ---- flag language selector ---- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  flex: 0 0 auto;
+}
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius) - 4px);
+  background: transparent;
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: background .15s var(--ease), color .15s var(--ease), border-color .15s var(--ease);
+}
+.lang-btn:hover {
+  background: var(--panel-2);
+  color: var(--fg);
+}
+.lang-btn.is-active {
+  background: var(--panel-2);
+  border-color: var(--accent);
+  color: var(--fg);
+  box-shadow: var(--glow-cyan);
+}
+.lang-btn[aria-pressed="true"] { border-color: var(--accent); }
+.lang-flag {
+  display: block;
+  border-radius: 2px;
+  box-shadow: var(--shadow-sm);
+  outline: 1px solid var(--border-2);
+  outline-offset: -1px;
+}
+.lang-code { line-height: 1; }
+
+/* ---- primary CTA (reused by hero) ---- */
+.nav-cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  background: var(--grad-accent);
+  color: var(--bg);
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform .14s var(--ease), box-shadow .2s var(--ease), filter .2s var(--ease);
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glow-cyan);
+  filter: brightness(1.05);
+}
+
+/* ---- shared focus-visible ring ---- */
+.nav-skip:focus-visible,
+.nav-brand:focus-visible,
+.nav-links a:focus-visible,
+.lang-btn:focus-visible,
+.nav-cta:focus-visible,
+.hero-btn-ghost:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius);
+}
+
+/* ============ HERO ============ */
+.hero-sec {
+  position: relative;
+  padding: clamp(48px, 7vw, 92px) 0 clamp(40px, 6vw, 72px);
+  overflow: hidden;
+}
+.hero-sec::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 78% 18%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    radial-gradient(50% 50% at 8% 90%, color-mix(in srgb, var(--purple) 14%, transparent), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 18px;
+}
+
+.hero-title {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0 0 20px;
+}
+.hero-grad {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-sub {
+  font-family: var(--body);
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0 0 14px;
+}
+.hero-value {
+  font-family: var(--body);
+  font-size: 15.5px;
+  line-height: 1.68;
+  color: var(--fg-dim);
+  max-width: 54ch;
+  margin: 0 0 22px;
+}
+
+.hero-notice {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 9px 14px;
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--fg-dim);
+  font-family: var(--body);
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0 0 26px;
+}
+.hero-notice-mark { color: var(--accent); flex: 0 0 auto; margin-top: 1px; }
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-btn-lg { padding: 13px 24px; font-size: 15px; }
+.hero-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--body);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--border-2);
+  transition: border-color .16s var(--ease), background .16s var(--ease), transform .14s var(--ease);
+}
+.hero-btn-ghost:hover {
+  border-color: var(--accent);
+  background: var(--panel);
+  transform: translateY(-1px);
+}
+
+/* visual slot filled by Fable B's scanner on assembly */
+.hero-visual-slot { min-height: 0; }
+
+/* ============ RESPONSIVE ============ */
+
+/* tablet: drop section links into a lighter row, keep selector + CTA */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-value { max-width: none; }
+  .nav-links { gap: 18px; }
+  .nav-ghost { display: none; }
+}
+
+@media (max-width: 760px) {
+  .nav-inner { flex-wrap: wrap; row-gap: 10px; }
+  .nav-links {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    gap: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lang-switch { margin-left: auto; }
+}
+
+/* phone: shrink the selector to flags only, keep it tappable */
+@media (max-width: 480px) {
+  .lang-code { display: none; }
+  .lang-btn { padding: 7px; }
+  .lang-flag { width: 24px; height: 16px; }
+  .nav-logo { font-size: 18px; }
+  .hero-cta .nav-cta,
+  .hero-cta .hero-btn-ghost { flex: 1 1 100%; }
+}
+
+/* ============ LAYER B: scrollytelling workflow + scanner ============ */
+/* ============================================================
+   FABLE B - scrollytelling workflow (.flow-) + scanner (.scan-)
+   Solo var(--...) per i colori. Nessun hex hardcoded.
+   Glow/sfondi translucidi derivati con color-mix() dai token,
+   cosi' niente rgba() fissi (vedi B-notes.md).
+   Token EXTRA richiesti a Fable C: --ok, --danger, --warn
+   (se C non li definisce, fallback inline color-mix su --accent).
+   ============================================================ */
+
+/* colonne scanner: FISSE, nessun fr. Allineamento identico a ogni larghezza.
+   Un'unica sorgente condivisa da intestazione e righe. */
+:root {
+  --scan-cols: 28px 116px 108px 28px 42px 56px 28px 24px 92px;
+  --scan-gap: .34rem;
+  /* fallback locali se C non fornisce i token di stato */
+  --ok: var(--accent-2, #52f2a8);
+  --danger: #ff6b6b;
+  --warn: #ffc24b;
+}
+
+/* ============ SCANNER (standalone) ============ */
+.scan-section { padding: clamp(3rem, 6vw, 5rem) 0; }
+.scan-intro { text-align: center; max-width: 58ch; margin-inline: auto 1.5rem; margin-inline: auto; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.scan-kicker {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .18em;
+  color: var(--accent);
+  margin: 0 0 .8rem;
+  text-transform: uppercase;
+}
+.scan-title {
+  font-family: var(--head);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  color: var(--fg);
+  letter-spacing: -.01em;
+}
+.scan-em {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.scan-lead {
+  font-family: var(--body);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  color: var(--fg-dim);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* pannello: max-width contenuta cosi' la tabella fissa riempie bene
+   anche a 1920 senza stirare. overflow-x gestito dal contenitore interno. */
+.scan-win {
+  position: relative;
+  max-width: 760px;
+  margin-inline: auto;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border-2));
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  box-shadow:
+    0 26px 64px -20px rgba(0,0,0,.85),
+    0 0 0 1px color-mix(in srgb, var(--accent) 16%, transparent),
+    0 0 48px -6px color-mix(in srgb, var(--accent) 36%, transparent);
+  overflow: hidden; /* clip: la pagina non trabocca mai in orizzontale */
+}
+.scan-topbar {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .62rem .9rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--fg-faint);
+  letter-spacing: .05em;
+}
+.scan-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-2); flex: none; }
+.scan-dot.r { background: var(--danger); }
+.scan-dot.y { background: var(--warn); }
+.scan-dot.g { background: var(--ok); }
+.scan-path { margin-left: auto; }
+.scan-live {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  color: var(--ok);
+  font-size: .64rem;
+  letter-spacing: .14em;
+}
+.scan-live::before {
+  content: "";
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--ok) 80%, transparent);
+  animation: b-live-pulse 1.6s var(--ease) infinite;
+}
+
+/* CONTENITORE SCROLL: qui vive overflow-x. A larghezze strette la tabella
+   scorre dentro il pannello, il pannello (overflow:hidden) non fa traboccare
+   la pagina. A desktop la tabella fissa sta comoda, niente scroll. */
+.scan-view {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: .5rem 0 .7rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.scan-grid {
+  /* larghezza = somma colonne fisse + gap: identica a ogni viewport.
+     width:max-content impedisce la compressione che spezzava le righe. */
+  width: max-content;
+  min-width: 100%;
+  font-family: var(--mono);
+  padding: 0 .9rem;
+  box-sizing: border-box;
+}
+.scan-hrow, .scan-drow {
+  display: grid;
+  grid-template-columns: var(--scan-cols);
+  gap: var(--scan-gap);
+  align-items: center;
+}
+.scan-hrow {
+  padding: .25rem .25rem .55rem;
+  border-bottom: 1px solid var(--border);
+  font-size: .55rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+.scan-drow {
+  padding: .55rem .25rem;
+  border-bottom: 1px dashed var(--border);
+  font-size: .72rem;
+  color: var(--fg-dim);
+}
+.scan-drow:last-child { border-bottom: 0; }
+
+.scan-essid { color: var(--fg); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scan-bssid { color: var(--fg-faint); font-size: .62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scan-ch, .scan-band, .scan-cli { color: var(--fg-dim); font-size: .7rem; }
+
+/* badge sicurezza */
+.scan-enc {
+  font-size: .56rem;
+  padding: .14rem .42rem;
+  border-radius: 100px;
+  border: 1px solid var(--border-2);
+  letter-spacing: .04em;
+  justify-self: start;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.scan-enc.wpa2 { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--accent) 90%, var(--bg)); }
+.scan-enc.wpa3 { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--ok) 90%, var(--bg)); }
+.scan-enc.eap  { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--purple) 90%, var(--bg)); }
+.scan-enc.wep  { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--danger) 90%, var(--bg)); }
+
+/* WPS */
+.scan-wps { display: inline-flex; }
+.scan-wps-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--border-2); }
+.scan-wps-dot.on { background: var(--ok); box-shadow: 0 0 6px color-mix(in srgb, var(--ok) 70%, transparent); }
+
+/* tag di stato ST: HS / PMK / KEY */
+.scan-st { display: inline-flex; gap: 3px; }
+.scan-tag {
+  font-size: .5rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: .05em;
+  padding: .1rem .26rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  color: var(--fg-faint);
+  background: transparent;
+}
+.scan-tag.on.hs  { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--accent) 90%, var(--bg)); }
+.scan-tag.on.pmk { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--purple) 90%, var(--bg)); }
+.scan-tag.on.key { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--ok) 90%, var(--bg)); }
+
+/* barrette segnale */
+.scan-sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.scan-sig i { width: 3px; background: var(--border-2); border-radius: 1px; }
+.scan-sig i.on { background: var(--accent); box-shadow: 0 0 6px color-mix(in srgb, var(--accent) 60%, transparent); }
+/* colore per potenza del segnale: forte=verde, buono=ciano, medio=ambra, debole=rosso */
+.scan-sig.s4 i.on { background: var(--ok);     box-shadow: 0 0 7px color-mix(in srgb, var(--ok) 65%, transparent); }
+.scan-sig.s3 i.on { background: var(--accent); box-shadow: 0 0 7px color-mix(in srgb, var(--accent) 65%, transparent); }
+.scan-sig.s2 i.on { background: var(--warn);   box-shadow: 0 0 7px color-mix(in srgb, var(--warn) 60%, transparent); }
+.scan-sig.s1 i.on { background: var(--danger); box-shadow: 0 0 7px color-mix(in srgb, var(--danger) 60%, transparent); }
+/* la barra di punta "respira": segnale vivo */
+.scan-sig.s1 i:nth-child(1).on,
+.scan-sig.s2 i:nth-child(2).on,
+.scan-sig.s3 i:nth-child(3).on,
+.scan-sig.s4 i:nth-child(4).on { animation: sig-breathe 1.8s var(--ease) infinite; }
+@keyframes sig-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+@media (prefers-reduced-motion: reduce) { .scan-sig i { animation: none !important; } }
+.scan-sig i:nth-child(1) { height: 5px; }
+.scan-sig i:nth-child(2) { height: 8px; }
+.scan-sig i:nth-child(3) { height: 11px; }
+.scan-sig i:nth-child(4) { height: 14px; }
+
+/* linea di scansione */
+.scan-sweep {
+  position: absolute;
+  left: 0; right: 0; top: 46px; height: 92px;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 12%, transparent), transparent);
+  animation: b-sweep 4.6s var(--ease) infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.scan-legend {
+  font-family: var(--mono);
+  text-align: center;
+  font-size: .68rem;
+  color: var(--fg-faint);
+  margin: 1rem auto 0;
+  max-width: 760px;
+  letter-spacing: .02em;
+}
+
+/* ============ KEYFRAMES ============ */
+@keyframes b-live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .35; transform: scale(.7); }
+}
+@keyframes b-sweep {
+  0%   { transform: translateY(-10px); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(340px); opacity: 0; }
+}
+
+/* ============ REDUCED MOTION ============ */
+/* niente animazioni/transizioni; tutto il contenuto resta visibile.
+   Gli schermi della console si impilano in flusso invece di sovrapporsi. */
+@media (prefers-reduced-motion: reduce) {
+  .scan-live::before,
+  .scan-sweep { animation: none; }
+  .scan-sweep { display: none; }
+}
+
+/* ============ LAYER C: armonizzazione sezioni esistenti ============ */
+/* ============================================================
+   MirageWiFi landing - ARMONIZZAZIONE SEZIONI ESISTENTI (Fable C)
+   Override da caricare DOPO il css base delle sezioni
+   (editions / why / modules / faq / cta). Non ridisegna nulla da
+   zero: accorda le sezioni al nuovo look (navy + gradiente firma
+   ciano->viola + prosa Manrope).
+
+   Semantica brand INVARIATA: ambra = Pro / offensivo, verde =
+   offline-safe, rosso = distruttivo, viola = AI/Auto. Il gradiente
+   entra solo sugli accenti NEUTRI/ciano, mai sui segnali ambra/rosso.
+
+   Nessun em dash / en dash. Solo trattino normale.
+   ============================================================ */
+
+/* ---------- Prosa in Manrope: rifinitura ----------
+   Manrope ha metriche diverse dal mono con cui era tarata la prosa.
+   Tolgo il tracking da mono e alzo di un filo la leggibilita' dei
+   paragrafi lunghi. (Il font arriva da body = var(--body).) */
+.sec-head > p,
+.pill p,
+.feat li,
+details.qa p,
+.final > p,
+.plan-foot,
+.price-note {
+  letter-spacing: normal;
+}
+.sec-head > p,
+.pill p,
+details.qa p,
+.final > p {
+  line-height: 1.72;
+}
+.feat li { font-size: .9rem; }           /* Manrope rende piu' compatto: +0.03rem */
+.sec-head > p { font-size: 1.05rem; }
+
+/* I titoli delle sezioni enumerate restano sul font display.
+   (Ridondante con la base, esplicito per robustezza in assemblaggio.) */
+#edizioni .sec-head h2,
+#perche .sec-head h2,
+#faq .sec-head h2,
+.final h2,
+.plan h3,
+.pill h3 { font-family: var(--head); }
+
+/* ---------- Numero di sezione: gradiente firma ----------
+   "01 / 02 / 03 / 04" passa da ciano pieno al gradiente ciano->viola,
+   l'elemento che lega visivamente tutte le sezioni al nuovo look. */
+.sec-head .sec-no {
+  color: var(--accent);
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .sec-head .sec-no { -webkit-text-fill-color: currentColor; background: none; }
+}
+@media (forced-colors: active) {
+  .sec-head .sec-no { -webkit-text-fill-color: currentColor; background: none; color: LinkText; }
+}
+
+/* ---------- EDITIONS ----------
+   Free: la riga superiore diventa il gradiente firma (resta "ciano",
+   ma arricchito verso il viola). Pro NON cambia: ambra = offensivo. */
+.plan.free::before {
+  background: var(--grad-accent);
+  opacity: .9;
+}
+.plan.free:hover {
+  border-color: rgba(92,220,255,.45);
+  box-shadow: var(--glow-cyan);
+}
+.plan.free .plan-tag {
+  color: var(--accent);
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .plan.free .plan-tag { -webkit-text-fill-color: currentColor; background: none; }
+}
+@media (forced-colors: active) {
+  .plan.free .plan-tag { -webkit-text-fill-color: currentColor; background: none; }
+}
+
+/* ---------- WHY / PILLARS ----------
+   Hover un filo piu' marcato e coerente col glow ciano del brand. */
+.pill:hover {
+  border-color: rgba(92,220,255,.28);
+  box-shadow: var(--shadow-sm), 0 0 24px -14px rgba(92,220,255,.5);
+}
+
+/* ---------- FAQ ----------
+   Marcatore "+" dal ciano al gradiente; apertura con un filo di viola. */
+details.qa summary::before {
+  color: var(--accent);
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  details.qa summary::before { -webkit-text-fill-color: currentColor; background: none; }
+}
+@media (forced-colors: active) {
+  details.qa summary::before { -webkit-text-fill-color: currentColor; background: none; }
+}
+details.qa[open] { border-color: rgba(92,220,255,.28); }
+
+/* ---------- FINAL CTA ----------
+   Filo superiore a gradiente firma per agganciare la chiusura al
+   linguaggio visivo del resto della pagina. Gli aloni radiali
+   ambra/ciano della base restano. */
+.final {
+  border-color: rgba(92,220,255,.28);
+}
+.final::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--grad-accent);
+  opacity: .85;
+  pointer-events: none;
+}
+
+/* ============ INTEGRAZIONE: fix layout hero visual slot ============
+   Gli item della hero-grid devono poter scendere sotto la larghezza del
+   loro contenuto, altrimenti a colonna singola (<=960px) lo scanner di B
+   si dilata alla larghezza della tabella (max-content) e viene tagliato
+   dall'overflow-x:hidden del body. Con min-width:0 lo scan-view torna a
+   scrollare internamente, come nel contesto standalone. */
+.hero-copy,
+.hero-visual-slot { min-width: 0; }
+
+/* ============================================================
+   LAYER WOW - motion + style polish (Fable, fase WOW)
+   Rifinitura sopra la base assemblata: NON ridisegna nulla, eleva
+   la resa. Solo transform/opacity nelle animazioni, vanilla, zero
+   dipendenze. Tutto il motion e' scoperto da .js-reveal (aggiunto
+   solo quando il motion e' permesso e c'e' IntersectionObserver) o
+   neutralizzato dai blocchi prefers-reduced-motion gia' presenti.
+   Nessun em dash / en dash. Solo trattino normale.
+   ============================================================ */
+
+:root {
+  /* slow-release ease-out (decelerazione lunga), per un motion "morbido" */
+  --ease-rv: cubic-bezier(.16, 1, .3, 1);
+  --rv-dur: .85s;
+}
+
+/* ---------- reveal globale: rilascio piu' lento e lift piu' percepibile ----------
+   Riscrive solo timing/offset del reveal base (stesso meccanismo .in). */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--rv-dur) var(--ease-rv), transform var(--rv-dur) var(--ease-rv);
+  will-change: opacity, transform;
+}
+.js-reveal .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+/* una volta a destinazione il will-change non serve piu' */
+.js-reveal .reveal.in { will-change: auto; }
+
+/* ---------- HERO: entrata curata, stagger dall'alto verso il basso ---------- */
+.js-reveal .hero-copy > .reveal:nth-child(1) { transition-delay: 0s; }
+.js-reveal .hero-copy > .reveal:nth-child(2) { transition-delay: .07s; }
+.js-reveal .hero-copy > .reveal:nth-child(3) { transition-delay: .14s; }
+.js-reveal .hero-copy > .reveal:nth-child(4) { transition-delay: .21s; }
+.js-reveal .hero-copy > .reveal:nth-child(5) { transition-delay: .28s; }
+.js-reveal .hero-copy > .reveal:nth-child(6) { transition-delay: .35s; }
+
+/* lo scanner entra per ultimo, da poco piu' lontano, si posa lento */
+.js-reveal .hero-visual-slot.reveal {
+  transform: translateY(28px) scale(.986);
+  transition: opacity 1s var(--ease-rv), transform 1s var(--ease-rv);
+  transition-delay: .2s;
+}
+.js-reveal .hero-visual-slot.reveal.in { transform: none; }
+
+/* POPULATE scanner: le righe partono nascoste e vengono "scoperte" una
+   alla volta dallo script hero, al LOAD del pannello (non allo scroll).
+   Lo stato nascosto e' keyed su .js-reveal (aggiunto solo con IO + motion
+   ok): senza JS o con reduced-motion le righe restano visibili statiche.
+   Lo script aggiunge .seen a ritmo di scansione; qui vivono solo le
+   transizioni (fade + slide-up), niente transition-delay a cascata. */
+.js-reveal .hero-visual-slot .scan-grid .scan-drow {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen {
+  opacity: 1;
+  transform: none;
+  transition: opacity .42s var(--ease-rv), transform .42s var(--ease-rv);
+}
+/* barrette segnale: salgono dalla base quando la riga viene scoperta */
+.js-reveal .hero-visual-slot .scan-grid .scan-drow .scan-sig i {
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i {
+  transform: scaleY(1);
+  transition: transform .4s var(--ease-rv);
+}
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i:nth-child(2) { transition-delay: .06s; }
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i:nth-child(3) { transition-delay: .12s; }
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i:nth-child(4) { transition-delay: .18s; }
+/* layer live: breve pulse di opacita' sul CLI quando il conteggio cambia */
+.scan-cli { transition: opacity .2s var(--ease-rv); }
+.scan-cli.cli-bump { opacity: .3; }
+
+/* ---------- STAGGER griglie: piu' ampio ed elegante ----------
+   Sostituisce lo stagger base (.05/.10/.15) con una cascata piu' lunga. */
+.js-reveal .pillars .reveal:nth-child(1),
+.js-reveal .editions .reveal:nth-child(1) { transition-delay: 0s; }
+.js-reveal .pillars .reveal:nth-child(2),
+.js-reveal .editions .reveal:nth-child(2) { transition-delay: .07s; }
+.js-reveal .pillars .reveal:nth-child(3) { transition-delay: .14s; }
+.js-reveal .pillars .reveal:nth-child(4) { transition-delay: .21s; }
+
+/* ---------- Gradiente firma animato sulla parola chiave ----------
+   Spostamento lento e continuo ciano -> viola -> ciano. Loop seamless
+   con un gradiente a 3 stop e background-size 200%. Spento da
+   prefers-reduced-motion (regola globale * animation:none). */
+@keyframes wow-grad-shift {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
+.hero-grad,
+.scan-em,
+.grad {
+  background-image: linear-gradient(110deg, var(--accent), var(--purple), var(--accent));
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  animation: wow-grad-shift 9s linear infinite;
+}
+
+/* ---------- PROFONDITA': pannello scanner ----------
+   Ombra piu' ricca + filo di luce superiore a gradiente firma, coerente
+   col linguaggio visivo delle altre sezioni. Nessun colore nuovo. */
+.scan-win {
+  box-shadow: var(--shadow), 0 0 40px -22px rgba(92, 220, 255, .55);
+}
+.scan-win::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--grad-accent);
+  opacity: .85;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Scrollbar interna dello scanner: discreta ---------- */
+.scan-view { scrollbar-color: color-mix(in srgb, var(--accent) 34%, transparent) transparent; }
+.scan-view::-webkit-scrollbar { height: 6px; }
+.scan-view::-webkit-scrollbar-track { background: transparent; }
+.scan-view::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 100px;
+}
+.scan-view::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+/* ---------- MICRO-INTERAZIONI hover ---------- */
+/* primary CTA: lift piu' deciso, glow e leggero slittamento del gradiente */
+.nav-cta {
+  background-size: 160% 100%;
+  background-position: 0% 50%;
+  transition: transform .18s var(--ease-rv), box-shadow .3s var(--ease-rv),
+              filter .3s var(--ease-rv), background-position .6s var(--ease-rv);
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  background-position: 100% 50%;
+  box-shadow: var(--glow-cyan), 0 14px 30px -18px rgba(92, 220, 255, .8);
+  filter: brightness(1.06);
+}
+.nav-cta:active { transform: translateY(0); }
+
+/* solid buttons: transizione piu' morbida e glow coerente */
+.btn { transition: transform .18s var(--ease-rv), border-color .2s var(--ease-rv), box-shadow .3s var(--ease-rv), color .2s, background .2s, filter .3s; }
+.btn-cyan:hover, .btn-pro:hover { filter: brightness(1.04); transform: translateY(-2px); }
+.hero-btn-ghost:hover { box-shadow: var(--glow-cyan); }
+
+/* card: hover un filo piu' morbido, icona della pillar che respira */
+.pill, .plan { transition: transform .26s var(--ease-rv), border-color .26s var(--ease-rv), box-shadow .26s var(--ease-rv); }
+.pill-ico { transition: transform .26s var(--ease-rv), box-shadow .26s var(--ease-rv); }
+.pill:hover .pill-ico { transform: translateY(-2px) scale(1.06); }
+
+/* link nav: colore del sottolineato gia' a gradiente, curo solo l'easing */
+.nav-links a, .nav-links a::after { transition-timing-function: var(--ease-rv); }
+
+/* bandiere: micro lift all'hover, resta tutto sui token */
+.lang-btn { transition: background .18s var(--ease-rv), color .18s var(--ease-rv), border-color .18s var(--ease-rv), transform .18s var(--ease-rv); }
+.lang-btn:hover { transform: translateY(-1px); }
+
+/* share: easing coerente (stile gia' presente, solo la curva) */
+.share-btn { transition-timing-function: var(--ease-rv); }
+
+/* ---------- RITMO VERTICALE: un filo piu' respiro tra i blocchi hero ---------- */
+.hero-title { margin-bottom: 22px; }
+.hero-value { margin-bottom: 24px; }
+
+/* ---------- REDUCED MOTION: ridondanza esplicita ----------
+   I blocchi globali gia' azzerano animation/transition e rimettono i
+   .reveal visibili. Qui mi assicuro che gli elementi animati SOLO da
+   questo layer (scan-drow, meter, contenuto schermi) restino visibili
+   anche se un domani cambiasse l'ordine delle regole. */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .scan-drow { opacity: 1 !important; transform: none !important; }
+  .js-reveal .scan-drow .scan-sig i { transform: none !important; }
+  .scan-cli.cli-bump { opacity: 1 !important; }
+  .hero-grad, .scan-em, .grad { animation: none !important; background-position: 0% 50% !important; }
+}
+
+/* ============================================================
+   NETWORK + ARSENAL SECTION (#moduli) - 3D helix
+   Integrated from reference/spine-arsenal.html. Reuses existing
+   tokens (palette, --grad-accent, --head, --mono, --body) and the
+   existing @font-face; nothing duplicated. Only --ca / --bloom
+   (runtime vars driven by JS) get defaults here. All generic
+   descendants (.card, .node, .tag, .glass, ...) live only inside
+   this section. No em dash / en dash.
+   ============================================================ */
+:root { --ca: 0; --bloom: 1; }
+
+/* SECTION + STICKY STAGE
+   Default (no JS): auto height, normal flow, cards readable.
+   .js-motion (added by JS on desktop + fine pointer + motion):
+   tall scroll track + sticky stage so cards orbit on scroll. */
+.net-section { position: relative; background: var(--bg); }
+.net-section.js-motion { height: 500vh; }
+
+.net-section .stage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 48px 24px;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1100px;
+}
+.net-section.js-motion .stage { position: sticky; top: 0; height: 100vh; min-height: 0; padding: 0; }
+
+/* layered radial glows: cyan top, purple bottom */
+.net-section .stage::before,
+.net-section .stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.net-section .stage::before {
+  background:
+    radial-gradient(60% 42% at 50% 8%, rgba(92,220,255,.16), transparent 70%),
+    radial-gradient(70% 50% at 50% 104%, rgba(182,155,255,.16), transparent 72%);
+}
+.net-section .stage::after {
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.015) 0 1px, transparent 1px 3px);
+  opacity: .5; mix-blend-mode: screen;
+}
+
+/* background particle canvas (scoped to the stage) */
+.net-section #particles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; display: block; }
+
+/* mono chrome: top-left label + counter top-right */
+.net-section .chrome {
+  position: absolute; z-index: 6; font-family: var(--mono); font-size: 12px;
+  letter-spacing: .18em; color: var(--fg-faint); text-transform: uppercase; pointer-events: none;
+}
+.net-section .chrome.tl { top: 26px; left: 28px; }
+.net-section .chrome.tl .dot { color: var(--accent-2); }
+.net-section .counter {
+  position: absolute; top: 24px; right: 28px; z-index: 6; font-family: var(--mono);
+  font-size: 13px; letter-spacing: .14em; color: var(--fg-dim); pointer-events: none;
+}
+.net-section .counter b { color: var(--accent); font-weight: 400; }
+
+.net-section .section-head { position: absolute; z-index: 6; left: 28px; top: 56px; max-width: min(360px, 62vw); pointer-events: none; }
+.net-section .section-head h2 {
+  font-family: var(--head); font-weight: 700; font-size: clamp(20px, 2.4vw, 30px);
+  margin: 0 0 6px; letter-spacing: .01em; color: var(--fg);
+}
+.net-section .section-head p { margin: 0; color: var(--fg-dim); font-size: 14px; line-height: 1.5; }
+.net-section .section-head .accent { background: var(--grad-accent); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* CONSTELLATION (parallax target) = spine + cards */
+.net-section .constellation {
+  position: relative; z-index: 4;
+  width: 100%; max-width: 1200px; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ---- SPINE ---- */
+.net-section .spine { position: relative; width: 2px; height: min(78vh, 680px); flex: 0 0 auto; transform-style: preserve-3d; }
+.net-section .spine::before {
+  content: ""; position: absolute; left: 50%; top: -6%; bottom: -6%; width: 200px;
+  transform: translateX(-50%) translateZ(-1px); pointer-events: none; z-index: -1;
+  opacity: calc(var(--bloom) * .9);
+  background: radial-gradient(42% 46% at 50% 50%, rgba(92,220,255,.16), rgba(182,155,255,.07) 55%, transparent 76%);
+  filter: blur(16px);
+}
+.net-section .spine .beam {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%);
+  background: var(--grad-accent); border-radius: 2px;
+  box-shadow: 0 0 10px rgba(92,220,255,.55), 0 0 26px rgba(182,155,255,.35);
+}
+.net-section .spine .beam::after {
+  content: ""; position: absolute; inset: -1px; width: 4px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, rgba(92,220,255,.25), transparent); filter: blur(3px);
+}
+
+/* packet flow: faint dots rising along the beam */
+.net-section .packets { position: absolute; left: 50%; top: 0; bottom: 0; width: 8px; transform: translateX(-50%); overflow: visible; }
+.net-section .pkt {
+  position: absolute; left: 50%; width: 3px; height: 3px; border-radius: 50%; transform: translateX(-50%);
+  background: var(--accent); box-shadow: 0 0 6px var(--accent);
+  animation: pktRise 3.4s linear infinite;
+}
+.net-section .pkt:nth-child(1) { animation-delay: 0s; }
+.net-section .pkt:nth-child(2) { animation-delay: .9s; }
+.net-section .pkt:nth-child(3) { animation-delay: 1.7s; background: var(--purple); box-shadow: 0 0 6px var(--purple); }
+.net-section .pkt:nth-child(4) { animation-delay: 2.5s; }
+@keyframes pktRise { 0% { top: 100%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { top: -2%; opacity: 0; } }
+
+/* BSSID nodes along the spine */
+.net-section .node { position: absolute; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; align-items: center; gap: 10px; }
+.net-section .node .pip {
+  position: relative; width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto;
+  background: radial-gradient(circle at 40% 35%, #eaffff, var(--accent) 60%, #2a7fa0);
+  box-shadow: 0 0 0 3px rgba(92,220,255,.10), 0 0 12px rgba(92,220,255,.6);
+  animation: nodePulse 2.6s var(--ease) infinite;
+}
+.net-section .node .pip::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 1px solid rgba(92,220,255,.4); opacity: 0; animation: nodeRing 2.6s var(--ease) infinite;
+}
+.net-section .node:nth-child(2) .pip, .net-section .node:nth-child(2) .pip::after { animation-delay: .5s; }
+.net-section .node:nth-child(3) .pip, .net-section .node:nth-child(3) .pip::after { animation-delay: 1s; }
+.net-section .node:nth-child(4) .pip, .net-section .node:nth-child(4) .pip::after { animation-delay: 1.5s; }
+.net-section .node:nth-child(5) .pip, .net-section .node:nth-child(5) .pip::after { animation-delay: 2s; }
+@keyframes nodePulse { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.25); filter: brightness(1.4); } }
+@keyframes nodeRing { 0% { opacity: .6; transform: scale(.6); } 70% { opacity: 0; transform: scale(1.9); } 100% { opacity: 0; } }
+
+.net-section .node .tag {
+  font-family: var(--mono); font-size: 10.5px; line-height: 1.35; white-space: nowrap;
+  color: var(--fg-faint); letter-spacing: .02em; opacity: .8;
+  transition: color .4s var(--ease), opacity .4s var(--ease);
+}
+.net-section .node .tag .es { color: var(--fg-dim); }
+.net-section .node.left { flex-direction: row-reverse; left: 50%; }
+.net-section .node.left .tag { text-align: right; }
+.net-section .node.active .pip {
+  box-shadow: 0 0 0 3px rgba(82,242,168,.14), 0 0 16px rgba(82,242,168,.85);
+  background: radial-gradient(circle at 40% 35%, #eafff6, var(--accent-2) 60%, #1f8f63);
+}
+.net-section .node.active .tag { color: var(--accent-2); opacity: 1; }
+.net-section .node.active .tag .es { color: var(--accent-2); }
+
+/* Wi-Fi broadcast arcs emitted from spine center */
+.net-section .arcs { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 1; pointer-events: none; }
+.net-section .arc {
+  position: absolute; left: 0; top: 0; border: 1.5px solid var(--accent); border-radius: 50%;
+  transform: translate(-50%, -50%) scale(.2); opacity: 0;
+  width: 120px; height: 120px; animation: arcOut 4.2s var(--ease) infinite;
+}
+.net-section .arc.p { border-color: var(--purple); }
+.net-section .arc:nth-child(1) { animation-delay: 0s; }
+.net-section .arc:nth-child(2) { animation-delay: 1.4s; }
+.net-section .arc:nth-child(3) { animation-delay: 2.8s; }
+@keyframes arcOut {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.2); }
+  12% { opacity: .5; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(5.2); }
+}
+
+/* ---- ARSENAL CARDS on a 3D HELIX ---- */
+.net-section .helix { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 4; transform-style: preserve-3d; pointer-events: none; }
+.net-section .card {
+  position: absolute; left: 0; top: 0; width: min(320px, 80vw);
+  margin: -112px 0 0 -160px;
+  pointer-events: auto; transform-style: preserve-3d; will-change: transform, opacity;
+}
+.net-section .card .glass {
+  position: relative;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 18px 18px 16px;
+  box-shadow: 0 18px 50px -20px rgba(0,0,0,.75);
+  transition: box-shadow .45s var(--ease), border-color .45s var(--ease), transform .4s var(--ease);
+  overflow: hidden;
+}
+.net-section .card .glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: var(--grad-accent); opacity: .22;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; transition: opacity .45s var(--ease);
+}
+.net-section .card.is-focus .glass, .net-section .card.is-hover .glass {
+  border-color: var(--border-2);
+  box-shadow: 0 24px 70px -18px rgba(0,0,0,.85), 0 0 40px -6px rgba(92,220,255,.28);
+}
+.net-section .card.is-focus .glass::before, .net-section .card.is-hover .glass::before { opacity: .6; }
+
+.net-section .card .idx { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--accent); display: block; margin-bottom: 6px; }
+.net-section .card .tag {
+  display: inline-block; font-family: var(--mono); font-size: 10px; line-height: 1;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--fg-faint);
+  padding: 3px 8px; margin-bottom: 9px; border: 1px solid var(--border-2); border-radius: 999px;
+  background: rgba(92,220,255,.05);
+}
+.net-section .card.is-focus .tag, .net-section .card.is-hover .tag { color: var(--accent); border-color: rgba(92,220,255,.4); }
+.net-section .card h3 { font-family: var(--head); font-weight: 700; font-size: 19px; margin: 0 0 7px; color: var(--fg); letter-spacing: .01em; }
+.net-section .card .desc { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--fg-dim); }
+.net-section .card .detail {
+  font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--fg-faint);
+  border-top: 1px solid var(--border); padding-top: 10px;
+}
+.net-section .card .detail .k { color: var(--fg-dim); }
+.net-section .card .detail .v { color: var(--accent-2); }
+
+/* ---- Clickable card: the whole glass is a link to the module page ----
+   The anchor wraps .glass and carries no own box (display:block, inherits color),
+   so the visual card is unchanged. It is the single focus stop per card (the
+   article no longer has tabindex). Non-frontal helix cards get pointer-events:none
+   from JS, so only the frontal/hovered card link is clickable; in the static and
+   mobile layouts every link is clickable. */
+.net-section .card .card-link {
+  display: block; color: inherit; text-decoration: none; cursor: pointer;
+  border-radius: var(--radius-lg); outline: none; -webkit-tap-highlight-color: transparent;
+}
+.net-section .card .card-link:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
+/* affordance: the glass lifts when the link is hovered or keyboard-focused */
+.net-section .card .card-link:hover .glass,
+.net-section .card .card-link:focus-visible .glass {
+  border-color: var(--border-2);
+  box-shadow: 0 24px 70px -18px rgba(0,0,0,.85), 0 0 40px -6px rgba(92,220,255,.28);
+}
+
+/* ---- FLIP transition overlay: a cloned card expands to fill the screen and the
+   page crossfades to the background, then JS navigates. Only transform/opacity are
+   animated. Reduced-motion never creates this overlay (the JS returns earlier), so
+   the plain <a> navigation is the fallback there. The overlay carries the
+   net-section class so the cloned .card keeps its full glass/text styling. */
+.card-flip-overlay {
+  position: fixed; inset: 0; z-index: 10000; pointer-events: none;
+  background: var(--bg); opacity: 0;
+  transition: opacity .42s var(--ease);
+}
+.card-flip-overlay.in { opacity: 1; }
+
+/* mini signal bars visual */
+.net-section .bars { display: inline-flex; align-items: flex-end; gap: 3px; height: 14px; vertical-align: -2px; margin-left: 6px; }
+.net-section .bars i { width: 3px; background: var(--accent); border-radius: 1px; opacity: .9; animation: barPulse 1.8s var(--ease) infinite; }
+.net-section .bars i:nth-child(1) { height: 4px; animation-delay: 0s; }
+.net-section .bars i:nth-child(2) { height: 7px; animation-delay: .15s; }
+.net-section .bars i:nth-child(3) { height: 10px; animation-delay: .3s; }
+.net-section .bars i:nth-child(4) { height: 14px; animation-delay: .45s; background: var(--accent-2); }
+@keyframes barPulse { 0%, 100% { transform: scaleY(.6); opacity: .55; } 50% { transform: scaleY(1); opacity: 1; } }
+
+/* STATIC / PROGRESSIVE-ENHANCEMENT LAYOUT (no .js-motion): readable column */
+.net-section:not(.js-motion) .stage { display: block; min-height: auto; padding: 64px 24px 72px; }
+.net-section:not(.js-motion) .constellation { flex-direction: column; max-width: 720px; margin: 0 auto; height: auto; }
+.net-section:not(.js-motion) .spine { display: none; }
+.net-section:not(.js-motion) .helix { position: static; width: auto; height: auto; display: flex; flex-direction: column; gap: 20px; align-items: center; transform: none; }
+.net-section:not(.js-motion) .card { position: static; margin: 0; transform: none !important; opacity: 1 !important; width: min(460px, 92vw); }
+.net-section:not(.js-motion) .section-head { position: static; margin: 0 auto 34px; max-width: 720px; text-align: center; }
+.net-section:not(.js-motion) .counter,
+.net-section:not(.js-motion) .chrome { position: static; display: inline-block; margin: 0 12px 18px 0; }
+
+/* MOBILE / TOUCH REVEAL MODE (.net-reveal added by JS; js-motion off). The
+   modifier is net-reveal, NOT the site's global scroll-reveal class .reveal. */
+.net-section.net-reveal .stage { display: block; padding: 72px 18px 84px; }
+.net-section.net-reveal .constellation { flex-direction: column; max-width: 560px; margin: 0 auto; }
+.net-section.net-reveal .helix { position: static; width: auto; height: auto; display: flex; flex-direction: column; gap: 22px; align-items: center; transform: none; }
+.net-section.net-reveal .card {
+  position: static; margin: 0; width: min(440px, 90vw);
+  opacity: 0; transform: translateY(34px); transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.net-section.net-reveal .card.in { opacity: 1; transform: none; }
+
+@media (max-width: 760px) {
+  .net-section .chrome.tl { font-size: 11px; top: 18px; left: 18px; }
+  .net-section .counter { top: 16px; right: 18px; font-size: 12px; }
+  .net-section .card { width: min(440px, 90vw); }
+}
+
+/* full-page film grain overlay (opacity + visibility driven by JS) */
+#grain { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; mix-blend-mode: overlay; opacity: 0; }
+
+/* velocity-driven chromatic aberration on titles (--ca grows with scroll speed) */
+.net-section .section-head h2 {
+  text-shadow:
+    calc(var(--ca) * 1px) 0 rgba(255,60,90,.55),
+    calc(var(--ca) * -1px) 0 rgba(70,210,255,.55);
+}
+.net-section .card.is-focus h3 {
+  text-shadow:
+    calc(var(--ca) * 1px) 0 rgba(255,60,90,.5),
+    calc(var(--ca) * -1px) 0 rgba(70,210,255,.5),
+    0 0 14px rgba(92,220,255,.35);
+}
+
+/* REDUCED MOTION: the global reset (* animation/transition none) already exists
+   near the top of this file; here we only force the static, readable layout and
+   hide the continuous decorations for this section. */
+@media (prefers-reduced-motion: reduce) {
+  .net-section { height: auto !important; }
+  .net-section .stage { position: static !important; height: auto !important; min-height: auto !important; display: block !important; padding: 64px 24px 72px !important; }
+  .net-section .constellation { flex-direction: column !important; max-width: 720px; margin: 0 auto; height: auto !important; transform: none !important; }
+  .net-section .spine { display: none !important; }
+  .net-section #particles { display: none !important; }
+  .net-section .helix { position: static !important; width: auto !important; height: auto !important; display: flex !important; flex-direction: column; gap: 20px; align-items: center; transform: none !important; }
+  .net-section .card { position: static !important; margin: 0 !important; transform: none !important; opacity: 1 !important; width: min(460px, 92vw); filter: none !important; }
+  .net-section .section-head { position: static !important; margin: 0 auto 34px; max-width: 720px; }
+  .net-section .counter, .net-section .chrome { position: static !important; display: inline-block; margin: 0 12px 18px 0; }
+  .net-section .pkt, .net-section .arc { display: none !important; }
+  #grain { display: none !important; }
+  .net-section .section-head h2, .net-section .card h3 { text-shadow: none !important; }
 }

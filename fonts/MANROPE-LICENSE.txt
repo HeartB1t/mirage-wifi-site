@@ -1,0 +1,18 @@
+Manrope
+Copyright The Manrope Project Authors (https://github.com/sharanda/manrope)
+Reserved Font Name: "Manrope".
+
+Licensed under the SIL Open Font License, Version 1.1.
+Il testo integrale della licenza SIL OFL 1.1 e' lo stesso gia' presente in
+questa cartella come OFL.txt (vale anche per Chakra Petch e JetBrains Mono,
+tutti rilasciati sotto OFL 1.1). Questa licenza consente l'uso, la modifica e
+la ridistribuzione, incluso il self-hosting su un prodotto commerciale, a
+condizione che la licenza accompagni i file del font e che il Reserved Font
+Name non sia usato per font derivati.
+
+File self-hosted in questa cartella:
+  manrope-latin.woff2       (subset latin,     variable, peso 400..700)
+  manrope-latin-ext.woff2   (subset latin-ext, variable, peso 400..700)
+
+Origine: subset woff2 ufficiali serviti da Google Fonts (famiglia Manrope,
+v23). Scaricati una sola volta, nessuna CDN a runtime.

@@ -23,120 +23,307 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
 
-  <a class="skip" href="#top" data-i18n="nav.skip">Skip to content</a>
+  <a class="nav-skip" href="#top" data-i18n="nav.skip">Skip to content</a>
 
   <!-- ============ NAV ============ -->
-  <header class="nav">
+  <header class="nav-bar">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="MirageWiFi, back to top">
-        <span class="brand-mark" aria-hidden="true">
+
+      <a class="nav-brand" href="#top" data-i18n-aria="nav.brandhome" aria-label="MirageWiFi, back to top">
+        <span class="nav-brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
             <path d="M6 18 Q16 7 26 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
             <path d="M10 21.5 Q16 15.5 22 21.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" opacity=".55"/>
             <circle cx="16" cy="25" r="2" fill="currentColor"/>
           </svg>
         </span>
-        <span class="brand-text">
-          <span class="logo">MIRAGE</span>
-          <span class="ghost">what you see isn't there.</span>
+        <span class="nav-brand-text">
+          <span class="nav-logo">MIRAGE</span>
+          <span class="nav-ghost" data-i18n="nav.tagline">what you see isn't there.</span>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Sections">
+
+      <nav class="nav-links" data-i18n-aria="nav.seclabel" aria-label="Sections">
         <a href="#edizioni" data-i18n="nav.editions">Editions</a>
         <a href="#perche" data-i18n="nav.why">Why</a>
         <a href="#moduli" data-i18n="nav.modules">Pro modules</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
-      <div class="lang-switch">
-        <label for="lang-select" class="sr-only" data-i18n="nav.langlabel">Language</label>
-        <select id="lang-select" class="lang-select">
-          <option value="en">EN</option>
-          <option value="it">IT</option>
-          <option value="es">ES</option>
-          <option value="fr">FR</option>
-          <option value="de">DE</option>
-        </select>
+
+      <!-- Flag language selector. One active button (aria-pressed="true").
+           Static default = EN (matches the inline English copy and the
+           no-JS fallback). The script flips active state on click. -->
+      <div class="lang-switch" role="group" data-i18n-aria="nav.langlabel" aria-label="Language">
+
+        <button type="button" class="lang-btn" data-lang="it" data-i18n-aria="lang.it" aria-label="Italiano" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="8" height="16" fill="#008C45"/>
+            <rect x="8" width="8" height="16" fill="#F4F5F0"/>
+            <rect x="16" width="8" height="16" fill="#CD212A"/>
+          </svg>
+          <span class="lang-code">IT</span>
+        </button>
+
+        <button type="button" class="lang-btn is-active" data-lang="en" data-i18n-aria="lang.en" aria-label="English" aria-pressed="true">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <clipPath id="flag-en-clip"><rect width="24" height="16" rx="0"/></clipPath>
+            <g clip-path="url(#flag-en-clip)">
+              <rect width="24" height="16" fill="#012169"/>
+              <path d="M0 0 L24 16 M24 0 L0 16" stroke="#FFFFFF" stroke-width="3.2"/>
+              <path d="M0 0 L24 16 M24 0 L0 16" stroke="#C8102E" stroke-width="1.6"/>
+              <rect x="9.6" width="4.8" height="16" fill="#FFFFFF"/>
+              <rect y="5.6" width="24" height="4.8" fill="#FFFFFF"/>
+              <rect x="10.8" width="2.4" height="16" fill="#C8102E"/>
+              <rect y="6.8" width="24" height="2.4" fill="#C8102E"/>
+            </g>
+          </svg>
+          <span class="lang-code">EN</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="es" data-i18n-aria="lang.es" aria-label="Español" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="24" height="16" fill="#AA151B"/>
+            <rect y="4" width="24" height="8" fill="#F1BF00"/>
+          </svg>
+          <span class="lang-code">ES</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="fr" data-i18n-aria="lang.fr" aria-label="Français" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="8" height="16" fill="#0055A4"/>
+            <rect x="8" width="8" height="16" fill="#F4F5F0"/>
+            <rect x="16" width="8" height="16" fill="#EF4135"/>
+          </svg>
+          <span class="lang-code">FR</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="de" data-i18n-aria="lang.de" aria-label="Deutsch" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="24" height="5.34" fill="#000000"/>
+            <rect y="5.34" width="24" height="5.33" fill="#DD0000"/>
+            <rect y="10.67" width="24" height="5.33" fill="#FFCE00"/>
+          </svg>
+          <span class="lang-code">DE</span>
+        </button>
+
       </div>
-      <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
+
+      <a class="nav-cta" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
     </div>
   </header>
 
   <main id="top">
 
     <!-- ============ HERO ============ -->
-    <section class="hero">
+    <section class="hero-sec">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="kicker reveal" data-i18n="hero.kicker">Wi-Fi security auditing · Kali / Linux</p>
-          <h1 class="reveal"><span data-i18n="hero.h1a">The signal is there.</span><br /><span class="em" data-i18n="hero.h1b">The network</span> <span class="strike" data-i18n="hero.h1c">doesn't know it.</span></h1>
-          <p class="hero-sub reveal" data-i18n="hero.sub">
-            MirageWiFi is a Wi-Fi penetration testing platform with a real-time
-            operational interface: reconnaissance, handshake and PMKID capture, cracking
-            and active attacks in a single console. Proprietary software, two editions.
+
+          <p class="hero-kicker reveal" data-i18n="hero.kick">// Wi-Fi security auditing</p>
+
+          <h1 class="hero-title reveal">
+            <span data-i18n="hero.h1.l1">Recon, capture, crack and strike,</span><br />
+            <span data-i18n="hero.h1.l2">all driven from one</span><br />
+            <span class="hero-grad" data-i18n="hero.h1.l3">operational console.</span>
+          </h1>
+
+          <p class="hero-sub reveal" data-i18n="hero.subtitle">
+            A real-time Wi-Fi penetration testing platform for Kali Linux.
           </p>
+
+          <p class="hero-value reveal" data-i18n="hero.value">
+            MirageWiFi orchestrates the Kali Wi-Fi suite, monitor mode, scanning,
+            handshake and PMKID capture, GPU cracking and active attacks, behind one
+            interface that stays live from the first scan to the final report. You drive
+            the whole assessment without juggling ten terminals and losing the thread.
+          </p>
+
+          <p class="hero-notice reveal" role="note">
+            <span class="hero-notice-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3 2.5 20h19z"/><path d="M12 10v4"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span data-i18n="hero.notice">Use only on networks you own or are authorized in writing to test.</span>
+          </p>
+
           <div class="hero-cta reveal">
-            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
-            <a class="btn btn-ghost btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
+            <a class="nav-cta hero-btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
+            <a class="hero-btn-ghost hero-btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
           </div>
-          <ul class="hero-trust reveal" aria-label="In short">
-            <li><b>Free</b> <span data-i18n="hero.trust1">at zero cost</span></li>
-            <li><b>Pro</b> <span data-i18n="hero.trust2">29 EUR/month, early access</span></li>
-            <li data-i18n="hero.trust3">One console, the whole flow</li>
-          </ul>
-          <p class="hero-note reveal">
-            <b data-i18n="hero.note.b">Early access.</b> <span data-i18n="hero.note.t">Pro opens via waitlist: leave your email and we'll let you know as soon as it's available.</span>
-          </p>
+
         </div>
 
-        <!-- Animated scanner panel (decorative, fictional data) -->
-        <div class="scanner reveal" aria-hidden="true">
-          <div class="scanner-bar">
-            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-            <span class="path">mirage://scan/wlan0 · monitor</span>
-          </div>
-          <div class="scanner-body">
-            <div class="scanline"></div>
-            <div class="scan-row">
-              <span class="essid">Residence-Lab6<span class="bssid">CA:4C:75:11:0A:F2 · ch 6</span></span>
-              <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
-              <span class="enc wpa2">WPA2</span>
+        <!-- Right column: Fable B's live scanner panel (decorative, fictional data only:
+             invented ESSIDs, locally-administered MACs). Table scrolls inside the panel
+             on narrow widths; the panel clips so the page never overflows. -->
+        <div class="hero-visual-slot reveal" aria-hidden="true">
+          <div class="scan-win">
+            <div class="scan-topbar">
+              <span class="scan-dot r"></span><span class="scan-dot y"></span><span class="scan-dot g"></span>
+              <span class="scan-path">mirage, 127.0.0.1:8731</span>
+              <span class="scan-live" data-i18n="scan.live">LIVE</span>
             </div>
-            <div class="scan-row">
-              <span class="essid">Office-Lab02<span class="bssid">A2:1B:3F:9C:44:8E · ch 11</span></span>
-              <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
-              <span class="enc wpa3">WPA3</span>
-            </div>
-            <div class="scan-row">
-              <span class="essid">Reteditest<span class="bssid">D6:24:DD:24:1A:63 · ch 1</span></span>
-              <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
-              <span class="enc eap">EAP</span>
-            </div>
-            <div class="scan-row">
-              <span class="essid">Casa-Demo<span class="bssid">AE:14:BF:77:2E:19 · ch 3</span></span>
-              <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
-              <span class="enc wep">WEP</span>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div class="scan-sweep" aria-hidden="true"></div>
 
-      <!-- Ethical / legal notice in evidence -->
-      <div class="wrap">
-        <div class="ethics reveal" role="note">
-          <span class="sign" aria-hidden="true">⚠</span>
-          <div>
-            <h2 data-i18n="ethics.title">Lawful use only</h2>
-            <p>
-              <span data-i18n="ethics.p1">Auditing and penetration testing tool. It must be used </span><b data-i18n="ethics.b">exclusively on networks and systems you own or for which you have explicit, written authorization to test</b><span data-i18n="ethics.p2">. You are solely responsible for complying with applicable laws (LICENSE, sections 9 and 10: Lawful Use and Export/Dual-Use).</span>
-            </p>
+            <div class="scan-view">
+              <div class="scan-grid" role="table" aria-label="Networks in range (sample data)">
+                <div class="scan-hrow" role="row">
+                  <span role="columnheader" data-i18n="scan.col.pwr">PWR</span>
+                  <span role="columnheader" data-i18n="scan.col.essid">ESSID</span>
+                  <span role="columnheader" data-i18n="scan.col.bssid">BSSID</span>
+                  <span role="columnheader" data-i18n="scan.col.ch">CH</span>
+                  <span role="columnheader" data-i18n="scan.col.band">BAND</span>
+                  <span role="columnheader" data-i18n="scan.col.sec">SEC</span>
+                  <span role="columnheader" data-i18n="scan.col.wps">WPS</span>
+                  <span role="columnheader" data-i18n="scan.col.cli">CLI</span>
+                  <span role="columnheader" data-i18n="scan.col.st">ST</span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">Residence-Lab6</span>
+                  <span class="scan-bssid">CA:4C:75:11:0A:F2</span>
+                  <span class="scan-ch">6</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">3</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s2" data-sig-base="2"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <span class="scan-essid">Office-Lab02</span>
+                  <span class="scan-bssid">A2:1B:3F:9C:44:8E</span>
+                  <span class="scan-ch">11</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wpa3">WPA3</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">1</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s4" data-sig-base="4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <span class="scan-essid">Reteditest</span>
+                  <span class="scan-bssid">D6:24:DD:24:1A:63</span>
+                  <span class="scan-ch">1</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc eap">EAP</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">2</span>
+                  <span class="scan-st"><i class="scan-tag hs">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s1" data-sig-base="1"><i class="on"></i><i></i><i></i><i></i></span>
+                  <span class="scan-essid">Casa-Demo</span>
+                  <span class="scan-bssid">AE:14:BF:77:2E:19</span>
+                  <span class="scan-ch">3</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">0</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key on">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">Lab-Guest</span>
+                  <span class="scan-bssid">7A:33:9C:02:5B:1D</span>
+                  <span class="scan-ch">36</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa3">WPA3</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">4</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s2" data-sig-base="2"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <span class="scan-essid">CoworkingDemo</span>
+                  <span class="scan-bssid">6E:0D:4F:88:AC:21</span>
+                  <span class="scan-ch">149</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">6</span>
+                  <span class="scan-st"><i class="scan-tag hs">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">&lt;hidden&gt;</span>
+                  <span class="scan-bssid">2E:71:A0:4C:33:9B</span>
+                  <span class="scan-ch">44</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">0</span>
+                  <span class="scan-st"><i class="scan-tag hs">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s3" data-sig-base="3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">MeshDemo-6E</span>
+                  <span class="scan-bssid">6A:88:1C:0D:5E:42</span>
+                  <span class="scan-ch">37</span>
+                  <span class="scan-band">6G</span>
+                  <span class="scan-enc wpa3">WPA3</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">2</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s1" data-sig-base="1"><i class="on"></i><i></i><i></i><i></i></span>
+                  <span class="scan-essid">Legacy-AP</span>
+                  <span class="scan-bssid">B2:55:7E:19:84:C0</span>
+                  <span class="scan-ch">9</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wep">WEP</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">1</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key on">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig s4" data-sig-base="4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <span class="scan-essid">Garden-Demo</span>
+                  <span class="scan-bssid">AA:9F:60:3D:71:0E</span>
+                  <span class="scan-ch">157</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">5</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Ethical / legal notice in evidence (kept from the base) -->
+    <div class="wrap">
+      <div class="ethics reveal" role="note">
+        <span class="sign" aria-hidden="true">⚠</span>
+        <div>
+          <h2 data-i18n="ethics.title">Lawful use only</h2>
+          <p>
+            <span data-i18n="ethics.p1">Auditing and penetration testing tool. It must be used </span><b data-i18n="ethics.b">exclusively on networks and systems you own or for which you have explicit, written authorization to test</b><span data-i18n="ethics.p2">. You are solely responsible for complying with applicable laws (LICENSE, sections 9 and 10: Lawful Use and Export/Dual-Use).</span>
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- ============ EDITIONS ============ -->
     <section id="edizioni">
@@ -260,67 +447,193 @@
       </div>
     </section>
 
-    <!-- ============ PRO MODULES ============ -->
-    <section id="moduli">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="kicker"><span class="sec-no">03</span> <span data-i18n="mod.kicker">What Pro unlocks</span></p>
-          <h2 data-i18n="mod.h2">The offensive arsenal, driven by a single console.</h2>
-          <p data-i18n="mod.p">
-            Every module is integrated into the flow: from scan to target, from target to
-            capture, from capture to crack, with per-panel attack interface selection
-            when you have multiple adapters.
-          </p>
+    <!-- ============ NETWORK + ARSENAL (3D helix) ============
+         Integrated from reference/spine-arsenal.html. Progressive enhancement:
+         static readable column by default; desktop + fine pointer + motion gets
+         the sticky scroll-jacked helix; mobile / touch / reduced-motion fall back
+         to a vertical reveal. Spine labels use synthetic ESSID + locally
+         administered MAC (GDPR-safe). Scoped under #moduli (nav anchor kept). -->
+    <section class="net-section" id="moduli" aria-labelledby="net-title">
+      <div class="stage" id="stage">
+
+        <canvas id="particles" aria-hidden="true"></canvas>
+
+        <div class="chrome tl" aria-hidden="true"><span class="dot">//</span> <span data-i18n="arsenal.chrome">NETWORK OVERVIEW</span></div>
+        <div class="counter" id="counter" aria-hidden="true"><b id="counterNum">01</b> / 10</div>
+
+        <div class="section-head">
+          <h2 id="net-title"><span data-i18n="arsenal.h2a">The network and</span> <span class="accent" data-i18n="arsenal.h2b">the arsenal</span></h2>
+          <p data-i18n="arsenal.p">A single console keeps the signal under control: from the first frame heard to the proof ready to hand over.</p>
         </div>
 
-        <div class="modules">
-          <div class="mod cap reveal">
-            <p class="mtag">Capture · GPU</p>
-            <h3 data-i18n="m1.h">Accelerated cracking</h3>
-            <p data-i18n="m1.p">Handshakes and PMKIDs passed directly to hashcat on GPU, with queues and a selectable power peak from the console.</p>
+        <div class="constellation" id="constellation">
+
+          <!-- SPINE: synthetic ESSID + locally administered MAC + channel -->
+          <div class="spine" aria-hidden="true">
+            <div class="beam"></div>
+
+            <div class="arcs">
+              <span class="arc"></span>
+              <span class="arc p"></span>
+              <span class="arc"></span>
+            </div>
+
+            <div class="packets">
+              <span class="pkt"></span><span class="pkt"></span>
+              <span class="pkt"></span><span class="pkt"></span>
+            </div>
+
+            <div class="node right" data-node="0" style="top:8%">
+              <span class="pip"></span>
+              <span class="tag"><span class="es">Residence-Lab6</span><br>CA:4C:75:11:0A:F2 / ch 6</span>
+            </div>
+            <div class="node left" data-node="1" style="top:29%">
+              <span class="pip"></span>
+              <span class="tag"><span class="es">Officina-Mesh</span><br>7A:1B:3D:09:C4:22 / ch 36</span>
+            </div>
+            <div class="node right" data-node="2" style="top:50%">
+              <span class="pip"></span>
+              <span class="tag"><span class="es">Caffe-Nord_5G</span><br>AE:90:2C:77:51:0B / ch 149</span>
+            </div>
+            <div class="node left" data-node="3" style="top:71%">
+              <span class="pip"></span>
+              <span class="tag"><span class="es">Studio-Test</span><br>06:2F:A1:88:3C:D4 / ch 11</span>
+            </div>
+            <div class="node right" data-node="4" style="top:92%">
+              <span class="pip"></span>
+              <span class="tag"><span class="es">Rete-di-prova</span><br>E2:55:19:B0:6A:7D / ch 1</span>
+            </div>
           </div>
-          <div class="mod trans reveal">
-            <p class="mtag">Transmit</p>
-            <h3 data-i18n="m2.h">Evil Twin + captive portal</h3>
-            <p data-i18n="m2.p">Clone access point with captive portal, KARMA and dynamic-ESSID portal; PSK validation against the captured handshake.</p>
-          </div>
-          <div class="mod trans reveal">
-            <p class="mtag">Transmit</p>
-            <h3 data-i18n="m3.h">WPA3 downgrade · SSID Confusion</h3>
-            <p data-i18n="m3.p">SAE downgrade to capture an offline-crackable 4-way handshake and multi-BSS SSID Confusion (CVE-2023-52424).</p>
-          </div>
-          <div class="mod trans reveal">
-            <p class="mtag">Transmit · EAP</p>
-            <h3 data-i18n="m4.h">WPA-Enterprise</h3>
-            <p data-i18n="m4.p">EAP rogue AP via eaphammer, GTC downgrade and capture of MSCHAPv2 hashes from corporate credentials.</p>
-          </div>
-          <div class="mod post reveal">
-            <p class="mtag">Post-exploit · LAN</p>
-            <h3 data-i18n="m5.h">MITM + Network Discovery</h3>
-            <p data-i18n="m5.p">Man-in-the-middle on the LAN once inside, host discovery, RouterSploit, custom exploits and BeEF.</p>
-          </div>
-          <div class="mod dstr reveal">
-            <p class="mtag">Destruct</p>
-            <h3 data-i18n="m6.h">Targeted DoS</h3>
-            <p data-i18n="m6.p">Deauth and disruption aimed at a single target to force clients to re-associate and complete the capture.</p>
-          </div>
-          <div class="mod post reveal">
-            <p class="mtag">Report</p>
-            <h3 data-i18n="m7.h">Professional PDF reports</h3>
-            <p data-i18n="m7.p">Executive summary, scope and authorization, findings with severity and remediation, ready to deliver to the client.</p>
-          </div>
-          <div class="mod ai reveal">
-            <p class="mtag">AI Advisor</p>
-            <h3 data-i18n="m8.h">Next-step suggestion</h3>
-            <p data-i18n="m8.p">Contextual advice on the next attack step, a single step at a time: local Ollama or cloud BYOK, never the whole chain automatically.</p>
-          </div>
-          <div class="mod cap reveal">
-            <p class="mtag" data-i18n="m9.tag">Automation</p>
-            <h3 data-i18n="m9.h">Attack chains</h3>
-            <p data-i18n="m9.p">Automated sequences of scan, deauth, capture and crack, orchestrated from the same interface with operator control.</p>
-          </div>
-        </div>
-      </div>
+
+          <!-- ARSENAL CARDS on the 3D helix (10). Approved product copy. -->
+          <div class="helix" id="helix">
+
+            <article class="card" aria-labelledby="c1t">
+              <a class="card-link" href="modules/01-operational-console.html" aria-label="Open module: Operational console">
+              <div class="glass">
+                <span class="idx">01</span>
+                <span class="tag" data-i18n="ars.c1.tag">Console</span>
+                <h3 id="c1t" data-i18n="ars.c1.h">Operational console</h3>
+                <p class="desc" data-i18n="ars.c1.p">The whole arsenal from one console: every module sits in the flow, with per-panel attack interface selection when you run multiple adapters.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c1.dk">flow</span> <span data-i18n="ars.c1.dv">scan · capture · crack</span><span class="bars"><i></i><i></i><i></i><i></i></span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c2t">
+              <a class="card-link" href="modules/02-gpu-cracking.html" aria-label="Open module: Accelerated cracking">
+              <div class="glass">
+                <span class="idx">02</span>
+                <span class="tag" data-i18n="ars.c2.tag">Capture · GPU</span>
+                <h3 id="c2t" data-i18n="ars.c2.h">Accelerated cracking</h3>
+                <p class="desc" data-i18n="ars.c2.p">Handshakes and PMKIDs passed directly to hashcat on GPU, with queues and a selectable power peak from the console.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c2.dk">engine</span> <span data-i18n="ars.c2.dv">hashcat</span> <span class="v" data-i18n="ars.c2.dvv">GPU</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c3t">
+              <a class="card-link" href="modules/03-evil-twin-captive-portal.html" aria-label="Open module: Evil Twin and captive portal">
+              <div class="glass">
+                <span class="idx">03</span>
+                <span class="tag" data-i18n="ars.c3.tag">Transmit</span>
+                <h3 id="c3t" data-i18n="ars.c3.h">Evil Twin + captive portal</h3>
+                <p class="desc" data-i18n="ars.c3.p">Clone access point with captive portal, KARMA and dynamic-ESSID portal; PSK validation against the captured handshake.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c3.dk">clone</span> <span data-i18n="ars.c3.dv">AP · captive portal</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c4t">
+              <a class="card-link" href="modules/04-wpa3-downgrade-ssid-confusion.html" aria-label="Open module: WPA3 downgrade and SSID Confusion">
+              <div class="glass">
+                <span class="idx">04</span>
+                <span class="tag" data-i18n="ars.c4.tag">Transmit</span>
+                <h3 id="c4t" data-i18n="ars.c4.h">WPA3 downgrade · SSID Confusion</h3>
+                <p class="desc" data-i18n="ars.c4.p">SAE downgrade to capture an offline-crackable 4-way handshake and multi-BSS SSID Confusion (CVE-2023-52424).</p>
+                <div class="detail"><span class="k" data-i18n="ars.c4.dk">downgrade</span> <span data-i18n="ars.c4.dv">SAE</span> <span class="v" data-i18n="ars.c4.dvv">offline</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c5t">
+              <a class="card-link" href="modules/05-wpa-enterprise.html" aria-label="Open module: WPA-Enterprise">
+              <div class="glass">
+                <span class="idx">05</span>
+                <span class="tag" data-i18n="ars.c5.tag">Transmit · EAP</span>
+                <h3 id="c5t" data-i18n="ars.c5.h">WPA-Enterprise</h3>
+                <p class="desc" data-i18n="ars.c5.p">EAP rogue AP via eaphammer, GTC downgrade and capture of MSCHAPv2 hashes from corporate credentials.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c5.dk">capture</span> <span class="v" data-i18n="ars.c5.dvv">MSCHAPv2</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c6t">
+              <a class="card-link" href="modules/06-mitm-network-discovery.html" aria-label="Open module: MITM and Network Discovery">
+              <div class="glass">
+                <span class="idx">06</span>
+                <span class="tag" data-i18n="ars.c6.tag">Post-exploit · LAN</span>
+                <h3 id="c6t" data-i18n="ars.c6.h">MITM + Network Discovery</h3>
+                <p class="desc" data-i18n="ars.c6.p">Man-in-the-middle on the LAN once inside, host discovery, RouterSploit, custom exploits and BeEF.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c6.dk">post</span> <span data-i18n="ars.c6.dv">MITM · discovery</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c7t">
+              <a class="card-link" href="modules/07-targeted-dos.html" aria-label="Open module: Targeted DoS">
+              <div class="glass">
+                <span class="idx">07</span>
+                <span class="tag" data-i18n="ars.c7.tag">Destruct</span>
+                <h3 id="c7t" data-i18n="ars.c7.h">Targeted DoS</h3>
+                <p class="desc" data-i18n="ars.c7.p">Deauth and disruption aimed at a single target to force clients to re-associate and complete the capture.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c7.dk">deauth</span> <span class="v" data-i18n="ars.c7.dvv">targeted</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c8t">
+              <a class="card-link" href="modules/08-pdf-reports.html" aria-label="Open module: Professional PDF reports">
+              <div class="glass">
+                <span class="idx">08</span>
+                <span class="tag" data-i18n="ars.c8.tag">Report</span>
+                <h3 id="c8t" data-i18n="ars.c8.h">Professional PDF reports</h3>
+                <p class="desc" data-i18n="ars.c8.p">Executive summary, scope and authorization, findings with severity and remediation, ready to deliver to the client.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c8.dk">out</span> <span class="v" data-i18n="ars.c8.dvv">PDF</span> · <span data-i18n="ars.c8.dv">it en es fr de</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c9t">
+              <a class="card-link" href="modules/09-ai-advisor.html" aria-label="Open module: AI Advisor next-step suggestion">
+              <div class="glass">
+                <span class="idx">09</span>
+                <span class="tag" data-i18n="ars.c9.tag">AI Advisor</span>
+                <h3 id="c9t" data-i18n="ars.c9.h">Next-step suggestion</h3>
+                <p class="desc" data-i18n="ars.c9.p">Contextual advice on the next attack step, a single step at a time: local Ollama or cloud BYOK, never the whole chain automatically.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c9.dk">AI</span> <span data-i18n="ars.c9.dv">Ollama · cloud BYOK</span></div>
+              </div>
+              </a>
+            </article>
+
+            <article class="card" aria-labelledby="c10t">
+              <a class="card-link" href="modules/10-attack-chains.html" aria-label="Open module: Attack chains">
+              <div class="glass">
+                <span class="idx">10</span>
+                <span class="tag" data-i18n="ars.c10.tag">Automation</span>
+                <h3 id="c10t" data-i18n="ars.c10.h">Attack chains</h3>
+                <p class="desc" data-i18n="ars.c10.p">Automated sequences of scan, deauth, capture and crack, orchestrated from the same interface with operator control.</p>
+                <div class="detail"><span class="k" data-i18n="ars.c10.dk">chain</span> <span data-i18n="ars.c10.dv">scan · deauth · capture · crack</span></div>
+              </div>
+              </a>
+            </article>
+
+          </div><!-- /helix -->
+        </div><!-- /constellation -->
+      </div><!-- /stage -->
+
+      <!-- full-page film grain overlay; opacity + visibility driven by JS, scoped to this section -->
+      <canvas id="grain" aria-hidden="true"></canvas>
     </section>
 
     <!-- ============ FAQ ============ -->
@@ -579,14 +892,23 @@
       apply(lang);
       updateShare(lang);
 
-      var sel = document.getElementById("lang-select");
-      if (sel) {
-        sel.value = lang;
-        sel.addEventListener("change", function () {
-          var v = sel.value;
+      // ---- Flag language selector: replaces the old <select> ----
+      var langBtns = document.querySelectorAll(".lang-btn");
+      function syncLangButtons(active) {
+        for (var i = 0; i < langBtns.length; i++) {
+          var isOn = langBtns[i].getAttribute("data-lang") === active;
+          langBtns[i].setAttribute("aria-pressed", isOn ? "true" : "false");
+          langBtns[i].classList.toggle("is-active", isOn);
+        }
+      }
+      syncLangButtons(lang);
+      for (var b = 0; b < langBtns.length; b++) {
+        langBtns[b].addEventListener("click", function () {
+          var v = this.getAttribute("data-lang");
           apply(v);
           updateShare(v);
           try { localStorage.setItem("lang", v); } catch (e) {}
+          syncLangButtons(v);
         });
       }
     })();
@@ -613,6 +935,573 @@
       for (var i = 0; i < reveals.length; i++) io.observe(reveals[i]);
       // Failsafe: if something is not observed in time, show everything anyway.
       window.setTimeout(revealAll, 2500);
+    })();
+  </script>
+
+  <!-- Hero scanner: populate "live" + layer live leggero.
+       Al load il pannello parte con topbar + intestazioni colonne visibili e
+       le righe nascoste (stato CSS keyed su .js-reveal); poi le righe vengono
+       scoperte una alla volta a ritmo di scansione (fade + slide-up, barrette
+       che salgono, CLI che conta da 0). Finito il populate parte un layer live
+       sottile: ogni ~3-5s il conteggio CLI di una riga a caso deriva di +/-1.
+       Progressive enhancement: stessa gate dello scroll-reveal (serve IO +
+       motion ok e .js-reveal gia' sul root). Senza JS o con reduced-motion le
+       righe restano visibili statiche e non parte nessun populate ne layer. -->
+  <script>
+    (function () {
+      "use strict";
+      var root = document.documentElement;
+      if (!("IntersectionObserver" in window) ||
+          (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        return; // righe gia' visibili via CSS: nessun populate
+      }
+      if (!root.classList.contains("js-reveal")) return; // stato nascosto keyed su .js-reveal
+
+      var grid = document.querySelector(".hero-visual-slot .scan-grid");
+      if (!grid) return;
+      var rows = Array.prototype.slice.call(grid.querySelectorAll(".scan-drow"));
+      if (!rows.length) return;
+
+      var BASE_DELAY = 260; // attesa prima della prima riga scoperta
+      var STAGGER = 300;    // ritmo di scoperta tra una riga e l'altra
+      var COUNT_MS = 480;   // durata del count-up del valore CLI
+
+      // CLI che sale da 0 al valore finale mentre la riga compare
+      function countUp(cell, target) {
+        if (target <= 0) { cell.textContent = "0"; return; }
+        var start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = (ts - start) / COUNT_MS;
+          if (p >= 1) { cell.textContent = String(target); return; }
+          cell.textContent = String(Math.round(target * p));
+          window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
+      }
+
+      function revealRow(row) {
+        row.classList.add("seen");
+        var cell = row.querySelector(".scan-cli");
+        if (cell) {
+          var finalVal = parseInt(cell.textContent, 10);
+          if (!isNaN(finalVal)) {
+            cell.setAttribute("data-base", String(finalVal)); // valore di riferimento per il layer live
+            countUp(cell, finalVal);
+          }
+        }
+      }
+
+      // scoperta progressiva delle righe
+      for (var i = 0; i < rows.length; i++) {
+        (function (row, idx) {
+          window.setTimeout(function () { revealRow(row); }, BASE_DELAY + idx * STAGGER);
+        })(rows[i], i);
+      }
+
+      // ---- LAYER LIVE: deriva leggera del conteggio CLI (client che entrano/escono) ----
+      // Solo testo + pulse di opacita'. Resta entro +/-2 dal valore base e nel range 0..9.
+      var liveStart = BASE_DELAY + rows.length * STAGGER + 600;
+      window.setTimeout(function () {
+        function tick() {
+          if (!document.hidden) {
+            var row = rows[Math.floor(Math.random() * rows.length)];
+            var cell = row.querySelector(".scan-cli");
+            if (cell && cell.hasAttribute("data-base")) {
+              var base = parseInt(cell.getAttribute("data-base"), 10);
+              var cur = parseInt(cell.textContent, 10);
+              if (!isNaN(base) && !isNaN(cur)) {
+                var lo = Math.max(0, base - 2);
+                var hi = Math.min(9, base + 2);
+                var next = cur + (Math.random() < 0.5 ? -1 : 1);
+                if (next < lo) next = cur + 1;
+                if (next > hi) next = cur - 1;
+                if (next < 0) next = 0;
+                if (next !== cur) {
+                  cell.classList.add("cli-bump");
+                  cell.textContent = String(next);
+                  window.setTimeout(function () { cell.classList.remove("cli-bump"); }, 260);
+                }
+              }
+            }
+            // Deriva del segnale PWR (rete viva): +/-1 barra attorno al valore base, range 1..4.
+            if (Math.random() < 0.55) {
+              var srow = rows[Math.floor(Math.random() * rows.length)];
+              var sig = srow.querySelector(".scan-sig");
+              if (sig) {
+                var bars = sig.querySelectorAll("i");
+                var lvl = sig.querySelectorAll("i.on").length;
+                var sbase = parseInt(sig.getAttribute("data-sig-base"), 10);
+                if (isNaN(sbase)) sbase = lvl;
+                var nlvl = lvl + (Math.random() < 0.5 ? -1 : 1);
+                var slo = Math.max(1, sbase - 1);
+                var shi = Math.min(4, sbase + 1);
+                if (nlvl < slo) nlvl = lvl + 1;
+                if (nlvl > shi) nlvl = lvl - 1;
+                if (nlvl < 1) nlvl = 1;
+                if (nlvl > 4) nlvl = 4;
+                if (nlvl !== lvl) {
+                  for (var b = 0; b < bars.length; b++) {
+                    if (b < nlvl) bars[b].classList.add("on");
+                    else bars[b].classList.remove("on");
+                  }
+                  sig.className = "scan-sig s" + nlvl;
+                }
+              }
+            }
+          }
+          window.setTimeout(tick, 3000 + Math.random() * 2000);
+        }
+        window.setTimeout(tick, 3000 + Math.random() * 2000);
+      }, liveStart);
+    })();
+  </script>
+
+  <!-- Network + arsenal section: 3D helix of cards orbiting the signal spine.
+       Integrated from reference/spine-arsenal.html. Progressive enhancement:
+       - reduced-motion              -> return early, static CSS column.
+       - mobile (<=760px) or touch   -> lightweight vertical reveal, no scroll-jack.
+       - desktop + fine pointer      -> sticky scroll-jacked helix with inertia.
+       In a multi-section page the wheel is captured ONLY while the sticky stage is
+       pinned and the virtual progress is strictly inside (0,1); at the edges it
+       RELEASES so native scroll reaches the other sections and can return. Film
+       grain is gated to this section's visibility so it never films the whole page.
+       Only transform/opacity/filter + canvas 2D are animated. -->
+  <script>
+    (function () {
+      "use strict";
+
+      var section = document.getElementById("moduli");
+      if (!section || !section.classList.contains("net-section")) return;
+      var stage = document.getElementById("stage");
+      var constellation = document.getElementById("constellation");
+      var cardEls = Array.prototype.slice.call(section.querySelectorAll(".card"));
+      var nodeEls = Array.prototype.slice.call(section.querySelectorAll(".node"));
+      var counterNum = document.getElementById("counterNum");
+      var canvas = document.getElementById("particles");
+      var root = document.documentElement;
+      if (!stage || !constellation || !cardEls.length) return;
+
+      // ================= EFFECT KNOBS =================
+      var PART_COUNT     = 90;      // particle density (upper clamp)
+      var BLOOM          = 1.0;     // spine + particle glow multiplier
+      var GRAIN_OPACITY  = 0.05;    // film grain strength (0 = off)
+      var GRAIN_EVERY    = 2;       // regenerate grain every N frames
+      var INERTIA_K      = 0.07;    // scroll-jack easing (heavy inertia)
+      var WHEEL_STEP     = 0.00065; // virtual progress added per wheel-delta pixel
+      var CA_MAX         = 6;       // max chromatic aberration on titles (px)
+      var CA_GAIN        = 110;     // |scroll velocity| -> CA (px)
+      var DEPTH_T        = 0.60;    // cards with front-factor below this get atmospheric blur
+      var DEPTH_BLUR_MAX = 4;       // max blur (px) for the farthest cards
+      var DEPTH_DIM_MIN  = 0.60;    // min brightness for the farthest cards
+
+      function nowMs(){ return (window.performance && performance.now) ? performance.now() : Date.now(); }
+
+      // ---- capability / preference detection ----
+      var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var mobileMQ = window.matchMedia("(max-width: 760px)");
+      // Fine pointer + hover = mouse: scroll-jacking is safe. Touch / coarse pointer
+      // (phones, tablets) must NOT be jacked or native touch scroll would be trapped.
+      var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+      // Progressive-enhancement baseline is the static CSS layout. Motion only if allowed.
+      if (reduceMQ.matches) return; // static, fully readable layout; nothing else runs.
+
+      // ---- FLIP transition on card click (desktop AND mobile paths; reduced-motion
+      // returned above, so there the plain <a> navigation is the fallback). A clone of
+      // the clicked card is frozen at its on-screen box, expanded to fill the viewport
+      // and crossfaded into the site background, then we navigate. transform + opacity
+      // only. Non-frontal helix cards have pointer-events:none, so only the frontal or
+      // hovered card can be clicked; on the static/mobile layout every card is clickable.
+      (function initFlip(){
+        var FLIP_EASE = "cubic-bezier(.22,.61,.36,1)";
+        var FLIP_DUR = 460; // ms; the fallback timer is kept in sync below
+        var flipping = false;
+
+        section.addEventListener("click", function(e){
+          var link = e.target.closest ? e.target.closest(".card-link") : null;
+          if (!link) return;
+          // Let the browser handle modified / non-primary clicks (new tab, etc.).
+          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          var href = link.getAttribute("href");
+          if (!href || flipping) return;
+          e.preventDefault();
+          flipping = true;
+
+          var card = link.closest(".card") || link;
+          var rect = card.getBoundingClientRect();
+          var vw = window.innerWidth, vh = window.innerHeight;
+
+          var overlay = document.createElement("div");
+          // net-section class so the cloned card inherits the full glass/text styling
+          // (the clone lives at body level, outside the real section).
+          overlay.className = "net-section card-flip-overlay";
+
+          var clone = card.cloneNode(true);
+          clone.className = "card card-flip-clone";
+          var dup = clone.querySelectorAll("[id]");
+          for (var i = 0; i < dup.length; i++) dup[i].removeAttribute("id");
+          clone.removeAttribute("aria-labelledby");
+          clone.setAttribute("aria-hidden", "true");
+          clone.style.cssText =
+            "position:fixed;left:" + rect.left + "px;top:" + rect.top + "px;" +
+            "width:" + rect.width + "px;height:" + rect.height + "px;margin:0;" +
+            "transform:none;opacity:1;transform-origin:center center;" +
+            "transition:transform " + FLIP_DUR + "ms " + FLIP_EASE + ",opacity " + FLIP_DUR + "ms " + FLIP_EASE + ";" +
+            "will-change:transform,opacity;pointer-events:none;z-index:1;filter:none;";
+
+          overlay.appendChild(clone);
+          document.body.appendChild(overlay);
+
+          var scale = Math.max(vw / rect.width, vh / rect.height) * 1.06;
+          var tx = (vw / 2) - (rect.left + rect.width / 2);
+          var ty = (vh / 2) - (rect.top + rect.height / 2);
+
+          var navigated = false;
+          function go(){ if (navigated) return; navigated = true; window.location.href = href; }
+
+          requestAnimationFrame(function(){
+            requestAnimationFrame(function(){
+              overlay.classList.add("in");
+              clone.style.transform =
+                "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + scale.toFixed(3) + ")";
+              clone.style.opacity = "0.14";
+            });
+          });
+
+          clone.addEventListener("transitionend", function(ev){
+            if (ev.propertyName === "transform") go();
+          });
+          setTimeout(go, FLIP_DUR + 120); // fallback if transitionend never fires
+        }, false);
+      })();
+
+      // ---- WON'T-ORBIT PATH: mobile / touch => lighter vertical reveal ----
+      if (mobileMQ.matches || !finePointer){
+        section.classList.add("net-reveal"); // not "reveal": that is the site's global scroll-reveal class
+        startParticles();
+        if ("IntersectionObserver" in window){
+          var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+          }, {threshold:0.25});
+          cardEls.forEach(function(c){ io.observe(c); });
+        } else {
+          cardEls.forEach(function(c){ c.classList.add("in"); });
+        }
+        return;
+      }
+
+      // ---- DESKTOP ORBIT PATH ----
+      section.classList.add("js-motion");
+      root.style.setProperty("--bloom", BLOOM);
+      startParticles();
+      initGrain();
+
+      var helix = document.getElementById("helix");
+
+      // ---- helix geometry ----
+      var R      = 340;    // helix radius (px)
+      var STEP   = 54;     // angular seat spacing between cards (deg)
+      var RISE   = 40;     // vertical rise per card (px)
+      var SPAN   = 486;    // scroll rotates the helix this many deg (9*STEP: card 01 -> 10)
+      var IDLE   = 0.004;  // idle auto-rotation (deg per ms)
+      var LERP   = 0.085;  // parallax smoothing
+      var HLERP  = 0.18;   // hover swing-to-front smoothing
+
+      var N = cardEls.length;
+
+      var cards = cardEls.map(function(el,i){
+        return {
+          el: el, i: i,
+          ang: i * STEP,
+          rise: i * RISE - (N - 1) / 2 * RISE,
+          hovered: false,
+          hv: 0
+        };
+      });
+
+      cards.forEach(function(c){
+        c.el.addEventListener("pointerenter", function(){ c.hovered = true; });
+        c.el.addEventListener("pointerleave", function(){ c.hovered = false; });
+        // focusin/focusout (bubbling) so keyboard focus on the inner .card-link
+        // still swings the card to the front.
+        c.el.addEventListener("focusin",  function(){ c.hovered = true; });
+        c.el.addEventListener("focusout", function(){ c.hovered = false; });
+      });
+
+      // ======================================================================
+      // SCROLL-JACKING with heavy inertia. Wheel is intercepted only while the
+      // sticky stage is pinned and progress is inside (0,1); at the edges we
+      // release so native scroll reaches the rest of the page and can return.
+      // ======================================================================
+      var progress = 0, velocity = 0, lastProgress = 0;
+      var vTarget = 0, vCurrent = 0, engaged = false, releasedUntil = 0;
+      var RELEASE_MS = 450;
+
+      function setEngaged(on){
+        if (on === engaged) return;
+        engaged = on;
+        // Instant lockstep: suppress the site's smooth scroll-behavior while we
+        // drive window.scrollTo every frame, restore it on release.
+        root.style.scrollBehavior = on ? "auto" : "";
+      }
+
+      function metrics(){
+        var rect = section.getBoundingClientRect();
+        var maxRange = section.offsetHeight - window.innerHeight;
+        if (maxRange < 1) maxRange = 1;
+        var top = window.pageYOffset + rect.top;
+        return {rect:rect, maxRange:maxRange, top:top};
+      }
+
+      window.addEventListener("wheel", function(e){
+        if (!engaged) return;
+        var dir = e.deltaY;
+        var atTop = vTarget <= 0.0005;
+        var atBottom = vTarget >= 0.9995;
+        if ((atTop && dir < 0) || (atBottom && dir > 0)){
+          setEngaged(false);
+          releasedUntil = nowMs() + RELEASE_MS;
+          return; // do NOT preventDefault: native scroll escapes
+        }
+        e.preventDefault();
+        vTarget += dir * WHEEL_STEP;
+        if (vTarget < 0) vTarget = 0; else if (vTarget > 1) vTarget = 1;
+      }, {passive:false});
+
+      function updateScroll(now){
+        var m = metrics();
+        var np = (window.pageYOffset - m.top) / m.maxRange;
+        np = np < 0 ? 0 : (np > 1 ? 1 : np);
+        var pinned = (m.rect.top <= 0.5) && (m.rect.bottom >= window.innerHeight - 0.5);
+
+        if (pinned && !engaged && now > releasedUntil){
+          setEngaged(true); vTarget = vCurrent = np;
+        } else if (!pinned && engaged){
+          setEngaged(false);
+        }
+
+        if (engaged){
+          vCurrent += (vTarget - vCurrent) * INERTIA_K;
+          progress = vCurrent < 0 ? 0 : (vCurrent > 1 ? 1 : vCurrent);
+          window.scrollTo(0, m.top + progress * m.maxRange);
+        } else {
+          vTarget = vCurrent = np;
+          progress = np;
+        }
+
+        velocity = progress - lastProgress;
+        lastProgress = progress;
+      }
+
+      window.addEventListener("resize", function(){ resizeCanvas(); resizeGrain(); }, {passive:true});
+
+      // ---- cursor parallax (lerped): tilts the whole constellation ----
+      var pTargetX = 0, pTargetY = 0, pCurX = 0, pCurY = 0;
+      stage.addEventListener("pointermove", function(e){
+        pTargetX = (e.clientX / window.innerWidth) - 0.5;
+        pTargetY = (e.clientY / window.innerHeight) - 0.5;
+      }, {passive:true});
+      stage.addEventListener("pointerleave", function(){ pTargetX = 0; pTargetY = 0; });
+
+      var start = nowMs();
+      var activeIdx = -1;
+      var caCur = 0;
+
+      function norm180(a){ return ((a % 360) + 540) % 360 - 180; }
+      function lerp(a,b,t){ return a + (b - a) * t; }
+
+      function render(now){
+        updateScroll(now);
+
+        var caTarget = Math.abs(velocity) * CA_GAIN;
+        if (caTarget > CA_MAX) caTarget = CA_MAX;
+        caCur += (caTarget - caCur) * 0.2;
+        root.style.setProperty("--ca", caCur.toFixed(2));
+
+        pCurX += (pTargetX - pCurX) * LERP;
+        pCurY += (pTargetY - pCurY) * LERP;
+        constellation.style.transform =
+          "translate3d(" + (pCurX*22).toFixed(2) + "px," + (pCurY*16).toFixed(2) + "px,0) " +
+          "rotateX(" + (-pCurY*2.2).toFixed(2) + "deg) rotateY(" + (pCurX*2.2).toFixed(2) + "deg)";
+
+        var idleSpin = (now - start) * IDLE;
+        var spin = -progress * SPAN + idleSpin;
+        helix.style.transform = "rotateY(" + spin.toFixed(2) + "deg)";
+
+        var best = 1e9, bestI = 0, hoverActive = -1;
+
+        for (var k=0;k<cards.length;k++){
+          var c = cards[k];
+          c.hv += ((c.hovered ? 1 : 0) - c.hv) * HLERP;
+
+          var world = norm180(c.ang + spin);
+          var awabs = Math.abs(world);
+          if (awabs < best){ best = awabs; bestI = k; }
+          if (c.hovered && hoverActive < 0) hoverActive = k;
+
+          var cosv = Math.cos(world * Math.PI / 180);
+          var t    = (cosv + 1) / 2;
+          var scaleH = 0.62 + 0.38 * Math.pow(t, 2.4);
+          var opH    = 0.06 + 0.94 * Math.pow(t, 3);
+
+          var frontAng = -spin;
+          var A = c.ang + norm180(frontAng - c.ang) * c.hv;
+          var Z = lerp(R, R + 46, c.hv);
+          var Y = lerp(c.rise, -8, c.hv);
+          var S = lerp(scaleH, 1.07, c.hv);
+          var O = lerp(opH, 1, c.hv);
+
+          c.el.style.transform =
+            "rotateY(" + A.toFixed(2) + "deg) translateZ(" + Z.toFixed(1) + "px) " +
+            "translateY(" + Y.toFixed(1) + "px) scale(" + S.toFixed(3) + ")";
+          c.el.style.opacity = O.toFixed(3);
+          c.el.style.zIndex = Math.round(t * 100 + c.hv * 200);
+          c.el.style.pointerEvents = (c.hovered || t > 0.45) ? "auto" : "none";
+
+          if (t < DEPTH_T && c.hv < 0.5){
+            var f = (DEPTH_T - t) / DEPTH_T;
+            var blur = (DEPTH_BLUR_MAX * f).toFixed(2);
+            var bright = (1 - (1 - DEPTH_DIM_MIN) * f).toFixed(3);
+            c.el.style.filter = "blur(" + blur + "px) brightness(" + bright + ")";
+          } else {
+            c.el.style.filter = "none";
+          }
+
+          toggle(c.el, "is-focus", (awabs < 26) && c.hv < 0.5);
+          toggle(c.el, "is-hover", c.hv >= 0.5);
+        }
+
+        var act = hoverActive >= 0 ? hoverActive : bestI;
+        if (act !== activeIdx){
+          activeIdx = act;
+          if (counterNum) counterNum.textContent = ("0" + (activeIdx+1)).slice(-2);
+          var span = (cards.length > 1) ? (cards.length - 1) : 1;
+          var activeNode = Math.round(activeIdx / span * (nodeEls.length - 1));
+          for (var n=0;n<nodeEls.length;n++){
+            toggle(nodeEls[n], "active", n === activeNode);
+          }
+        }
+      }
+
+      function toggle(el, cls, on){
+        if (on){ if(!el.classList.contains(cls)) el.classList.add(cls); }
+        else   { if(el.classList.contains(cls))  el.classList.remove(cls); }
+      }
+
+      function sectionVisible(){
+        var r = section.getBoundingClientRect();
+        return r.bottom > 0 && r.top < window.innerHeight;
+      }
+
+      function loop(now){
+        render(now || nowMs());
+        tickGrain();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      // ============================================================
+      // Background particle field: additive palette tints + soft bloom.
+      // ============================================================
+      var ctx, parts = [], W=0, H=0, dpr=1, prAF=0;
+      function resizeCanvas(){
+        if(!ctx) return;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = canvas.clientWidth; H = canvas.clientHeight;
+        canvas.width = Math.round(W*dpr); canvas.height = Math.round(H*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      function startParticles(){
+        if (!canvas || !canvas.getContext) return;
+        ctx = canvas.getContext("2d");
+        resizeCanvas();
+        var count = Math.max(40, Math.min(PART_COUNT, Math.round((W*H)/20000)));
+        parts = [];
+        for (var i=0;i<count;i++){
+          var pick = Math.random();
+          parts.push({
+            x: Math.random()*W, y: Math.random()*H,
+            r: Math.random()*1.6 + 0.4,
+            vx: (Math.random()-0.5)*0.12,
+            vy: -(Math.random()*0.18 + 0.04),
+            a: Math.random()*0.4 + 0.12,
+            c: pick < 0.30 ? "182,155,255" : (pick < 0.46 ? "82,242,168" : "92,220,255")
+          });
+        }
+        cancelAnimationFrame(prAF);
+        drawParticles();
+      }
+      function drawParticles(){
+        if(!ctx) return;
+        ctx.globalCompositeOperation = "source-over";
+        ctx.clearRect(0,0,W,H);
+        ctx.globalCompositeOperation = "lighter";
+        var sb = 6 * BLOOM;
+        for (var i=0;i<parts.length;i++){
+          var p = parts[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.y < -4){ p.y = H+4; p.x = Math.random()*W; }
+          if (p.x < -4) p.x = W+4; else if (p.x > W+4) p.x = -4;
+          ctx.beginPath();
+          ctx.shadowBlur = sb;
+          ctx.shadowColor = "rgba("+p.c+",0.9)";
+          ctx.fillStyle = "rgba("+p.c+","+p.a.toFixed(2)+")";
+          ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+        ctx.globalCompositeOperation = "source-over";
+        prAF = requestAnimationFrame(drawParticles);
+      }
+
+      // ============================================================
+      // Film grain: a noise tile tiled across a fixed canvas, regenerated every
+      // GRAIN_EVERY frames. Gated to this section's visibility (opacity 0 off-screen)
+      // so it never films hero / faq / footer.
+      // ============================================================
+      var gCanvas, gCtx, gTile, gTileCtx, gPattern, gW=0, gH=0, gFrame=0;
+      function initGrain(){
+        gCanvas = document.getElementById("grain");
+        if (!gCanvas || !gCanvas.getContext) return;
+        gCtx = gCanvas.getContext("2d");
+        gCanvas.style.opacity = 0;
+        gTile = document.createElement("canvas");
+        gTile.width = gTile.height = 128;
+        gTileCtx = gTile.getContext("2d");
+        resizeGrain();
+      }
+      function resizeGrain(){
+        if (!gCtx) return;
+        gW = window.innerWidth; gH = window.innerHeight;
+        gCanvas.width = gW; gCanvas.height = gH;
+      }
+      function regenGrainTile(){
+        var img = gTileCtx.createImageData(128,128);
+        var d = img.data;
+        for (var i=0;i<d.length;i+=4){
+          var v = (Math.random()*255)|0;
+          d[i]=d[i+1]=d[i+2]=v; d[i+3]=255;
+        }
+        gTileCtx.putImageData(img,0,0);
+        gPattern = gCtx.createPattern(gTile,"repeat");
+      }
+      function tickGrain(){
+        if (!gCtx) return;
+        if (!sectionVisible()){
+          if (gCanvas.style.opacity !== "0") gCanvas.style.opacity = 0;
+          return;
+        }
+        if (gCanvas.style.opacity === "0" || gCanvas.style.opacity === "") gCanvas.style.opacity = GRAIN_OPACITY;
+        if (gFrame % GRAIN_EVERY === 0){
+          regenGrainTile();
+          gCtx.clearRect(0,0,gW,gH);
+          gCtx.fillStyle = gPattern;
+          gCtx.fillRect(0,0,gW,gH);
+        }
+        gFrame++;
+      }
+
     })();
   </script>
 
