@@ -19,8 +19,14 @@ Tracciamento task del sito. Formato:
   VERIFICATO_EMPIRICO: cambio lingua aggiorna titolo pagina (install._title) e
   contenuto in it/en/es/fr/de (parita' 189 chiavi), no overflow mobile, header
   hamburger ok, download -> /l/wzquev. Impl Fable, verifica coordinatore.
-- [ ] TODO: QA mobile generale - sweep index + 10 moduli + install.html; include
-  lo scanner dell'eroe clippato/tagliato su schermo stretto (2026-11-08)
+- [x] FATTO: QA mobile generale - sweep index + 10 moduli + install.html
+  (2026-11-08). VERIFICATO_EMPIRICO a viewport Android: NESSUN overflow
+  orizzontale su alcuna pagina. Scanner eroe = swipeable per design
+  (.scan-view overflow-x:auto, 9 colonne raggiungibili, scrollbar accent):
+  non e' un bug, nessun fix. Arsenale/spina -> lista card verticale pulita
+  su mobile; edizioni Free/Pro -> 1 colonna; navigazione per ancora ok
+  (scroll-padding-top:84px sotto header 69px). Nessuna modifica di codice
+  necessaria.
 
 ## Note
 - Push/merge su main restano gated all'operatore (branch di lavoro: feat/mobile-install).
