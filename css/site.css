@@ -783,6 +783,7 @@ body { font-family: var(--body); }
   text-decoration: none;
   padding: 6px 2px;
   position: relative;
+  white-space: nowrap;
   transition: color .16s var(--ease);
 }
 .nav-links a::after {
@@ -1042,6 +1043,48 @@ body { font-family: var(--body); }
   .nav-ghost { display: none; }
 }
 
+/* laptop/tablet range: collapse the 5 inline flags into the compact language
+   toggle + dropdown so the width they took is freed and the horizontal nav
+   fits on one row, but keep nav-links and the CTA inline - NO hamburger above
+   760px. The hamburger itself and the mobile lang re-ordering stay in the
+   760px block below (narrower, later in source so they win where they apply). */
+@media (max-width: 1200px) {
+  .js .lang-toggle { display: inline-flex; }
+  .js .lang-wrap .lang-switch {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-left: 0;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px;
+    min-width: 160px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height .24s var(--ease), opacity .18s var(--ease), visibility .18s;
+    z-index: 60;
+  }
+  .js .lang-wrap .lang-switch.open {
+    max-height: 70vh;
+    overflow: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  .js .lang-wrap .lang-btn {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 9px 10px;
+  }
+}
+
 @media (max-width: 760px) {
   /* perf: drop the sticky-header backdrop blur on mobile (re-blurred every
      scroll frame is the biggest scroll cost on low-end devices). Opaque 97%
@@ -1106,43 +1149,11 @@ body { font-family: var(--body); }
   }
   .js .nav-menu .nav-cta { width: 100%; }
 
-  /* --- JS enhanced: language as a compact bar toggle + dedicated dropdown --- */
-  .js .lang-toggle { display: inline-flex; }
+  /* --- mobile only (<=760): place the language toggle next to the hamburger.
+     The compact toggle + dropdown appearance lives in the 1200px block above
+     (shared with the laptop range); here we only re-order it for the bar. --- */
   .js .lang-wrap { order: 1; margin-left: auto; }
   .js .nav-toggle { order: 2; margin-left: 10px; }
-  .js .lang-wrap .lang-switch {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-left: 0;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
-    padding: 8px;
-    min-width: 160px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transition: max-height .24s var(--ease), opacity .18s var(--ease), visibility .18s;
-    z-index: 60;
-  }
-  .js .lang-wrap .lang-switch.open {
-    max-height: 70vh;
-    overflow: auto;
-    opacity: 1;
-    visibility: visible;
-  }
-  .js .lang-wrap .lang-btn {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 9px 10px;
-  }
 }
 
 /* phone: scale down the hero title so the long IT headline fits */

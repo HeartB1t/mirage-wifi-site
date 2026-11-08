@@ -50,6 +50,19 @@ Tracciamento task del sito. Formato:
   VERIFICATO_EMPIRICO on-device dall'operatore (Realme fascia bassa: scroll liscio;
   fascia alta gia' ok). Metodo riusabile: A/B on-device via LAN http.server.
 
+## Sessione 2026-11-08 - nav laptop (branch ui/nav-laptop-lang-compact)
+
+- [x] FATTO: nav laptop - lingua raccolta nel dropdown compatto nel range
+  761-1200px (2026-11-08, richiesta operatore). La nav si affollava sui laptop
+  (CTA "Accesso anticipato" tagliata, "Moduli Pro" a capo): le 5 bandiere inline
+  occupavano troppo. Ora <=1200px la lingua diventa il toggle compatto "IT v"
+  (stesso dropdown di mobile) tenendo la nav orizzontale; hamburger solo <=760,
+  bandiere inline >1200 (desktop pieno invariato). Disaccoppiato il blocco
+  media-query lang-compatto (<=1200) dall'hamburger (<=760). VERIFICATO_EMPIRICO
+  a 800/960/1024/1100/1200/1280: niente clip/wrap (overflow 800px = 4px
+  irrilevante), dropdown apre/cambia lingua a 1024. Solo css/site.css. Impl Fable.
+
 ## Note
-- Push/merge su main restano gated all'operatore. Branch attuale: perf/mobile-rendering.
+- Push/merge su main: autorizzati dall'operatore in questa sessione. Lavoro
+  mobile+install+perf+nav tutto su main.
 - Download Free reale: https://miragewifi.gumroad.com/l/wzquev (cta.free nel sito).
