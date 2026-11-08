@@ -1319,7 +1319,9 @@
       // ---- WON'T-ORBIT PATH: mobile / touch => lighter vertical reveal ----
       if (mobileMQ.matches || !finePointer){
         section.classList.add("net-reveal"); // not "reveal": that is the site's global scroll-reveal class
-        startParticles();
+        // perf: on phones (<=760px) the #particles canvas is display:none, but the
+        // rAF loop would still saturate the main thread and stutter scroll. Skip it.
+        if (!mobileMQ.matches) startParticles();
         if ("IntersectionObserver" in window){
           var io = new IntersectionObserver(function(entries){
             entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });

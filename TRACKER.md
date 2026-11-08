@@ -38,9 +38,17 @@ Tracciamento task del sito. Formato:
   500vh); (3) pausa animazioni scanner eroe offscreen (IntersectionObserver).
   VERIFICATO_EMPIRICO desktop: blur header conservato, #moduli intatto
   (content-visibility assente), ancora #edizioni a y=84 e sezione renderizzata,
-  scroll-reveal opacity ~1. Mobile VERIFICATO_MOCK (media query + IO corretti;
-  Chromium headless locale troppo instabile per riscreenshottare). FLUIDITA'
-  reale DA_COLLAUDARE_LIVE sul telefono dell'operatore. Impl Fable.
+  scroll-reveal opacity ~1. Mobile VERIFICATO_MOCK (media query + IO corretti).
+- [x] FATTO: CAUSA RADICE della jank su fascia bassa trovata e corretta
+  (2026-11-08). Diagnosi on-device A/B via server LAN (headless locale non misura
+  lo scroll mobile: niente vsync): animazioni OFF scattava ancora, floor CSS
+  scattava peggio, no-JS era liscio -> il colpevole era un loop JS continuo. Era
+  `startParticles()` chiamato nel ramo mobile della net-section: avviava un rAF
+  `drawParticles` (canvas 2D + shadowBlur + compositing "lighter" a ogni frame)
+  anche se #particles e' display:none sotto i 760px. Fix: gating su
+  `if (!mobileMQ.matches) startParticles()` (desktop/tablet invariati). Impl Fable.
+  VERIFICATO_EMPIRICO on-device dall'operatore (Realme fascia bassa: scroll liscio;
+  fascia alta gia' ok). Metodo riusabile: A/B on-device via LAN http.server.
 
 ## Note
 - Push/merge su main restano gated all'operatore. Branch attuale: perf/mobile-rendering.
