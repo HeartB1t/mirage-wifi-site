@@ -938,6 +938,100 @@
     })();
   </script>
 
+  <!-- Hero scanner: populate "live" + layer live leggero.
+       Al load il pannello parte con topbar + intestazioni colonne visibili e
+       le righe nascoste (stato CSS keyed su .js-reveal); poi le righe vengono
+       scoperte una alla volta a ritmo di scansione (fade + slide-up, barrette
+       che salgono, CLI che conta da 0). Finito il populate parte un layer live
+       sottile: ogni ~3-5s il conteggio CLI di una riga a caso deriva di +/-1.
+       Progressive enhancement: stessa gate dello scroll-reveal (serve IO +
+       motion ok e .js-reveal gia' sul root). Senza JS o con reduced-motion le
+       righe restano visibili statiche e non parte nessun populate ne layer. -->
+  <script>
+    (function () {
+      "use strict";
+      var root = document.documentElement;
+      if (!("IntersectionObserver" in window) ||
+          (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        return; // righe gia' visibili via CSS: nessun populate
+      }
+      if (!root.classList.contains("js-reveal")) return; // stato nascosto keyed su .js-reveal
+
+      var grid = document.querySelector(".hero-visual-slot .scan-grid");
+      if (!grid) return;
+      var rows = Array.prototype.slice.call(grid.querySelectorAll(".scan-drow"));
+      if (!rows.length) return;
+
+      var BASE_DELAY = 260; // attesa prima della prima riga scoperta
+      var STAGGER = 300;    // ritmo di scoperta tra una riga e l'altra
+      var COUNT_MS = 480;   // durata del count-up del valore CLI
+
+      // CLI che sale da 0 al valore finale mentre la riga compare
+      function countUp(cell, target) {
+        if (target <= 0) { cell.textContent = "0"; return; }
+        var start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = (ts - start) / COUNT_MS;
+          if (p >= 1) { cell.textContent = String(target); return; }
+          cell.textContent = String(Math.round(target * p));
+          window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
+      }
+
+      function revealRow(row) {
+        row.classList.add("seen");
+        var cell = row.querySelector(".scan-cli");
+        if (cell) {
+          var finalVal = parseInt(cell.textContent, 10);
+          if (!isNaN(finalVal)) {
+            cell.setAttribute("data-base", String(finalVal)); // valore di riferimento per il layer live
+            countUp(cell, finalVal);
+          }
+        }
+      }
+
+      // scoperta progressiva delle righe
+      for (var i = 0; i < rows.length; i++) {
+        (function (row, idx) {
+          window.setTimeout(function () { revealRow(row); }, BASE_DELAY + idx * STAGGER);
+        })(rows[i], i);
+      }
+
+      // ---- LAYER LIVE: deriva leggera del conteggio CLI (client che entrano/escono) ----
+      // Solo testo + pulse di opacita'. Resta entro +/-2 dal valore base e nel range 0..9.
+      var liveStart = BASE_DELAY + rows.length * STAGGER + 600;
+      window.setTimeout(function () {
+        function tick() {
+          if (!document.hidden) {
+            var row = rows[Math.floor(Math.random() * rows.length)];
+            var cell = row.querySelector(".scan-cli");
+            if (cell && cell.hasAttribute("data-base")) {
+              var base = parseInt(cell.getAttribute("data-base"), 10);
+              var cur = parseInt(cell.textContent, 10);
+              if (!isNaN(base) && !isNaN(cur)) {
+                var lo = Math.max(0, base - 2);
+                var hi = Math.min(9, base + 2);
+                var next = cur + (Math.random() < 0.5 ? -1 : 1);
+                if (next < lo) next = cur + 1;
+                if (next > hi) next = cur - 1;
+                if (next < 0) next = 0;
+                if (next !== cur) {
+                  cell.classList.add("cli-bump");
+                  cell.textContent = String(next);
+                  window.setTimeout(function () { cell.classList.remove("cli-bump"); }, 260);
+                }
+              }
+            }
+          }
+          window.setTimeout(tick, 3000 + Math.random() * 2000);
+        }
+        window.setTimeout(tick, 3000 + Math.random() * 2000);
+      }, liveStart);
+    })();
+  </script>
+
   <!-- Network + arsenal section: 3D helix of cards orbiting the signal spine.
        Integrated from reference/spine-arsenal.html. Progressive enhancement:
        - reduced-motion              -> return early, static CSS column.

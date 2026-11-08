@@ -1376,25 +1376,36 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
 }
 .js-reveal .hero-visual-slot.reveal.in { transform: none; }
 
-/* le righe della tabella scanner si popolano a cascata quando il pannello
-   e' dentro al viewport: "fai entrare meglio le colonne". Dipende da .in
-   del pannello, che la failsafe garantisce sempre. */
-.js-reveal .hero-visual-slot.reveal .scan-drow {
+/* POPULATE scanner: le righe partono nascoste e vengono "scoperte" una
+   alla volta dallo script hero, al LOAD del pannello (non allo scroll).
+   Lo stato nascosto e' keyed su .js-reveal (aggiunto solo con IO + motion
+   ok): senza JS o con reduced-motion le righe restano visibili statiche.
+   Lo script aggiunge .seen a ritmo di scansione; qui vivono solo le
+   transizioni (fade + slide-up), niente transition-delay a cascata. */
+.js-reveal .hero-visual-slot .scan-grid .scan-drow {
   opacity: 0;
-  transform: translateY(9px);
-  transition: opacity .5s var(--ease-rv), transform .5s var(--ease-rv);
+  transform: translateY(10px);
 }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow { opacity: 1; transform: none; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(2)  { transition-delay: .32s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(3)  { transition-delay: .36s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(4)  { transition-delay: .40s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(5)  { transition-delay: .44s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(6)  { transition-delay: .48s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(7)  { transition-delay: .52s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(8)  { transition-delay: .56s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(9)  { transition-delay: .60s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(10) { transition-delay: .64s; }
-.js-reveal .hero-visual-slot.reveal.in .scan-drow:nth-child(11) { transition-delay: .68s; }
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen {
+  opacity: 1;
+  transform: none;
+  transition: opacity .42s var(--ease-rv), transform .42s var(--ease-rv);
+}
+/* barrette segnale: salgono dalla base quando la riga viene scoperta */
+.js-reveal .hero-visual-slot .scan-grid .scan-drow .scan-sig i {
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i {
+  transform: scaleY(1);
+  transition: transform .4s var(--ease-rv);
+}
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i:nth-child(2) { transition-delay: .06s; }
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i:nth-child(3) { transition-delay: .12s; }
+.js-reveal .hero-visual-slot .scan-grid .scan-drow.seen .scan-sig i:nth-child(4) { transition-delay: .18s; }
+/* layer live: breve pulse di opacita' sul CLI quando il conteggio cambia */
+.scan-cli { transition: opacity .2s var(--ease-rv); }
+.scan-cli.cli-bump { opacity: .3; }
 
 /* ---------- STAGGER griglie: piu' ampio ed elegante ----------
    Sostituisce lo stagger base (.05/.10/.15) con una cascata piu' lunga. */
@@ -1498,6 +1509,8 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
    anche se un domani cambiasse l'ordine delle regole. */
 @media (prefers-reduced-motion: reduce) {
   .js-reveal .scan-drow { opacity: 1 !important; transform: none !important; }
+  .js-reveal .scan-drow .scan-sig i { transform: none !important; }
+  .scan-cli.cli-bump { opacity: 1 !important; }
   .hero-grad, .scan-em, .grad { animation: none !important; background-position: 0% 50% !important; }
 }
 
