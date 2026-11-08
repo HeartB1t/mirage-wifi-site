@@ -23,214 +23,466 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
 
-  <a class="skip" href="#top" data-i18n="nav.skip">Skip to content</a>
+  <a class="nav-skip" href="#top" data-i18n="nav.skip">Skip to content</a>
 
   <!-- ============ NAV ============ -->
-  <header class="nav">
+  <header class="nav-bar">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="MirageWiFi, back to top">
-        <span class="brand-mark" aria-hidden="true">
+
+      <a class="nav-brand" href="#top" data-i18n-aria="nav.brandhome" aria-label="MirageWiFi, back to top">
+        <span class="nav-brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
             <path d="M6 18 Q16 7 26 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
             <path d="M10 21.5 Q16 15.5 22 21.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" opacity=".55"/>
             <circle cx="16" cy="25" r="2" fill="currentColor"/>
           </svg>
         </span>
-        <span class="brand-text">
-          <span class="logo">MIRAGE</span>
-          <span class="ghost">what you see isn't there.</span>
+        <span class="nav-brand-text">
+          <span class="nav-logo">MIRAGE</span>
+          <span class="nav-ghost" data-i18n="nav.tagline">what you see isn't there.</span>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Sections">
+
+      <nav class="nav-links" data-i18n-aria="nav.seclabel" aria-label="Sections">
         <a href="#edizioni" data-i18n="nav.editions">Editions</a>
         <a href="#perche" data-i18n="nav.why">Why</a>
         <a href="#moduli" data-i18n="nav.modules">Pro modules</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
-      <div class="lang-switch">
-        <label for="lang-select" class="sr-only" data-i18n="nav.langlabel">Language</label>
-        <select id="lang-select" class="lang-select">
-          <option value="en">EN</option>
-          <option value="it">IT</option>
-          <option value="es">ES</option>
-          <option value="fr">FR</option>
-          <option value="de">DE</option>
-        </select>
+
+      <!-- Flag language selector. One active button (aria-pressed="true").
+           Static default = EN (matches the inline English copy and the
+           no-JS fallback). The script flips active state on click. -->
+      <div class="lang-switch" role="group" data-i18n-aria="nav.langlabel" aria-label="Language">
+
+        <button type="button" class="lang-btn" data-lang="it" data-i18n-aria="lang.it" aria-label="Italiano" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="8" height="16" fill="#008C45"/>
+            <rect x="8" width="8" height="16" fill="#F4F5F0"/>
+            <rect x="16" width="8" height="16" fill="#CD212A"/>
+          </svg>
+          <span class="lang-code">IT</span>
+        </button>
+
+        <button type="button" class="lang-btn is-active" data-lang="en" data-i18n-aria="lang.en" aria-label="English" aria-pressed="true">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <clipPath id="flag-en-clip"><rect width="24" height="16" rx="0"/></clipPath>
+            <g clip-path="url(#flag-en-clip)">
+              <rect width="24" height="16" fill="#012169"/>
+              <path d="M0 0 L24 16 M24 0 L0 16" stroke="#FFFFFF" stroke-width="3.2"/>
+              <path d="M0 0 L24 16 M24 0 L0 16" stroke="#C8102E" stroke-width="1.6"/>
+              <rect x="9.6" width="4.8" height="16" fill="#FFFFFF"/>
+              <rect y="5.6" width="24" height="4.8" fill="#FFFFFF"/>
+              <rect x="10.8" width="2.4" height="16" fill="#C8102E"/>
+              <rect y="6.8" width="24" height="2.4" fill="#C8102E"/>
+            </g>
+          </svg>
+          <span class="lang-code">EN</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="es" data-i18n-aria="lang.es" aria-label="Español" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="24" height="16" fill="#AA151B"/>
+            <rect y="4" width="24" height="8" fill="#F1BF00"/>
+          </svg>
+          <span class="lang-code">ES</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="fr" data-i18n-aria="lang.fr" aria-label="Français" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="8" height="16" fill="#0055A4"/>
+            <rect x="8" width="8" height="16" fill="#F4F5F0"/>
+            <rect x="16" width="8" height="16" fill="#EF4135"/>
+          </svg>
+          <span class="lang-code">FR</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="de" data-i18n-aria="lang.de" aria-label="Deutsch" aria-pressed="false">
+          <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
+            <rect width="24" height="5.34" fill="#000000"/>
+            <rect y="5.34" width="24" height="5.33" fill="#DD0000"/>
+            <rect y="10.67" width="24" height="5.33" fill="#FFCE00"/>
+          </svg>
+          <span class="lang-code">DE</span>
+        </button>
+
       </div>
-      <a class="btn btn-pro" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
+
+      <a class="nav-cta" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
     </div>
   </header>
 
   <main id="top">
 
     <!-- ============ HERO ============ -->
-    <section class="hero">
+    <section class="hero-sec">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="kicker reveal" data-i18n="hero.kicker">Wi-Fi security auditing · Kali / Linux</p>
-          <h1 class="reveal"><span data-i18n="hero.h1a">The signal is there.</span><br /><span class="em" data-i18n="hero.h1b">The network</span> <span class="strike" data-i18n="hero.h1c">doesn't know it.</span></h1>
-          <p class="hero-sub reveal" data-i18n="hero.sub">
-            MirageWiFi is a Wi-Fi penetration testing platform with a real-time
-            operational interface: reconnaissance, handshake and PMKID capture, cracking
-            and active attacks in a single console. Proprietary software, two editions.
+
+          <p class="hero-kicker reveal" data-i18n="hero.kick">// Wi-Fi security auditing</p>
+
+          <h1 class="hero-title reveal">
+            <span data-i18n="hero.h1.l1">Recon, capture, crack and strike,</span><br />
+            <span data-i18n="hero.h1.l2">all driven from one</span><br />
+            <span class="hero-grad" data-i18n="hero.h1.l3">operational console.</span>
+          </h1>
+
+          <p class="hero-sub reveal" data-i18n="hero.subtitle">
+            A real-time Wi-Fi penetration testing platform for Kali Linux.
           </p>
+
+          <p class="hero-value reveal" data-i18n="hero.value">
+            MirageWiFi orchestrates the Kali Wi-Fi suite, monitor mode, scanning,
+            handshake and PMKID capture, GPU cracking and active attacks, behind one
+            interface that stays live from the first scan to the final report. You drive
+            the whole assessment without juggling ten terminals and losing the thread.
+          </p>
+
+          <p class="hero-notice reveal" role="note">
+            <span class="hero-notice-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3 2.5 20h19z"/><path d="M12 10v4"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span data-i18n="hero.notice">Use only on networks you own or are authorized in writing to test.</span>
+          </p>
+
           <div class="hero-cta reveal">
-            <a class="btn btn-pro btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
-            <a class="btn btn-ghost btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
+            <a class="nav-cta hero-btn-lg" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="cta.pro">Join the Pro waitlist</a>
+            <a class="hero-btn-ghost hero-btn-lg" href="https://miragewifi.gumroad.com/l/wzquev" rel="noopener noreferrer" data-i18n="cta.free">Download free</a>
           </div>
-          <ul class="hero-trust reveal" aria-label="In short">
-            <li><b>Free</b> <span data-i18n="hero.trust1">at zero cost</span></li>
-            <li><b>Pro</b> <span data-i18n="hero.trust2">29 EUR/month, early access</span></li>
-            <li data-i18n="hero.trust3">One console, the whole flow</li>
-          </ul>
-          <p class="hero-note reveal">
-            <b data-i18n="hero.note.b">Early access.</b> <span data-i18n="hero.note.t">Pro opens via waitlist: leave your email and we'll let you know as soon as it's available.</span>
-          </p>
+
         </div>
 
-        <!-- Live scanner panel (decorative, fictional data only: invented ESSIDs, locally-administered MACs) -->
-        <div class="scanner reveal" aria-hidden="true">
-          <div class="scanner-bar">
-            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-            <span class="path">mirage, 127.0.0.1:8731</span>
-            <span class="live">LIVE</span>
-          </div>
-          <div class="scanline"></div>
-          <div class="scanner-body">
-            <div class="scan-table">
-              <div class="scan-head">
-                <span>PWR</span><span>ESSID</span><span>BSSID</span><span>CH</span><span>BAND</span><span>SEC</span><span>WPS</span><span>CLI</span><span>ST</span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
-                <span class="essid">Residence-Lab6</span>
-                <span class="bssid">CA:4C:75:11:0A:F2</span>
-                <span class="ch">6</span>
-                <span class="band">2.4G</span>
-                <span class="enc wpa2">WPA2</span>
-                <span class="wps"><i class="wps-dot on"></i></span>
-                <span class="cli">3</span>
-                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
-                <span class="essid">Office-Lab02</span>
-                <span class="bssid">A2:1B:3F:9C:44:8E</span>
-                <span class="ch">11</span>
-                <span class="band">2.4G</span>
-                <span class="enc wpa3">WPA3</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">1</span>
-                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk on">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
-                <span class="essid">Reteditest</span>
-                <span class="bssid">D6:24:DD:24:1A:63</span>
-                <span class="ch">1</span>
-                <span class="band">2.4G</span>
-                <span class="enc eap">EAP</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">2</span>
-                <span class="st"><i class="tag hs">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
-                <span class="essid">Casa-Demo</span>
-                <span class="bssid">AE:14:BF:77:2E:19</span>
-                <span class="ch">3</span>
-                <span class="band">2.4G</span>
-                <span class="enc wpa2">WPA2</span>
-                <span class="wps"><i class="wps-dot on"></i></span>
-                <span class="cli">0</span>
-                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk on">PMK</i><i class="tag key on">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
-                <span class="essid">Lab-Guest</span>
-                <span class="bssid">7A:33:9C:02:5B:1D</span>
-                <span class="ch">36</span>
-                <span class="band">5G</span>
-                <span class="enc wpa3">WPA3</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">4</span>
-                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
-                <span class="essid">CoworkingDemo</span>
-                <span class="bssid">6E:0D:4F:88:AC:21</span>
-                <span class="ch">149</span>
-                <span class="band">5G</span>
-                <span class="enc wpa2">WPA2</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">6</span>
-                <span class="st"><i class="tag hs">HS</i><i class="tag pmk on">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
-                <span class="essid">&lt;hidden&gt;</span>
-                <span class="bssid">2E:71:A0:4C:33:9B</span>
-                <span class="ch">44</span>
-                <span class="band">5G</span>
-                <span class="enc wpa2">WPA2</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">0</span>
-                <span class="st"><i class="tag hs">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
-                <span class="essid">MeshDemo-6E</span>
-                <span class="bssid">6A:88:1C:0D:5E:42</span>
-                <span class="ch">37</span>
-                <span class="band">6G</span>
-                <span class="enc wpa3">WPA3</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">2</span>
-                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
-                <span class="essid">Legacy-AP</span>
-                <span class="bssid">B2:55:7E:19:84:C0</span>
-                <span class="ch">9</span>
-                <span class="band">2.4G</span>
-                <span class="enc wep">WEP</span>
-                <span class="wps"><i class="wps-dot"></i></span>
-                <span class="cli">1</span>
-                <span class="st"><i class="tag hs">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
-              </div>
-              <div class="scan-row">
-                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
-                <span class="essid">Studio-Lab</span>
-                <span class="bssid">EA:0C:62:3D:77:15</span>
-                <span class="ch">157</span>
-                <span class="band">5G</span>
-                <span class="enc wpa3">WPA3</span>
-                <span class="wps"><i class="wps-dot on"></i></span>
-                <span class="cli">5</span>
-                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key on">KEY</i></span>
+        <!-- Right column: Fable B's live scanner panel (decorative, fictional data only:
+             invented ESSIDs, locally-administered MACs). Table scrolls inside the panel
+             on narrow widths; the panel clips so the page never overflows. -->
+        <div class="hero-visual-slot" aria-hidden="true">
+          <div class="scan-win">
+            <div class="scan-topbar">
+              <span class="scan-dot r"></span><span class="scan-dot y"></span><span class="scan-dot g"></span>
+              <span class="scan-path">mirage, 127.0.0.1:8731</span>
+              <span class="scan-live" data-i18n="scan.live">LIVE</span>
+            </div>
+            <div class="scan-sweep" aria-hidden="true"></div>
+
+            <div class="scan-view">
+              <div class="scan-grid" role="table" aria-label="Networks in range (sample data)">
+                <div class="scan-hrow" role="row">
+                  <span role="columnheader" data-i18n="scan.col.pwr">PWR</span>
+                  <span role="columnheader" data-i18n="scan.col.essid">ESSID</span>
+                  <span role="columnheader" data-i18n="scan.col.bssid">BSSID</span>
+                  <span role="columnheader" data-i18n="scan.col.ch">CH</span>
+                  <span role="columnheader" data-i18n="scan.col.band">BAND</span>
+                  <span role="columnheader" data-i18n="scan.col.sec">SEC</span>
+                  <span role="columnheader" data-i18n="scan.col.wps">WPS</span>
+                  <span role="columnheader" data-i18n="scan.col.cli">CLI</span>
+                  <span role="columnheader" data-i18n="scan.col.st">ST</span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">Residence-Lab6</span>
+                  <span class="scan-bssid">CA:4C:75:11:0A:F2</span>
+                  <span class="scan-ch">6</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">3</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <span class="scan-essid">Office-Lab02</span>
+                  <span class="scan-bssid">A2:1B:3F:9C:44:8E</span>
+                  <span class="scan-ch">11</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wpa3">WPA3</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">1</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <span class="scan-essid">Reteditest</span>
+                  <span class="scan-bssid">D6:24:DD:24:1A:63</span>
+                  <span class="scan-ch">1</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc eap">EAP</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">2</span>
+                  <span class="scan-st"><i class="scan-tag hs">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i></i><i></i><i></i></span>
+                  <span class="scan-essid">Casa-Demo</span>
+                  <span class="scan-bssid">AE:14:BF:77:2E:19</span>
+                  <span class="scan-ch">3</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">0</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key on">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">Lab-Guest</span>
+                  <span class="scan-bssid">7A:33:9C:02:5B:1D</span>
+                  <span class="scan-ch">36</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa3">WPA3</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">4</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <span class="scan-essid">CoworkingDemo</span>
+                  <span class="scan-bssid">6E:0D:4F:88:AC:21</span>
+                  <span class="scan-ch">149</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">6</span>
+                  <span class="scan-st"><i class="scan-tag hs">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">&lt;hidden&gt;</span>
+                  <span class="scan-bssid">2E:71:A0:4C:33:9B</span>
+                  <span class="scan-ch">44</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">0</span>
+                  <span class="scan-st"><i class="scan-tag hs">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <span class="scan-essid">MeshDemo-6E</span>
+                  <span class="scan-bssid">6A:88:1C:0D:5E:42</span>
+                  <span class="scan-ch">37</span>
+                  <span class="scan-band">6G</span>
+                  <span class="scan-enc wpa3">WPA3</span>
+                  <span class="scan-wps"><i class="scan-wps-dot"></i></span>
+                  <span class="scan-cli">2</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i></i><i></i><i></i></span>
+                  <span class="scan-essid">Legacy-AP</span>
+                  <span class="scan-bssid">B2:55:7E:19:84:C0</span>
+                  <span class="scan-ch">9</span>
+                  <span class="scan-band">2.4G</span>
+                  <span class="scan-enc wep">WEP</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">1</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk">PMK</i><i class="scan-tag key on">KEY</i></span>
+                </div>
+
+                <div class="scan-drow" role="row">
+                  <span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <span class="scan-essid">Garden-Demo</span>
+                  <span class="scan-bssid">AA:9F:60:3D:71:0E</span>
+                  <span class="scan-ch">157</span>
+                  <span class="scan-band">5G</span>
+                  <span class="scan-enc wpa2">WPA2</span>
+                  <span class="scan-wps"><i class="scan-wps-dot on"></i></span>
+                  <span class="scan-cli">5</span>
+                  <span class="scan-st"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></span>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Ethical / legal notice in evidence -->
-      <div class="wrap">
-        <div class="ethics reveal" role="note">
-          <span class="sign" aria-hidden="true">⚠</span>
-          <div>
-            <h2 data-i18n="ethics.title">Lawful use only</h2>
-            <p>
-              <span data-i18n="ethics.p1">Auditing and penetration testing tool. It must be used </span><b data-i18n="ethics.b">exclusively on networks and systems you own or for which you have explicit, written authorization to test</b><span data-i18n="ethics.p2">. You are solely responsible for complying with applicable laws (LICENSE, sections 9 and 10: Lawful Use and Export/Dual-Use).</span>
-            </p>
+    <!-- Ethical / legal notice in evidence (kept from the base) -->
+    <div class="wrap">
+      <div class="ethics reveal" role="note">
+        <span class="sign" aria-hidden="true">⚠</span>
+        <div>
+          <h2 data-i18n="ethics.title">Lawful use only</h2>
+          <p>
+            <span data-i18n="ethics.p1">Auditing and penetration testing tool. It must be used </span><b data-i18n="ethics.b">exclusively on networks and systems you own or for which you have explicit, written authorization to test</b><span data-i18n="ethics.p2">. You are solely responsible for complying with applicable laws (LICENSE, sections 9 and 10: Lawful Use and Export/Dual-Use).</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ WORKFLOW SCROLLYTELLING ============ -->
+    <section class="flow" id="workflow" aria-labelledby="flow-title">
+      <div class="wrap flow-head">
+        <p class="flow-kicker reveal" data-i18n="flow.kicker">// THE OPERATIONAL FLOW</p>
+        <h2 class="flow-title reveal" id="flow-title">
+          <span data-i18n="flow.title.a">From a silent sweep to a</span>
+          <span class="flow-em" data-i18n="flow.title.b">signed report</span>
+        </h2>
+        <p class="flow-lead reveal" data-i18n="flow.lead">
+          One console drives the whole engagement. Scroll through the five phases:
+          the panel on the side follows the step you are reading.
+        </p>
+      </div>
+
+      <div class="wrap flow-grid">
+
+        <!-- Left column: the steps that scroll -->
+        <ol class="flow-steps" aria-label="Audit phases">
+
+          <li class="flow-step is-active" data-flow-step="1">
+            <span class="flow-num" aria-hidden="true">01</span>
+            <div class="flow-step-body">
+              <h3 class="flow-step-t" data-i18n="flow.step1.t">Recon</h3>
+              <p class="flow-step-d" data-i18n="flow.step1.d">
+                Passive monitor mode across 2.4, 5 and 6 GHz. Every access point,
+                client count and security posture, mapped without sending a single
+                frame. Nothing leaves the radio.
+              </p>
+            </div>
+          </li>
+
+          <li class="flow-step" data-flow-step="2">
+            <span class="flow-num" aria-hidden="true">02</span>
+            <div class="flow-step-body">
+              <h3 class="flow-step-t" data-i18n="flow.step2.t">Handshake and PMKID capture</h3>
+              <p class="flow-step-d" data-i18n="flow.step2.d">
+                Targeted capture of the WPA handshake or the clientless PMKID.
+                Live state tags turn on the moment the material lands, so you know
+                what is ready to crack before you stop.
+              </p>
+            </div>
+          </li>
+
+          <li class="flow-step" data-flow-step="3">
+            <span class="flow-num" aria-hidden="true">03</span>
+            <div class="flow-step-body">
+              <h3 class="flow-step-t" data-i18n="flow.step3.t">GPU cracking</h3>
+              <p class="flow-step-d" data-i18n="flow.step3.d">
+                Hand the captured material to the GPU queue. Wordlist or mask,
+                live speed and progress, and the recovered key dropped straight
+                into the loot vault when it falls.
+              </p>
+            </div>
+          </li>
+
+          <li class="flow-step" data-flow-step="4">
+            <span class="flow-num" aria-hidden="true">04</span>
+            <div class="flow-step-body">
+              <h3 class="flow-step-t" data-i18n="flow.step4.t">Active attacks</h3>
+              <p class="flow-step-d" data-i18n="flow.step4.d">
+                Evil Twin, rogue portal, deauthentication and WPA3 downgrade,
+                orchestrated from the same screen. Teardown is non-blocking: the
+                radio comes back clean every time.
+              </p>
+            </div>
+          </li>
+
+          <li class="flow-step" data-flow-step="5">
+            <span class="flow-num" aria-hidden="true">05</span>
+            <div class="flow-step-body">
+              <h3 class="flow-step-t" data-i18n="flow.step5.t">Report</h3>
+              <p class="flow-step-d" data-i18n="flow.step5.d">
+                Findings, evidence and an executive summary in five languages.
+                Named entities, real timestamps, client and assessment, ready to
+                hand to the customer.
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Right column: STICKY console that follows the active step.
+             JS sets data-flow-active="1..5" and switches the visible screen.
+             No-JS fallback: screen 1 is already active. -->
+        <div class="flow-sticky">
+          <div class="flow-console" data-flow-active="1" aria-hidden="true">
+            <div class="flow-bar">
+              <span class="scan-dot r"></span><span class="scan-dot y"></span><span class="scan-dot g"></span>
+              <span class="flow-path">mirage, 127.0.0.1:8731</span>
+              <span class="flow-live" data-i18n="scan.live">LIVE</span>
+            </div>
+
+            <div class="flow-screens">
+
+              <!-- Screen 1: Recon (mini scanner) -->
+              <div class="flow-screen is-active" data-flow-screen="1">
+                <p class="flow-screen-cap" data-i18n="flow.s1.cap">recon // monitor mode, passive sweep</p>
+                <div class="flow-mini">
+                  <div class="flow-mini-row"><span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="flow-mini-ssid">Residence-Lab6</span><span class="scan-enc wpa2">WPA2</span><span class="flow-mini-ch">ch 6</span></div>
+                  <div class="flow-mini-row"><span class="scan-sig"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="flow-mini-ssid">Office-Lab02</span><span class="scan-enc wpa3">WPA3</span><span class="flow-mini-ch">ch 11</span></div>
+                  <div class="flow-mini-row"><span class="scan-sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="flow-mini-ssid">Lab-Guest</span><span class="scan-enc wpa3">WPA3</span><span class="flow-mini-ch">ch 36</span></div>
+                  <div class="flow-mini-row"><span class="scan-sig"><i class="on"></i><i></i><i></i><i></i></span><span class="flow-mini-ssid">&lt;hidden&gt;</span><span class="scan-enc wpa2">WPA2</span><span class="flow-mini-ch">ch 44</span></div>
+                </div>
+              </div>
+
+              <!-- Screen 2: Capture -->
+              <div class="flow-screen" data-flow-screen="2">
+                <p class="flow-screen-cap" data-i18n="flow.s2.cap">capture // target Office-Lab02</p>
+                <ul class="flow-log">
+                  <li><b class="flow-ok">+</b> <span data-i18n="flow.s2.l1">channel locked, client deauth sent</span></li>
+                  <li><b class="flow-ok">+</b> <span data-i18n="flow.s2.l2">EAPOL 1/4 2/4 3/4 4/4 captured</span></li>
+                  <li><b class="flow-ok">+</b> <span data-i18n="flow.s2.l3">PMKID retrieved, clientless</span></li>
+                  <li class="flow-tags"><i class="scan-tag hs on">HS</i><i class="scan-tag pmk on">PMK</i><i class="scan-tag key">KEY</i></li>
+                </ul>
+              </div>
+
+              <!-- Screen 3: GPU crack -->
+              <div class="flow-screen" data-flow-screen="3">
+                <p class="flow-screen-cap" data-i18n="flow.s3.cap">crack // RTX 3090, wordlist mode</p>
+                <div class="flow-crack">
+                  <div class="flow-meter-row"><span class="flow-meter-lbl" data-i18n="flow.s3.speed">speed</span><span class="flow-meter-val">612.4 kH/s</span></div>
+                  <div class="flow-meter"><span class="flow-meter-fill" style="width:72%"></span></div>
+                  <div class="flow-meter-row"><span class="flow-meter-lbl" data-i18n="flow.s3.progress">progress</span><span class="flow-meter-val">72%</span></div>
+                  <p class="flow-hit"><span class="flow-ok" data-i18n="flow.s3.hit">key recovered</span> <code class="flow-key">************</code></p>
+                </div>
+              </div>
+
+              <!-- Screen 4: Active attacks / Evil Twin -->
+              <div class="flow-screen" data-flow-screen="4">
+                <p class="flow-screen-cap" data-i18n="flow.s4.cap">attack // Evil Twin + captive portal</p>
+                <div class="flow-twin">
+                  <div class="flow-twin-ap">
+                    <span class="flow-twin-badge" data-i18n="flow.s4.rogue">ROGUE AP</span>
+                    <span class="flow-twin-ssid">Office-Lab02</span>
+                    <span class="flow-twin-mac">D6:24:DD:24:1A:63</span>
+                  </div>
+                  <ul class="flow-log">
+                    <li><b class="flow-ok">+</b> <span data-i18n="flow.s4.l1">hostapd up, portal served</span></li>
+                    <li><b class="flow-ok">+</b> <span data-i18n="flow.s4.l2">2 clients steered, 1 associated</span></li>
+                    <li><b class="flow-warn">~</b> <span data-i18n="flow.s4.l3">teardown non-blocking, radio clean</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Screen 5: Report -->
+              <div class="flow-screen" data-flow-screen="5">
+                <p class="flow-screen-cap" data-i18n="flow.s5.cap">report // assessment LAB-001</p>
+                <div class="flow-report">
+                  <div class="flow-report-row"><span class="flow-sev high" data-i18n="flow.s5.high">HIGH</span><span data-i18n="flow.s5.f1">WPA2 key recovered by dictionary</span></div>
+                  <div class="flow-report-row"><span class="flow-sev med" data-i18n="flow.s5.med">MED</span><span data-i18n="flow.s5.f2">WPS enabled on 3 access points</span></div>
+                  <div class="flow-report-row"><span class="flow-sev low" data-i18n="flow.s5.low">LOW</span><span data-i18n="flow.s5.f3">legacy WEP network in range</span></div>
+                  <p class="flow-report-foot" data-i18n="flow.s5.foot">PDF + HTML, five languages, evidence attached</p>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -675,14 +927,23 @@
       apply(lang);
       updateShare(lang);
 
-      var sel = document.getElementById("lang-select");
-      if (sel) {
-        sel.value = lang;
-        sel.addEventListener("change", function () {
-          var v = sel.value;
+      // ---- Flag language selector: replaces the old <select> ----
+      var langBtns = document.querySelectorAll(".lang-btn");
+      function syncLangButtons(active) {
+        for (var i = 0; i < langBtns.length; i++) {
+          var isOn = langBtns[i].getAttribute("data-lang") === active;
+          langBtns[i].setAttribute("aria-pressed", isOn ? "true" : "false");
+          langBtns[i].classList.toggle("is-active", isOn);
+        }
+      }
+      syncLangButtons(lang);
+      for (var b = 0; b < langBtns.length; b++) {
+        langBtns[b].addEventListener("click", function () {
+          var v = this.getAttribute("data-lang");
           apply(v);
           updateShare(v);
           try { localStorage.setItem("lang", v); } catch (e) {}
+          syncLangButtons(v);
         });
       }
     })();
@@ -709,6 +970,36 @@
       for (var i = 0; i < reveals.length; i++) io.observe(reveals[i]);
       // Failsafe: if something is not observed in time, show everything anyway.
       window.setTimeout(revealAll, 2500);
+    })();
+  </script>
+
+  <!-- Scrollytelling: highlight the active workflow step and switch the sticky console screen.
+       reduced-motion / no IntersectionObserver: CSS keeps step 1 active and stacks the screens. -->
+  <script>
+    (function () {
+      if (!("IntersectionObserver" in window) ||
+          (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        return;
+      }
+      var steps = document.querySelectorAll(".flow-step");
+      var consoleEl = document.querySelector(".flow-console");
+      var screens = document.querySelectorAll(".flow-screen");
+      if (!steps.length || !consoleEl || !screens.length) return;
+      function activate(n) {
+        for (var i = 0; i < steps.length; i++) {
+          steps[i].classList.toggle("is-active", steps[i].getAttribute("data-flow-step") === n);
+        }
+        consoleEl.setAttribute("data-flow-active", n);
+        for (var s = 0; s < screens.length; s++) {
+          screens[s].classList.toggle("is-active", screens[s].getAttribute("data-flow-screen") === n);
+        }
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) activate(e.target.getAttribute("data-flow-step"));
+        });
+      }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+      for (var i = 0; i < steps.length; i++) io.observe(steps[i]);
     })();
   </script>
 
