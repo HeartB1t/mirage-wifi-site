@@ -82,7 +82,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 84px; overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
 body {
   margin: 0;
@@ -977,255 +977,6 @@ body { font-family: var(--body); }
   --warn: #ffc24b;
 }
 
-/* ============ WORKFLOW ============ */
-.flow { padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem); }
-.flow-head { text-align: center; max-width: 60ch; margin-inline: auto; }
-.flow-kicker {
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .18em;
-  color: var(--accent);
-  margin: 0 0 .8rem;
-  text-transform: uppercase;
-}
-.flow-title {
-  font-family: var(--head);
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 1.1;
-  margin: 0 0 1rem;
-  color: var(--fg);
-  letter-spacing: -.01em;
-}
-.flow-em {
-  background: var(--grad-accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.flow-lead {
-  font-family: var(--body);
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
-  color: var(--fg-dim);
-  line-height: 1.7;
-  margin: 0;
-}
-
-.flow-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-}
-
-/* colonna step */
-.flow-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(3rem, 14vh, 8rem);
-}
-.flow-step {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-  opacity: .4;
-  transition: opacity .4s var(--ease), transform .4s var(--ease);
-  transform: translateY(6px);
-}
-.flow-step.is-active { opacity: 1; transform: none; }
-.flow-num {
-  font-family: var(--mono);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--fg-faint);
-  line-height: 1;
-  padding-top: .25rem;
-  transition: color .4s var(--ease);
-}
-.flow-step.is-active .flow-num { color: var(--accent); }
-.flow-step-t {
-  font-family: var(--head);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  margin: 0 0 .5rem;
-  color: var(--fg);
-  letter-spacing: -.01em;
-}
-.flow-step-d {
-  font-family: var(--body);
-  font-size: .98rem;
-  line-height: 1.65;
-  color: var(--fg-dim);
-  margin: 0;
-  max-width: 44ch;
-}
-
-/* colonna console sticky */
-.flow-sticky { position: sticky; top: clamp(5rem, 12vh, 7rem); }
-.flow-console {
-  border: 1px solid var(--border-2);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--panel-2), var(--panel));
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-.flow-bar {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .62rem .9rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-2);
-  font-family: var(--mono);
-  font-size: .7rem;
-  color: var(--fg-faint);
-  letter-spacing: .05em;
-}
-.flow-path { margin-left: auto; }
-.flow-live {
-  display: inline-flex;
-  align-items: center;
-  gap: .38rem;
-  color: var(--ok);
-  font-size: .64rem;
-  letter-spacing: .14em;
-}
-.flow-live::before {
-  content: "";
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--ok) 80%, transparent);
-  animation: b-live-pulse 1.6s var(--ease) infinite;
-}
-
-/* schermi: sovrapposti, solo l'attivo visibile.
-   Altezza fissa cosi' lo sticky non "salta" cambiando step. */
-.flow-screens {
-  position: relative;
-  min-height: 268px;
-  padding: 1rem 1.1rem 1.2rem;
-  font-family: var(--mono);
-}
-.flow-screen {
-  position: absolute;
-  inset: 1rem 1.1rem 1.2rem;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .4s var(--ease), transform .4s var(--ease);
-  pointer-events: none;
-}
-.flow-screen.is-active { opacity: 1; transform: none; pointer-events: auto; }
-.flow-screen-cap {
-  font-size: .64rem;
-  letter-spacing: .08em;
-  color: var(--fg-faint);
-  margin: 0 0 .9rem;
-  text-transform: uppercase;
-}
-
-/* screen 1: mini scanner */
-.flow-mini { display: flex; flex-direction: column; gap: .55rem; }
-.flow-mini-row {
-  display: grid;
-  grid-template-columns: 26px 1fr auto auto;
-  gap: .6rem;
-  align-items: center;
-  font-size: .78rem;
-  color: var(--fg-dim);
-  padding-bottom: .5rem;
-  border-bottom: 1px dashed var(--border);
-}
-.flow-mini-ssid { color: var(--fg); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.flow-mini-ch { color: var(--fg-faint); font-size: .7rem; }
-
-/* log generico (screen 2 e 4) */
-.flow-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
-.flow-log li { font-size: .8rem; color: var(--fg-dim); line-height: 1.4; }
-.flow-ok { color: var(--ok); font-weight: 700; }
-.flow-warn { color: var(--warn); font-weight: 700; }
-.flow-tags { display: inline-flex; gap: 4px; margin-top: .3rem; }
-
-/* screen 3: crack meters */
-.flow-crack { display: flex; flex-direction: column; gap: .7rem; }
-.flow-meter-row { display: flex; justify-content: space-between; font-size: .76rem; }
-.flow-meter-lbl { color: var(--fg-faint); text-transform: uppercase; letter-spacing: .08em; }
-.flow-meter-val { color: var(--fg); }
-.flow-meter {
-  height: 8px;
-  border-radius: 100px;
-  background: var(--bg-2);
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-.flow-meter-fill {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--grad-accent);
-}
-.flow-hit { font-size: .82rem; margin: .4rem 0 0; }
-.flow-key {
-  color: var(--ok);
-  letter-spacing: .15em;
-  background: color-mix(in srgb, var(--ok) 12%, transparent);
-  padding: .1rem .4rem;
-  border-radius: 4px;
-}
-
-/* screen 4: evil twin */
-.flow-twin { display: flex; flex-direction: column; gap: .9rem; }
-.flow-twin-ap {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
-  gap: .2rem .7rem;
-  padding: .7rem .85rem;
-  border: 1px solid color-mix(in srgb, var(--purple) 40%, var(--border));
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--purple) 8%, transparent);
-}
-.flow-twin-badge {
-  grid-row: 1 / 3;
-  align-self: center;
-  font-size: .56rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--purple);
-  border: 1px solid color-mix(in srgb, var(--purple) 45%, transparent);
-  border-radius: 4px;
-  padding: .2rem .4rem;
-}
-.flow-twin-ssid { color: var(--fg); font-weight: 600; font-size: .85rem; }
-.flow-twin-mac { color: var(--fg-faint); font-size: .66rem; }
-
-/* screen 5: report */
-.flow-report { display: flex; flex-direction: column; gap: .55rem; }
-.flow-report-row {
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  gap: .7rem;
-  align-items: center;
-  font-size: .8rem;
-  color: var(--fg-dim);
-  padding-bottom: .5rem;
-  border-bottom: 1px dashed var(--border);
-}
-.flow-sev {
-  font-size: .56rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-align: center;
-  padding: .16rem 0;
-  border-radius: 4px;
-  border: 1px solid var(--border-2);
-}
-.flow-sev.high { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, transparent); background: color-mix(in srgb, var(--danger) 10%, transparent); }
-.flow-sev.med  { color: var(--warn);   border-color: color-mix(in srgb, var(--warn) 45%, transparent);   background: color-mix(in srgb, var(--warn) 10%, transparent); }
-.flow-sev.low  { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
-.flow-report-foot { font-size: .72rem; color: var(--fg-faint); margin: .4rem 0 0; }
-
 /* ============ SCANNER (standalone) ============ */
 .scan-section { padding: clamp(3rem, 6vw, 5rem) 0; }
 .scan-intro { text-align: center; max-width: 58ch; margin-inline: auto 1.5rem; margin-inline: auto; margin-bottom: clamp(2rem, 4vw, 3rem); }
@@ -1426,49 +1177,13 @@ body { font-family: var(--body); }
   100% { transform: translateY(340px); opacity: 0; }
 }
 
-/* ============ RESPONSIVE ============ */
-/* tablet/mobile: workflow a colonna singola, console non piu' sticky */
-@media (max-width: 860px) {
-  .flow-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .flow-sticky { position: static; order: -1; }
-  .flow-screens { min-height: 240px; }
-  .flow-steps { gap: 2.2rem; }
-  .flow-step { opacity: 1; transform: none; } /* senza sticky, tutti leggibili */
-  .flow-step .flow-num { color: var(--accent); }
-}
-@media (max-width: 420px) {
-  .flow-screens { padding: .9rem; min-height: 230px; }
-  .flow-screen { inset: .9rem; }
-}
-
 /* ============ REDUCED MOTION ============ */
 /* niente animazioni/transizioni; tutto il contenuto resta visibile.
    Gli schermi della console si impilano in flusso invece di sovrapporsi. */
 @media (prefers-reduced-motion: reduce) {
-  .flow-step,
-  .flow-screen,
-  .flow-num { transition: none; }
-  .flow-live::before,
   .scan-live::before,
   .scan-sweep { animation: none; }
   .scan-sweep { display: none; }
-
-  .flow-step { opacity: 1; transform: none; }
-  .flow-step .flow-num { color: var(--accent); }
-
-  .flow-screens { min-height: 0; }
-  .flow-screen {
-    position: static;
-    inset: auto;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-  .flow-screen + .flow-screen {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-  }
 }
 
 /* ============ LAYER C: armonizzazione sezioni esistenti ============ */
@@ -1695,7 +1410,6 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
   to   { background-position: 200% 50%; }
 }
 .hero-grad,
-.flow-em,
 .scan-em,
 .grad {
   background-image: linear-gradient(110deg, var(--accent), var(--purple), var(--accent));
@@ -1704,43 +1418,7 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
   animation: wow-grad-shift 9s linear infinite;
 }
 
-/* ---------- SCROLLYTELLING: step + schermi piu' fluidi ---------- */
-.flow-step {
-  transition: opacity .55s var(--ease-rv), transform .55s var(--ease-rv);
-}
-.flow-num { transition: color .55s var(--ease-rv); }
-.flow-screen {
-  transform: translateY(10px) scale(.992);
-  transition: opacity .55s var(--ease-rv), transform .55s var(--ease-rv);
-}
-.flow-screen.is-active { transform: none; }
-
-/* contenuto dello schermo attivo: si posa a cascata quando lo schermo
-   diventa attivo. Scoperto da .js-reveal; la visibilita' dei NON attivi
-   resta gestita dal pannello (opacity:0), quindi niente contenuto bloccato
-   nascosto. Spento da prefers-reduced-motion. */
-@keyframes wow-rise {
-  from { opacity: 0; transform: translateY(9px); }
-  to   { opacity: 1; transform: none; }
-}
-.js-reveal .flow-screen.is-active .flow-screen-cap,
-.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > * {
-  animation: wow-rise .5s var(--ease-rv) both;
-}
-.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(1) { animation-delay: .06s; }
-.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(2) { animation-delay: .12s; }
-.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(3) { animation-delay: .18s; }
-.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(4) { animation-delay: .24s; }
-.js-reveal .flow-screen.is-active :is(.flow-mini, .flow-log, .flow-crack, .flow-report, .flow-twin) > *:nth-child(5) { animation-delay: .30s; }
-
-/* la barra meter del crack cresce quando lo schermo 3 si attiva */
-@keyframes wow-meter { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.js-reveal .flow-screen.is-active .flow-meter-fill {
-  transform-origin: left center;
-  animation: wow-meter .9s var(--ease-rv) .2s both;
-}
-
-/* ---------- PROFONDITA': pannello scanner + console workflow ----------
+/* ---------- PROFONDITA': pannello scanner ----------
    Ombra piu' ricca + filo di luce superiore a gradiente firma, coerente
    col linguaggio visivo delle altre sezioni. Nessun colore nuovo. */
 .scan-win {
@@ -1755,9 +1433,6 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
   opacity: .85;
   pointer-events: none;
   z-index: 2;
-}
-.flow-console {
-  box-shadow: var(--shadow), 0 0 34px -24px rgba(182, 155, 255, .5);
 }
 
 /* ---------- Scrollbar interna dello scanner: discreta ---------- */
@@ -1819,9 +1494,7 @@ details.qa[open] { border-color: rgba(92,220,255,.28); }
    anche se un domani cambiasse l'ordine delle regole. */
 @media (prefers-reduced-motion: reduce) {
   .js-reveal .scan-drow { opacity: 1 !important; transform: none !important; }
-  .flow-screen { transform: none !important; }
-  .flow-meter-fill { transform: none !important; }
-  .hero-grad, .flow-em, .scan-em, .grad { animation: none !important; background-position: 0% 50% !important; }
+  .hero-grad, .scan-em, .grad { animation: none !important; background-position: 0% 50% !important; }
 }
 
 /* ============================================================
