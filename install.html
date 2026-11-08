@@ -222,17 +222,16 @@
         <span class="nav-toggle-bar" aria-hidden="true"></span>
       </button>
 
-      <div class="nav-menu" id="nav-menu">
-
-      <nav class="nav-links" data-i18n-aria="nav.seclabel" aria-label="Sections">
-        <a href="index.html#edizioni" data-i18n="nav.editions">Editions</a>
-        <a href="index.html#perche" data-i18n="nav.why">Why</a>
-        <a href="index.html#moduli" data-i18n="nav.modules">Pro modules</a>
-        <a href="install.html" data-i18n="nav.install">Install</a>
-        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
-      </nav>
-
-      <div class="lang-switch" role="group" data-i18n-aria="nav.langlabel" aria-label="Language">
+      <!-- Language selector. Desktop: 5 flags inline. Mobile (.js): a compact
+           toggle in the bar opens this as a dedicated dropdown. The lang-wrap
+           stays OUTSIDE #nav-menu so it is reachable without the hamburger. -->
+      <div class="lang-wrap">
+        <button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="lang-switch" data-i18n-aria="nav.langlabel" aria-label="Language">
+          <span class="lang-toggle-flag" aria-hidden="true"></span>
+          <span class="lang-toggle-code">EN</span>
+          <span class="lang-toggle-chev" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="lang-switch" id="lang-switch" role="group" data-i18n-aria="nav.langlabel" aria-label="Language">
 
         <button type="button" class="lang-btn" data-lang="it" data-i18n-aria="lang.it" aria-label="Italiano" aria-pressed="false">
           <svg class="lang-flag" viewBox="0 0 24 16" width="22" height="15" role="img" aria-hidden="true">
@@ -285,7 +284,18 @@
           <span class="lang-code">DE</span>
         </button>
 
+        </div>
       </div>
+
+      <div class="nav-menu" id="nav-menu">
+
+      <nav class="nav-links" data-i18n-aria="nav.seclabel" aria-label="Sections">
+        <a href="index.html#edizioni" data-i18n="nav.editions">Editions</a>
+        <a href="index.html#perche" data-i18n="nav.why">Why</a>
+        <a href="index.html#moduli" data-i18n="nav.modules">Pro modules</a>
+        <a href="install.html" data-i18n="nav.install">Install</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
 
       <a class="nav-cta" href="https://miragewifi.gumroad.com/l/hbzayw" rel="noopener noreferrer" data-i18n="nav.cta">Early access</a>
 
@@ -402,6 +412,66 @@
           syncLangButtons(v);
         });
       }
+    })();
+  </script>
+
+  <!-- Mobile language selector: a compact toggle in the bar opens a dedicated
+       dropdown. Independent from the hamburger. Mirrors the active language
+       into the toggle (flag clone + code). Runs after the i18n loader. -->
+  <script>
+    (function () {
+      var wrap = document.querySelector(".lang-wrap");
+      if (!wrap) return;
+      var toggle = wrap.querySelector(".lang-toggle");
+      var panel = document.getElementById("lang-switch");
+      var flagSlot = wrap.querySelector(".lang-toggle-flag");
+      var codeSlot = wrap.querySelector(".lang-toggle-code");
+      if (!toggle || !panel) return;
+
+      function updateLangToggle() {
+        var lang = (document.documentElement.lang || "en").toLowerCase();
+        if (codeSlot) codeSlot.textContent = lang.toUpperCase();
+        var active = panel.querySelector('.lang-btn[data-lang="' + lang + '"]');
+        if (!active) active = panel.querySelector(".lang-btn.is-active");
+        var svg = active && active.querySelector(".lang-flag");
+        if (flagSlot && svg) {
+          flagSlot.innerHTML = "";
+          flagSlot.appendChild(svg.cloneNode(true));
+        }
+      }
+
+      function setOpen(open) {
+        panel.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      toggle.addEventListener("click", function () {
+        setOpen(!panel.classList.contains("open"));
+      });
+
+      // The i18n loader applies the language first; then reflect it and close.
+      var btns = panel.querySelectorAll(".lang-btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          updateLangToggle();
+          setOpen(false);
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && panel.classList.contains("open")) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!panel.classList.contains("open")) return;
+        if (wrap.contains(e.target)) return;
+        setOpen(false);
+      });
+
+      updateLangToggle();
     })();
   </script>
 

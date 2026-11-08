@@ -704,6 +704,45 @@ body { font-family: var(--body); }
 }
 .nav-toggle:hover .nav-toggle-bar { background: var(--fg); }
 
+/* explicit order so the desktop layout is unchanged after moving the language
+   selector out of #nav-menu: brand, links, language, CTA, then (mobile) toggle */
+.nav-brand { order: 0; }
+.nav-links { order: 1; }
+.lang-wrap { order: 2; position: relative; display: flex; align-items: center; flex: 0 0 auto; }
+.nav-cta { order: 3; }
+.nav-toggle { order: 4; }
+
+/* compact language toggle: hidden on desktop, shown on mobile only with JS */
+.lang-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: border-color .15s var(--ease), color .15s var(--ease);
+}
+.lang-toggle:hover { border-color: var(--accent); }
+.lang-toggle-flag { display: inline-flex; width: 22px; height: 15px; }
+.lang-toggle-flag svg {
+  width: 22px;
+  height: 15px;
+  display: block;
+  border-radius: 2px;
+  box-shadow: var(--shadow-sm);
+  outline: 1px solid var(--border-2);
+  outline-offset: -1px;
+}
+.lang-toggle-chev { font-size: 10px; color: var(--fg-dim); line-height: 1; }
+
 /* brand */
 .nav-brand {
   display: inline-flex;
@@ -992,11 +1031,11 @@ body { font-family: var(--body); }
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .lang-switch { margin-left: auto; }
+  .lang-switch { margin-left: auto; flex-wrap: wrap; }
 
-  /* --- JS enhanced: collapse nav/lang/CTA behind a hamburger --- */
+  /* --- JS enhanced: collapse nav + CTA behind a hamburger --- */
   .js .nav-toggle { display: inline-flex; }
-  .js .nav-inner { flex-wrap: nowrap; row-gap: 0; }
+  .js .nav-inner { flex-wrap: nowrap; row-gap: 0; column-gap: 10px; }
   .js .nav-menu {
     position: absolute;
     top: 100%;
@@ -1031,8 +1070,45 @@ body { font-family: var(--body); }
     gap: 4px;
     overflow: visible;
   }
-  .js .nav-menu .lang-switch { margin-left: 0; align-self: flex-start; }
   .js .nav-menu .nav-cta { width: 100%; }
+
+  /* --- JS enhanced: language as a compact bar toggle + dedicated dropdown --- */
+  .js .lang-toggle { display: inline-flex; }
+  .js .lang-wrap { order: 1; margin-left: auto; }
+  .js .nav-toggle { order: 2; margin-left: 10px; }
+  .js .lang-wrap .lang-switch {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-left: 0;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px;
+    min-width: 160px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height .24s var(--ease), opacity .18s var(--ease), visibility .18s;
+    z-index: 60;
+  }
+  .js .lang-wrap .lang-switch.open {
+    max-height: 70vh;
+    overflow: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  .js .lang-wrap .lang-btn {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 9px 10px;
+  }
 }
 
 /* phone: scale down the hero title so the long IT headline fits */
@@ -1043,11 +1119,8 @@ body { font-family: var(--body); }
   }
 }
 
-/* phone: shrink the selector to flags only, keep it tappable */
+/* phone: tighter brand, full-width hero CTAs */
 @media (max-width: 480px) {
-  .lang-code { display: none; }
-  .lang-btn { padding: 7px; }
-  .lang-flag { width: 24px; height: 16px; }
   .nav-logo { font-size: 18px; }
   .hero-cta .nav-cta,
   .hero-cta .hero-btn-ghost { flex: 1 1 100%; }

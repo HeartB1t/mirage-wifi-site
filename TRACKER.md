@@ -9,6 +9,11 @@ Tracciamento task del sito. Formato:
   schermi (2026-11-08). VERIFICATO_EMPIRICO a viewport Android (412x915, IT):
   header 164px -> 69px, toggle apre/chiude/Escape, fallback no-JS tutto visibile,
   desktop 1280 identico prima/dopo. Impl Fable, verifica coordinatore.
+- [x] FATTO: menu lingua dedicato (dropdown) nella barra mobile, fuori
+  dall'hamburger (2026-11-08, richiesta utente). VERIFICATO_EMPIRICO: toggle
+  bandiera+codice+chevron, dropdown 5 lingue apre/chiude, scelta aggiorna
+  indicatore e titolo, Escape/click-fuori, no overflow fino a 360px, desktop
+  identico (bandiere inline), indipendente dall'hamburger. index.html+install.html.
 - [x] FATTO: pagina install.html (quickstart) multilingue 5 lingue + wiring
   (voce nav "Installa", link eroe "Come si installa", sitemap) (2026-11-08).
   VERIFICATO_EMPIRICO: cambio lingua aggiorna titolo pagina (install._title) e
