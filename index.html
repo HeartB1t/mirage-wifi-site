@@ -92,33 +92,129 @@
           </p>
         </div>
 
-        <!-- Animated scanner panel (decorative, fictional data) -->
+        <!-- Live scanner panel (decorative, fictional data only: invented ESSIDs, locally-administered MACs) -->
         <div class="scanner reveal" aria-hidden="true">
           <div class="scanner-bar">
             <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-            <span class="path">mirage://scan/wlan0 · monitor</span>
+            <span class="path">mirage, 127.0.0.1:8731</span>
+            <span class="live">LIVE</span>
           </div>
+          <div class="scanline"></div>
           <div class="scanner-body">
-            <div class="scanline"></div>
-            <div class="scan-row">
-              <span class="essid">Residence-Lab6<span class="bssid">CA:4C:75:11:0A:F2 · ch 6</span></span>
-              <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
-              <span class="enc wpa2">WPA2</span>
-            </div>
-            <div class="scan-row">
-              <span class="essid">Office-Lab02<span class="bssid">A2:1B:3F:9C:44:8E · ch 11</span></span>
-              <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
-              <span class="enc wpa3">WPA3</span>
-            </div>
-            <div class="scan-row">
-              <span class="essid">Reteditest<span class="bssid">D6:24:DD:24:1A:63 · ch 1</span></span>
-              <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
-              <span class="enc eap">EAP</span>
-            </div>
-            <div class="scan-row">
-              <span class="essid">Casa-Demo<span class="bssid">AE:14:BF:77:2E:19 · ch 3</span></span>
-              <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
-              <span class="enc wep">WEP</span>
+            <div class="scan-table">
+              <div class="scan-head">
+                <span>PWR</span><span>ESSID</span><span>BSSID</span><span>CH</span><span>BAND</span><span>SEC</span><span>WPS</span><span>CLI</span><span>ST</span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                <span class="essid">Residence-Lab6</span>
+                <span class="bssid">CA:4C:75:11:0A:F2</span>
+                <span class="ch">6</span>
+                <span class="band">2.4G</span>
+                <span class="enc wpa2">WPA2</span>
+                <span class="wps"><i class="wps-dot on"></i></span>
+                <span class="cli">3</span>
+                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                <span class="essid">Office-Lab02</span>
+                <span class="bssid">A2:1B:3F:9C:44:8E</span>
+                <span class="ch">11</span>
+                <span class="band">2.4G</span>
+                <span class="enc wpa3">WPA3</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">1</span>
+                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk on">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                <span class="essid">Reteditest</span>
+                <span class="bssid">D6:24:DD:24:1A:63</span>
+                <span class="ch">1</span>
+                <span class="band">2.4G</span>
+                <span class="enc eap">EAP</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">2</span>
+                <span class="st"><i class="tag hs">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
+                <span class="essid">Casa-Demo</span>
+                <span class="bssid">AE:14:BF:77:2E:19</span>
+                <span class="ch">3</span>
+                <span class="band">2.4G</span>
+                <span class="enc wpa2">WPA2</span>
+                <span class="wps"><i class="wps-dot on"></i></span>
+                <span class="cli">0</span>
+                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk on">PMK</i><i class="tag key on">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                <span class="essid">Lab-Guest</span>
+                <span class="bssid">7A:33:9C:02:5B:1D</span>
+                <span class="ch">36</span>
+                <span class="band">5G</span>
+                <span class="enc wpa3">WPA3</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">4</span>
+                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                <span class="essid">CoworkingDemo</span>
+                <span class="bssid">6E:0D:4F:88:AC:21</span>
+                <span class="ch">149</span>
+                <span class="band">5G</span>
+                <span class="enc wpa2">WPA2</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">6</span>
+                <span class="st"><i class="tag hs">HS</i><i class="tag pmk on">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                <span class="essid">&lt;hidden&gt;</span>
+                <span class="bssid">2E:71:A0:4C:33:9B</span>
+                <span class="ch">44</span>
+                <span class="band">5G</span>
+                <span class="enc wpa2">WPA2</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">0</span>
+                <span class="st"><i class="tag hs">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                <span class="essid">MeshDemo-6E</span>
+                <span class="bssid">6A:88:1C:0D:5E:42</span>
+                <span class="ch">37</span>
+                <span class="band">6G</span>
+                <span class="enc wpa3">WPA3</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">2</span>
+                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i></i><i></i><i></i></span>
+                <span class="essid">Legacy-AP</span>
+                <span class="bssid">B2:55:7E:19:84:C0</span>
+                <span class="ch">9</span>
+                <span class="band">2.4G</span>
+                <span class="enc wep">WEP</span>
+                <span class="wps"><i class="wps-dot"></i></span>
+                <span class="cli">1</span>
+                <span class="st"><i class="tag hs">HS</i><i class="tag pmk">PMK</i><i class="tag key">KEY</i></span>
+              </div>
+              <div class="scan-row">
+                <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                <span class="essid">Studio-Lab</span>
+                <span class="bssid">EA:0C:62:3D:77:15</span>
+                <span class="ch">157</span>
+                <span class="band">5G</span>
+                <span class="enc wpa3">WPA3</span>
+                <span class="wps"><i class="wps-dot on"></i></span>
+                <span class="cli">5</span>
+                <span class="st"><i class="tag hs on">HS</i><i class="tag pmk">PMK</i><i class="tag key on">KEY</i></span>
+              </div>
             </div>
           </div>
         </div>
