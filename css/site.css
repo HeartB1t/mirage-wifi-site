@@ -1114,10 +1114,10 @@ body { font-family: var(--body); }
   white-space: nowrap;
   font-weight: 600;
 }
-.scan-enc.wpa2 { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 62%, transparent); background: color-mix(in srgb, var(--accent) 22%, transparent); }
-.scan-enc.wpa3 { color: var(--ok);     border-color: color-mix(in srgb, var(--ok) 62%, transparent);     background: color-mix(in srgb, var(--ok) 22%, transparent); }
-.scan-enc.eap  { color: var(--purple); border-color: color-mix(in srgb, var(--purple) 62%, transparent); background: color-mix(in srgb, var(--purple) 22%, transparent); }
-.scan-enc.wep  { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 62%, transparent); background: color-mix(in srgb, var(--danger) 22%, transparent); }
+.scan-enc.wpa2 { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--accent) 90%, var(--bg)); }
+.scan-enc.wpa3 { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--ok) 90%, var(--bg)); }
+.scan-enc.eap  { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--purple) 90%, var(--bg)); }
+.scan-enc.wep  { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--danger) 90%, var(--bg)); }
 
 /* WPS */
 .scan-wps { display: inline-flex; }
@@ -1137,9 +1137,9 @@ body { font-family: var(--body); }
   color: var(--fg-faint);
   background: transparent;
 }
-.scan-tag.on.hs  { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 65%, transparent); background: color-mix(in srgb, var(--accent) 24%, transparent); }
-.scan-tag.on.pmk { color: var(--purple); border-color: color-mix(in srgb, var(--purple) 65%, transparent); background: color-mix(in srgb, var(--purple) 24%, transparent); }
-.scan-tag.on.key { color: var(--ok);     border-color: color-mix(in srgb, var(--ok) 65%, transparent);     background: color-mix(in srgb, var(--ok) 24%, transparent); }
+.scan-tag.on.hs  { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--accent) 90%, var(--bg)); }
+.scan-tag.on.pmk { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--purple) 90%, var(--bg)); }
+.scan-tag.on.key { color: var(--bg); border-color: transparent; background: color-mix(in srgb, var(--ok) 90%, var(--bg)); }
 
 /* barrette segnale */
 .scan-sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
