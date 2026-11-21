@@ -315,7 +315,7 @@
       <li data-i18n="install.req.2">Root privileges (the auditing features need them).</li>
       <li data-i18n="install.req.3">At least one Wi-Fi adapter that supports monitor mode.</li>
       <li data-i18n="install.req.4">A web browser.</li>
-      <li data-i18n="install.req.5">python3 with the python3-venv package.</li>
+      <li data-i18n="install.req.5">Python 3.13, which the first launch installs automatically if it is missing.</li>
       <li data-i18n="install.req.6">An Internet connection on first launch (it downloads the dependencies).</li>
     </ul>
 
@@ -334,12 +334,12 @@
       </li>
       <li>
         <p class="ins-step-t" data-i18n="install.step3.t">Launch MirageWiFi</p>
-        <p class="ins-step-d" data-i18n="install.step3.d">From the extracted folder, start it with root privileges.</p>
+        <p class="ins-step-d" data-i18n="install.step3.d">From the extracted folder, run it as root. On first launch it sets everything up automatically (dependencies, Python 3.13, system install and a menu entry) after your confirmation.</p>
         <code class="ins-cmd"><span class="tok">sudo</span> ./start.sh</code>
       </li>
       <li>
         <p class="ins-step-t" data-i18n="install.step4.t">Open the console in your browser</p>
-        <p class="ins-step-d" data-i18n="install.step4.d">Open the URL with the access token printed on startup.</p>
+        <p class="ins-step-d" data-i18n="install.step4.d">Open the URL with the access token printed on startup. From then on, just launch MirageWiFi from the applications menu.</p>
         <code class="ins-cmd">http://127.0.0.1:8731/#token=...</code>
       </li>
     </ol>
