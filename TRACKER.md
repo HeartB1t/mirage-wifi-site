@@ -62,6 +62,21 @@ Tracciamento task del sito. Formato:
   a 800/960/1024/1100/1200/1280: niente clip/wrap (overflow 800px = 4px
   irrilevante), dropdown apre/cambia lingua a 1024. Solo css/site.css. Impl Fable.
 
+## Sessione 2026-11-22 - i18n pagine dettaglio moduli
+
+- [x] FIXED: le pagine di dettaglio dei moduli (modules/01..10) restavano in
+  inglese a prescindere dalla lingua scelta sulla home (2026-11-22, segnalazione
+  operatore). CAUSA: le pagine avevano gli attributi `data-i18n` con chiavi
+  `mod.*` ma (a) non caricavano i18n.js ne' avevano la logica di apply, (b) le
+  chiavi `mod.*` non esistevano in i18n.js. FIX: aggiunte 96 chiavi `mod.*` per
+  lingua x5 (en/it/es/fr/de, parita' verificata, node -c OK), coerenti con le
+  card `ars.c*`; aggiunto a ogni pagina modulo `<script src="../i18n.js">` + loader
+  inline che legge localStorage("lang") e applica le traduzioni + aggiorna
+  document.title dal titolo tradotto. Ristrutturato il link "Back" (freccia in
+  span separato) perche' textContent non cancelli la freccia. VERIFICATO: parita'
+  chiavi 5 lingue, tutte le chiavi di pagina presenti in en, campioni it/fr/de/es
+  corretti. Da VERIFICARE_EMPIRICO in browser dall'operatore.
+
 ## Note
 - Push/merge su main: autorizzati dall'operatore in questa sessione. Lavoro
   mobile+install+perf+nav tutto su main.

@@ -53,7 +53,7 @@
 </head>
 <body>
 <main class="mod-wrap">
-  <a class="mod-back" href="../index.html#moduli" data-i18n="mod.common.back"><span class="arr" aria-hidden="true">&larr;</span> Back to the arsenal</a>
+  <a class="mod-back" href="../index.html#moduli"><span class="arr" aria-hidden="true">&larr;</span> <span data-i18n="mod.common.back">Back to the arsenal</span></a>
 
   <header class="mod-head">
     <p class="mod-kicker"><span class="mod-no">01</span> <span class="mod-tag" data-i18n="mod.operational-console.cat">Console</span></p>
@@ -87,5 +87,15 @@
     <span class="lic" data-i18n="mod.common.footlicense">Proprietary · © 2026 Mirage. Use only on authorized networks.</span>
   </footer>
 </main>
+<script src="../i18n.js"></script>
+<script>
+(function(){
+  var I=window.I18N||{},S=["en","it","es","fr","de"],D="en";
+  function pick(s){if(s&&S.indexOf(s)!==-1)return s;var c=String(navigator.language||D).slice(0,2).toLowerCase();return S.indexOf(c)!==-1?c:D;}
+  function apply(l){var d=I[l]||{};var n=document.querySelectorAll("[data-i18n]");for(var i=0;i<n.length;i++){var k=n[i].getAttribute("data-i18n");if(d[k]!=null)n[i].textContent=d[k];}document.documentElement.lang=l;var t=document.querySelector("[data-i18n$='.title']");if(t)document.title=t.textContent+" – MirageWiFi";}
+  var s=null;try{s=localStorage.getItem("lang");}catch(e){}
+  apply(pick(s));
+})();
+</script>
 </body>
 </html>
