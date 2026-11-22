@@ -75,7 +75,9 @@ Tracciamento task del sito. Formato:
   document.title dal titolo tradotto. Ristrutturato il link "Back" (freccia in
   span separato) perche' textContent non cancelli la freccia. VERIFICATO: parita'
   chiavi 5 lingue, tutte le chiavi di pagina presenti in en, campioni it/fr/de/es
-  corretti. Da VERIFICARE_EMPIRICO in browser dall'operatore.
+  corretti. VERIFICATO_EMPIRICO (Chromium headless, localStorage lang preimpostato):
+  reso corretto in it/es/fr/de su moduli 01/07/03/08, freccia Back preservata, title
+  e html lang aggiornati; confermato anche sul sito live con profilo pulito.
 
 - [x] FIXED: meta description delle pagine modulo tradotta nelle 5 lingue
   (2026-11-22, richiesta operatore). Aggiunte 50 chiavi `mod.<modulo>._description`
@@ -85,6 +87,16 @@ Tracciamento task del sito. Formato:
   DE resa tradotta su modulo 02. Nota: la verifica i18n del contenuto visibile era
   fallita lato operatore solo per cache browser (sito live gia' corretto, confermato
   con profilo pulito it-IT -> reso in italiano); risolto con hard-refresh.
+
+- [x] FATTO: cache-busting su i18n.js per evitare che la cache browser serva un
+  dizionario vecchio dopo ogni aggiornamento (2026-11-22). Aggiunto `?v=<versione>`
+  a tutti i 12 riferimenti (index, install, 10 moduli). Versione corrente:
+  **`?v=20261122b`** (commit 5cd8a08). REGOLA: a ogni modifica di i18n.js bumpare
+  la versione in tutti i riferimenti, es.
+  `grep -rl 'i18n.js?v=' --include=*.html . | xargs sed -i 's/i18n\.js?v=[0-9a-z]*/i18n.js?v=NUOVA/g'`
+  (stesso giorno -> suffisso lettera: 20261122b, c, ...). VERIFICATO_EMPIRICO:
+  build Pages `built 5cd8a08`, riferimenti live a `?v=20261122b`, i18n.js live
+  HTTP 200, render reale modulo 04 in IT sul sito live tutto tradotto.
 
 ## Note
 - Push/merge su main: autorizzati dall'operatore in questa sessione. Lavoro
