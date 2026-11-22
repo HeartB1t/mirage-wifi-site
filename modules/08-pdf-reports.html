@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#080c14">
 <meta name="color-scheme" content="dark">
 <title>Professional PDF reports - MirageWiFi</title>
-<meta name="description" content="Executive summary, scope and authorization, findings with severity and remediation, ready to deliver to the client.">
+<meta name="description" data-i18n-meta="mod.pdf-reports._description" content="Executive summary, scope and authorization, findings with severity and remediation, ready to deliver to the client.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../css/site.css">
 <style>
@@ -92,7 +92,7 @@
 (function(){
   var I=window.I18N||{},S=["en","it","es","fr","de"],D="en";
   function pick(s){if(s&&S.indexOf(s)!==-1)return s;var c=String(navigator.language||D).slice(0,2).toLowerCase();return S.indexOf(c)!==-1?c:D;}
-  function apply(l){var d=I[l]||{};var n=document.querySelectorAll("[data-i18n]");for(var i=0;i<n.length;i++){var k=n[i].getAttribute("data-i18n");if(d[k]!=null)n[i].textContent=d[k];}document.documentElement.lang=l;var t=document.querySelector("[data-i18n$='.title']");if(t)document.title=t.textContent+" – MirageWiFi";}
+  function apply(l){var d=I[l]||{};var n=document.querySelectorAll("[data-i18n]");for(var i=0;i<n.length;i++){var k=n[i].getAttribute("data-i18n");if(d[k]!=null)n[i].textContent=d[k];}document.documentElement.lang=l;var t=document.querySelector("[data-i18n$='.title']");if(t)document.title=t.textContent+" – MirageWiFi";var m=document.querySelector("meta[name='description'][data-i18n-meta]");if(m){var mk=m.getAttribute("data-i18n-meta");if(d[mk]!=null)m.setAttribute("content",d[mk]);}}
   var s=null;try{s=localStorage.getItem("lang");}catch(e){}
   apply(pick(s));
 })();

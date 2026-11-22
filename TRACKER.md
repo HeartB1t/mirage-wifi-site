@@ -77,6 +77,15 @@ Tracciamento task del sito. Formato:
   chiavi 5 lingue, tutte le chiavi di pagina presenti in en, campioni it/fr/de/es
   corretti. Da VERIFICARE_EMPIRICO in browser dall'operatore.
 
+- [x] FIXED: meta description delle pagine modulo tradotta nelle 5 lingue
+  (2026-11-22, richiesta operatore). Aggiunte 50 chiavi `mod.<modulo>._description`
+  (10x5, valore identico a `.desc`, convenzione come `install._description`);
+  aggiunto `data-i18n-meta="mod.<modulo>._description"` sul tag meta e logica nel
+  loader per applicarla. VERIFICATO_EMPIRICO (Chromium headless): meta description
+  DE resa tradotta su modulo 02. Nota: la verifica i18n del contenuto visibile era
+  fallita lato operatore solo per cache browser (sito live gia' corretto, confermato
+  con profilo pulito it-IT -> reso in italiano); risolto con hard-refresh.
+
 ## Note
 - Push/merge su main: autorizzati dall'operatore in questa sessione. Lavoro
   mobile+install+perf+nav tutto su main.
